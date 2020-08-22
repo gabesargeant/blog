@@ -1,0 +1,34 @@
+baseURL = "http://gabrielsargeant.net/"
+languageCode = "en-us"
+title = "Gabriel Sargeant"
+theme = "smol"
+uglyurls = true
+
+[Author]
+    name = "Gabriel Sargeant"
+    
+
+[menu]  
+    [[menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/posts.html"
+        weight = 2 
+
+    [[menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/posts/about.html"
+        weight = 1 
+    
+    [[menu.main]]
+        identifier = "contact"
+        name = "Contact"
+        url = "/posts/contact.html"
+        weight = 1 
+
+# Footer
+    [[menu.footer]]
+        name = "Github"
+        url = "https://github.com/gabesargeant"
+        weight = 1 

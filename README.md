@@ -2,7 +2,7 @@
 # This is..
 the first cut at a personal site with Hugo. 
 
-This repo is the very sparse test site im building. 
+This repo is the very sparse test site I'm building. 
 
 #### Significant folders
 /gabrielsargeant - the website.

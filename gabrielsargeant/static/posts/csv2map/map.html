@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/simple-statistics@7.0.8/dist/simple-statistics.min.js"></script>
+    <link rel="stylesheet" href="databymap.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.31/esri/css/esri.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.31/dijit/themes/claro/claro.css">
+    <script src="https://js.arcgis.com/3.31/"></script>
+
+
+    <script>
+        var thematic_region = "POA_CODE_2016";
+        var min_max = [];
+        var data = [];
+        var ckMeansData = [];
+    // var column = "test";
+    // var real_column = "test";
+
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Map Tool</title>
+
+
+</head>
+
+<body>
+    Map Tool</div>
+    <hr />
+
+
+    <div id="map">
+
+        <table id="mapLegend">
+            <tr>
+                <td colspan="4"><b>Join Field</b></td>
+            </tr>
+            <tr>
+                <td colspan="4" class="acenter"><b><select id="selectJoin" name="selectColor" style="width: 90%" /></b>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4"><b>Data Field</b></td>
+            </tr>
+            <tr>
+                <td colspan="4" class="acenter"><b><select id="selectData" name="selectColor" style="width: 90%" /></b>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="acenter"><b>Class Breaks Legend</b></td>
+            </tr>
+            <tr>
+                <td id="one_c"></td>
+                <td class="acenter"><input type="text" size="10" id="one_b"></td>
+                <td> to </td>
+                <td id="one_a"> </td>
+
+            </tr>
+            <tr>
+                <td id="two_c"></td>
+                <td class="acenter"><input type="text" size="10" id="two_b"></td>
+                <td> to </td>
+                <td id="two_a"></td>
+            </tr>
+
+            <tr>
+                <td id="three_c"></td>
+                <td class="acenter"><input type="text" size="10" id="three_b"></td>
+                <td> to </td>
+                <td id="three_a"></td>
+            </tr>
+
+            <tr>
+                <td id="four_c"></td>
+                <td class="acenter"><input type="text" size="10" id="four_b"></td>
+                <td> to </td>
+                <td id="four_a"></td>
+            </tr>
+
+            <tr>
+                <td id="five_c"></td>
+                <td class="acenter"><input type="text" size="10" id="five_b"></td>
+                <td> to </td>
+                <td><input type="text" size="10" id="five_a"></td>
+            </tr>
+
+
+            <tr>
+                <td><select id="selectColor" name="selectColor">
+
+                        <option value="0">Green to Red</option>
+                        <option value="1">Green scale</option>
+                        <option value="2">Orange to Red</option>
+                        <option value="3">Purple scale</option>
+                        <option value="4">Blue to Red</option>
+                        <option value="5">Pastel</option>
+                        <option value="6">Monochrome</option>
+
+
+                    </select></td>
+                <td><input id="ckmeans" type="checkbox" checked>Means Clustering</td>
+                <td></td>
+                <td><input type="button" class="btn updatebtn" id="updateBreaks" value="Update Map"></td>
+            </tr>
+            <tr>
+                <td><input id="flip_ramp" type="checkbox"> Flip Ramp</td>
+                <td>
+                    <input id="check_label" type="checkbox">Show Codes</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+
+
+
+
+    <div class="flex-container">
+
+        <div class="flex-item them_note"> A Thematic Map for Values of <b>2016 ABS Postal Areas</b> as selected by you.
+            <hr />
+            <p>
+                Note: Census Data is collected using the <a
+                    href="http://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS)"
+                    targe="_blank">ABS ASGS framework.</a><br>
+                Have a look at the ABS for detailed metadata on fields that interest you.
+                <br />
+                The breaks are calculated by taking the top value, and dividing by 5.
+                You can amend the breaks to fit data as needed.
+                <br /><br />
+                Follow the instructions in the text box then play with the map legend after the data is in the
+                table.<br />
+                Note: The data in the text box is just to play with. Clear it out to start.
+
+
+
+        </div>
+
+
+        <div class="flex-item" style="flex-grow: 1">
+            Bulk Remove text: <input type="text" size="10" id="stripTextVal"> <input type="button" id="stripText"
+                value="Strip Text" />
+            <input type="button" class="btn updatebtn" id="updateData" value="Update Data" />
+            <input type="button" id="clearText" value="Clear Map and Data" />
+            <br />
+
+            <textarea type="text" rows="10" id="dataArray"
+                style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box; width: 100%; resize: horizontal;"
+                placeholder="Paste from excel into this big empty text box. 
+Don't worry about spaces, Just let it look yuk, this is just a place to scoop up data.
+Hit Update Data and scroll down the page to look at the table. 
+Do those PostCodes look like 7004 or do they look messed up? like: TAS, 7004
+Use the Strip text filter to clip things out such as the TAS, or what ever appends the postcodes. 
+From here just hit 'Update Data'. 
+Once things are looking good you can Interact with the Drop Downs on the legend to see a thematic map.">
+Postcode	20-24 years	25-29 years	30-34 years	35-39 years	40-44 years	45-49 years
+7000	628	702	522	434	488	480
+7001	0	0	0	0	0	0
+7004	362	292	247	256	268	221
+7005	822	632	397	334	364	384
+7007	84	81	88	94	105	132
+7008	379	362	469	409	478	416
+7009	391	472	489	429	412	422
+7010	519	536	527	511	521	532
+7011	428	501	504	446	449	489
+7012	24	8	26	25	36	32
+7015	222	258	327	325	306	324
+7016	82	101	116	77	62	94
+7017	147	185	191	169	214	211
+7018	500	566	658	660	711	741
+7019	250	276	260	224	203	170
+7020	45	45	63	79	92	110
+7021	58	56	80	77	80	75
+7022	17	21	14	26	36	21
+7023	8	9	3	6	8	11
+7024	9	9	23	23	24	13
+7025	28	21	41	47	61	75
+7026	21	14	33	25	33	30
+
+</textarea>
+
+
+
+
+        </div>
+
+        <div class="flex-item">
+            <div id="excel_table"></div>
+
+        </div>
+
+    </div>
+</body>
+<script src="data.js"></script>
+<script src="code.js"></script>
+
+</html>
