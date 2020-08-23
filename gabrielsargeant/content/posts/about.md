@@ -6,14 +6,9 @@ draft: false
 
 Hi I'm Gabriel Sargeant. I do IT stuff for work. A lot of my job is plumbing and configuration. A lot of what I like to do is to make things. 
 
-This site mostly exists to enable me to be able to share stuff I build via a link from this site rather than a link to a random EC2 instance on AWS, or somwhere else, as naturally most people are a little hesitant to click an odd looking ec2 links.
+This site mostly exists to share stuff I think about and build. Whilst I don't intend to do much paint by numbers, or tutorial style content I do want to document things closely in a narrative style. If only for myself to be able to understand what the hell I was thinking.
 
-#### About this Theme
-Based on https://themes.gohugo.io/smol/
-I'm going to learn more hugo and change it over time. Infact I've already started. 
-
-The options at https://themes.gohugo.io/ were a little distracting. 
-Smol is basic and works on everything so it gets the tick for not being a drama.
+The adventure begins.
 
 
 

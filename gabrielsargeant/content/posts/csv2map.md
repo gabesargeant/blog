@@ -16,7 +16,11 @@ Thinking about doing this with CSV data.
 
 Base Map limitations. 
 
-Level of detail limitations. 
+**Level of detail limitations.**
+
+
+
+![The important half of Australia with it's suburbs drawn on it](/posts/images/LOD_Australia.png)
 
 Data explore
 
