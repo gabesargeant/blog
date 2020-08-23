@@ -1,9 +1,23 @@
 ---
-title: "not map"
+title: "Geospatial visualizations, on the fly"
 draft: false
 date: 2020-08-20
 ---
 
-[link to new page](/posts/csv2map/map.html)
+This link: [MapTool](/posts/csv2map/map.html) 
+is a simple-ish one page map visualization tool for taking a some CSV data and 'joining'
+it to a map. 
 
-This page redirects you to the next page.
+I'm not going to hold back. It's pretty janky AF. 
+
+Map Join
+
+Thinking about doing this with CSV data. 
+
+Base Map limitations. 
+
+Level of detail limitations. 
+
+Data explore
+
+
