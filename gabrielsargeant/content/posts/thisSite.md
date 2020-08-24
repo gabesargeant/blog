@@ -7,7 +7,7 @@ draft: true
 This is an early rundown of where my thinking is with this little project. 
 
 **Hugo**  
-This will be the main driver. 
+This is the main driver. 
 
 **Themes**  
 I've based this on [smol](https://themes.gohugo.io/smol/)
@@ -29,7 +29,7 @@ The usual:
 
 Im not expecting any branches ever. I'm also not sure what I'd do with a Pull Request if I were to ever get one. Probably for spelling I'm sure :/
 
-The git ignore was easy, I've opted to just store the essentials content. Some folk suggest tracking the Hugo /public/ folders in git to always have a rollback for the site. I personally don't like the cruft. 
+The git ignore was easy, I've opted to just store the essentials content. Some folk suggest tracking the Hugo /public/ folders in git to always have a rollback for the site. I personally don't like the cruft of that and this blog isn't mission critical so i can handle an outage.
 
 **The deployment pipeline I'm thinking about**  
 
@@ -69,5 +69,13 @@ I'm just going to toss everything into git as best I can.
 Save for passwords and AWS credentials.  ;)
 
 I think I will deploy fairly regularly, I expect i'll use the draft feature of Hugo here. 
+
+
+**What's left to do**
+As of writing this, I've gotta build everything I've discussed here because I havn't made it mast having Hugo on my laptop and a git account. 
+
+There's some Go code in my near future.
+
+Also I've got to get the domain of my Name and a Https cert. 
 
 
