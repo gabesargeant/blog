@@ -1,7 +1,7 @@
 ---
-title: "Building this site"
+title: "Thinking about building this site"
 date: 2020-08-23
-draft: true
+draft: false
 ---
 
 This is an early rundown of how I plan to get this site up on the web.

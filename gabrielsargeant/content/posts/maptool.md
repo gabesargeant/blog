@@ -4,17 +4,17 @@ draft: false
 date: 2020-08-20
 ---
 
-## [Map Tool](/posts/maptool/map.html)  
+## [Map Tool.](/posts/maptool/map.html)  
 
 This is a simple and speedily built one page map visualization tool. It's designed for taking a some CSV data and 'joining' it to a map. The result is *thematic mapping* which is pretty cool and when done correctly is always a crowd pleaser on the web. 
 
-Truthfully the 'tool' I wrote is pretty janky. However it's MVP and no one using the Map part of the project is peaking at the soup of jquery under the hood. 
+Truthfully the 'tool' I wrote is pretty janky. However it's MVP and no one using the map part of the project is peaking at the soup of jquery under the hood. 
 
 **How it's built**
 
-Most of the work is done via the ArcGIS Javascript API the 3.21-ish version of the API [*esri* ArcGIS API for Javascript](https://developers.arcgis.com/javascript/3/). This is a Dojo framework based API and its pretty amazing for what it does. Infact most of the tools I've used from **esri** have been great. 
+Most of the work is done via the ArcGIS Javascript API. I used the 3.X version of the API [*esri* ArcGIS API for Javascript](https://developers.arcgis.com/javascript/3/). This is a Dojo Javascript based API and its pretty amazing for what it does. Without sounding like a fanboy, most of the tools I've used from **esri** have been great. 
 
-I attempted to keep the client side code simple and pretty much started chopping into a few of the sample projects as a way to start. 
+ I started by chopping into a few of the sample projects as a way to start. While attempting to keep the client side code simple as I could.
 
 [Sample Code](https://developers.arcgis.com/javascript/3/jssamples/)
 
@@ -35,12 +35,15 @@ This is the tool in Action.
 ![Join on shared field](/posts/images/maptool/mapjoin2.png)
 
 The CSV to Map Join needs a field that is supplied by the Layer from the Map Service.
-In the Example and the tool I built it around Post Code. Which in Australia is a 4 digit number. 
+I built the tool to use Australian Post Codes with the ABS Post Code area Map Layer.
 
-Suburbs, Electoral Division and other locales in Australia such as the Australian Statistical Geographic Standard (ASGS) have codes associated but they have a slightly higher barrier to entry. 
+Suburbs, Electoral Division and other locales in Australia such as the Australian Statistical Geographic Standard (ASGS) have codes associated but they have a slightly higher barrier to entry to understanding. And my wife who needed this tool for a few quick bits of analysis was working with post code level data. As such I didn't make it any more generic than it needed to be.
 
-It's important when thinking about what the join field will be. If you're like me and always use publicly exposed map servers and it'll be up to you to fit with what's provided.  
-If you own a map server then you have a lot more control over the fields that are in the exposed layer. But editing Shapefiles is it's own whole big thing that I don't really dip into anymore.
+It's important when thinking about what the join field will be. If you're like me and always use publicly exposed map servers then it'll be up to you to fit with what's provided.  
+
+![Layer out fields](/posts/images/maptool/outfields.jpg)
+
+If you have your own map server then you have a lot more control over the fields. The only downside is managing all the Shapefiles. It is its own whole big area of work that I don't really want to dip into anymore.
 
 **Level of detail limitations**
 
