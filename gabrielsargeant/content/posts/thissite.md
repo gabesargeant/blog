@@ -8,7 +8,7 @@ This is an early rundown of how I plan to get this site up on the web.
 
 Firstly it's a static site. I've long enjoyed fast loading dense content that doesn't have a lot of bells and cruft. So figure I'll follow that path.
 
-**Site generator**  
+**Site generator** 
 I'm going to use [Hugo](https://gohugo.io) as the base site generator.
 
 **Themes**  

@@ -6,11 +6,11 @@ draft: false
 
 **Getting this all setup.**
 
-If you read my first post about getting into static site development from about a week before this one you'll get a good laugh. Or I did. I've pretty much made every mistake I could and most of those are related to my not RTFM.
+If you read my first post about getting into static site development from about a week before this one you'll get a good laugh. Or I did. I've pretty much made every mistake I could and most of those are related to my not reading the f---ing manual.
 
 All in all, AWS is like lego, and very easy to chop and change things when you make spelling mistake, register a top level domain that isn't supported by AWS etc etc. 
 
-All the errors I made listed out.
+Here are all the errors I made listed out. Some may call this *development*
 
 * I badly named the git repo whn setting up. fixed.
 * I wrongly assumed that the top level domain **.dev** would be supported by AWS. it's not! So there $18 dollars Im not using soon. If it gets support within the next year, I'll be adding porting it over. Otherwise :/ I'm skipping a coffee from the shops for a few days to make up the loss :(
@@ -23,11 +23,11 @@ If your thinking, *Gabe isn't this your job*. I will happily say that doing infr
 In setting everything up I badly followed these two guides, [1 & 2]( 
 {{<ref "#links" >}})
 
-Truthfully it was very easy. I didn't pull my hair out at all. The mistakes I made were more due to me rushing before dinner and they were fun to debug rather than anything close to a real issue.
+Truthfully it was a very easy process. I didn't pull my hair out at all. The mistakes I made were more due to me rushing before dinner. They were fun to debug rather than anything close to a real issues. However I do expect if it was you're first time doing everything you'd find it very intimidating.
 
 A few cool takeaways:
 
-1. Everything is cheep cheep cheep as the scale I'm at.
+1. Everything is cheep cheep cheep at the scale I'm working at.
 1. Everything is single purpose (I'll go into this more)
 1. You can do almost ever step out of order with very little consequence. And that is impart due to the design of everything being single use.
 
@@ -45,8 +45,47 @@ Again. RTFM Gabriel.
 Deploying is just a Hugo CLI command. I won't be writing my own upload tool right now.
 All I have to do is configure the AWS SKD and make sure the IAM permissions exist correctly for the write to S3 for the website bucket. 
 
+However! It's easy to write a sentence like: First I pick up the shovel, And then the mountain was moved. 
+
+In reality I hit a few bumps with using the Hugo Deploy.  
+
+Firstly, I couldn't get my AWS CLI settings to work with the AWS CLI v1. It turns out when you call: **Hugo Deploy**, what Hugo does is try to establish an AWS session object. 
+
+This is done via the AWS SDK that first looks for environment variables. Then looks for config and credentials files in the ~/.aws folder and then two other options which don't really make sense.  
+[Hugo S3 Session](https://gocloud.dev/howto/blob/#s3)  
+[AWS GO SDK - Credential_and_config_loading_order](https://docs.aws.amazon.com/sdk-for-go/api/aws/session/#hdr-Credential_and_config_loading_order)
+
+Something wasn't gelling well with what i'd set up. I was catching a lot of errors that looked like this.
+
+```
+Error: blob (code=Unknown): NoCredentialProviders: no valid providers in chain. Deprecated.
+For verbose messaging see aws.Config.CredentialsChainVerboseError
+```
+
+The use of the **~/.aws** folder worked previously for other Golang I've done. In fact just using the aws cli with commands like:
+
+```
+aws s3 ls s3//www.gabrielsargeant.com
+```
+worked perfectly. But when hugo ran it totally blanked on that config. 
+Eventually I RTFM a few times over and noticed that the **AWS_SDK_LOAD_CONFIG** environment variable needed to be set to true for the AWS Golang SDK to work. 
+Though, from memory It feels like I didn't need to do this in the past.
+
+Anyway, I tried and that failed as well. So I just pivoted to ripping out the AWS CLI version 1, and installed version 2. 
+
+Things didn't get better at this point.
+Reading yet more documentation on AWS, I found 
+[Environment variables to configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html) Theres no mention of **AWS_SDK_LOAD_CONFIG** so that must be a golang specific setting. 
+
+After all of this. I eventually caved and just set my AWS account key and secret using **export** in my .bashrc file. And that worked.
+
+So the lesson here was, nothing is simple and my persistence only wasted time.
+
+
 **Lastly.**
 I decided to skip the mail redirect. If there's a free mail host out there that can stay free for a long tim I'll maybe revist this. But it's not going to be a felt loss at the moment.
+
+In the future I may have a go at templating and automating the whole process. Right now the deploy aspect is all that needs to be automated and that won't be much more than a few lins of bash consisting of a hugo deploy and a git commit. 
 
 ___
 ### Links
