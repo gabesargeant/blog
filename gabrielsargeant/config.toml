@@ -1,7 +1,7 @@
 baseURL = "http://gabrielsargeant.com/"
 title = "Gabriel Sargeant"
 theme = "smol"
-uglyurls = true
+#uglyurls = true
 
 [Author]
     name = "Gabriel Sargeant"

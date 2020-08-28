@@ -6,10 +6,10 @@ draft: false
 
 I deployed this site to the web on the 26th. And before that day was over I was already in the AWS console ripping it to shreds. 
 
-This is a picture of the network exposed surfaces.
-[todo draw a picture and place it here.]
+This is a picture of the network network, before and after. In red is the *exposed* surface. It's not a huge thing but I wanted to provide only one way to see this site.
+![Before and After](site_2.svg)
 
-Following the previous tutorials from AWS and Mr. Baumgold, I essentially ended up with a CloudFront distribution that people can side step. It's not easy but if they are willing to guess the bucket name (which is an easy guess), and then the region. Then they can interact with the website sans the CDN. Which isn't something I want to happen. 
+Following the previous tutorials from AWS and Mr. Baumgold, I essentially ended up with a CloudFront distribution that people can side step via the red path. It's not easy but if they are willing to guess the bucket name (which is an easy guess), and then the region (finite options). Then they can interact with the website sans the CDN. Which isn't something I want to happen. 
 
 I was thinking about this and pottered around google looking for ways to really dial up the security on my S3 bucket. Mostly just so if the timeline skips and I end up getting a ton of traffic to this site then I don't want to pay through the nose for it.
 
@@ -23,11 +23,13 @@ In addition to this I backed out all the S3 public read permissions and locked d
 
 The very last thing I had to do was configure the root page to be index.html via CloudFront. 
 
-I think in the future I'll write up a more detailed explaination of how it all hangs together.
+I think in the future I'll write up a more detailed explanation of how it all hangs together. I'm still thinking over the use of the bare redirect, I like the simplicity of it. But it again maybe something I can solve with Route 53.
 
 ---
 This tutorial has some of the steps I followed. 
 [How do I use my CloudFront distribution to restrict access to an Amazon S3 bucket?](https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-access-to-amazon-s3/) 
+
+[Diagrams.net for the pictures](www.diagrams.net)
 
 
 
