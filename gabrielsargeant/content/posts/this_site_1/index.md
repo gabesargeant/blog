@@ -60,7 +60,7 @@ Oh for added fun, I'll write it in go to use the AWS Golang SDK, which I have fe
 
 **Network Architecture.**  
 
-![How This site will look on the network](/posts/images/site_1.png)
+![How This site will look on the network](site_1.png)
 
 As simple and cheap as possible.
 

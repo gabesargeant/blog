@@ -11,19 +11,19 @@ theme = "smol"
     [[menu.main]]
         identifier = "posts"
         name = "Posts"
-        url = "/posts.html"
+        url = "/posts"
         weight = 2 
 
     [[menu.main]]
         identifier = "about"
         name = "About"
-        url = "/posts/about.html"
+        url = "/posts/about"
         weight = 1 
     
     [[menu.main]]
         identifier = "contact"
         name = "Contact"
-        url = "/posts/contact.html"
+        url = "/posts/contact"
         weight = 1 
 
 # Footer
