@@ -12,11 +12,11 @@ All in all, AWS is like lego, and very easy to chop and change things when you m
 
 Here are all the errors I made listed out. Some may call this *development*
 
-* I badly named the git repo whn setting up. fixed.
-* I wrongly assumed that the top level domain **.dev** would be supported by AWS. it's not! So there $18 dollars Im not using soon. If it gets support within the next year, I'll be adding porting it over. Otherwise :/ I'm skipping a coffee from the shops for a few days to make up the loss :(
+* I badly named the git repo when setting it up. fixed!
+* I wrongly assumed that the top level domain **.dev** would be supported by AWS. it's not! So there $18 dollars Im not using soon. If it gets support within the next year, I'll be porting it over. Otherwise :/ I'm skipping a coffee from the shops for a few days to make up the loss :(
 * I did almost all the config for setting up the site using the .dev TLD before I looking into porting it over. This included creating AWS resources and ID's with that TLD in them.[long sigh]. So I got to do everything twice. 
-* Even if It was supported by AWS. Google who I registered with has a 'no transfers for 60 days policy' so that would have sucked. Though in reading about this I found out the .jp TLD for Japan has special rules around transfers that can only happen within a short window near the renewal / expiry date. Who know's why.
-* And last but not least I built a wrong SSL cert, firstly one that only supported the www. so when I did the bare redirect everything started failing.
+* Even if It was supported by AWS. Google who I registered with has a 'no transfers for 60 days policy' so that would have sucked. Though in reading about this I found out the .jp TLD for Japan has special rules around transfers that can only happen within a short window near the renewal / expiry date. Who know's why. And that 60 day limit may be a pretty standard thing. I'm not out doing DNS stuff regularly so I'll just roll with it.
+* And last but not least I built a wrong SSL cert, a few times. Firstly one that only supported the www. so when I did the bare redirect everything started failing.
 
 If your thinking, *Gabe isn't this your job*. I will happily say that doing infrastructure work isn't my core day job. Also I got there in the end ;)
 
@@ -38,14 +38,12 @@ There is www.gabrielsargeant.com and gabrielsargeant.com.
 They both point to the same resource. Yet in the instructions you setup two cloudfront distributions, one for each, both have their own routes that map to their own like named s3 buckets. It's at the bucket level that you then redirect traffic from one of the buckets to the other. Effectively handling the missing www. condition.
 This seems odd by design. In my mind initially it seems simpler to have a set of alias names at the DNS level that map N:1 content directory. 
 
-Thinking on it a little more, it fit's with my experience with AWS and I frankly like the design. Nothing is every so complex (usually) that it's not massive work if you end up rage deleting parts of the stack to start again.
-
 **Deploy the content to AWS**  
 Again. RTFM Gabriel.   
 Deploying is just a Hugo CLI command. I won't be writing my own upload tool right now.
 All I have to do is configure the AWS SKD and make sure the IAM permissions exist correctly for the write to S3 for the website bucket. 
 
-However! It's easy to write a sentence like: First I pick up the shovel, And then the mountain was moved. 
+However! It's easy to write a sentence like: First I pick up the shovel, and then the mountain was moved. 
 
 In reality I hit a few bumps with using the Hugo Deploy.  
 
@@ -55,19 +53,19 @@ This is done via the AWS SDK that first looks for environment variables. Then lo
 [Hugo S3 Session](https://gocloud.dev/howto/blob/#s3)  
 [AWS GO SDK - Credential_and_config_loading_order](https://docs.aws.amazon.com/sdk-for-go/api/aws/session/#hdr-Credential_and_config_loading_order)
 
-Something wasn't gelling well with what i'd set up. I was catching a lot of errors that looked like this.
+Something wasn't gelling well with what I'd set up. I was catching a lot of errors that looked like this.
 
 ```
 Error: blob (code=Unknown): NoCredentialProviders: no valid providers in chain. Deprecated.
 For verbose messaging see aws.Config.CredentialsChainVerboseError
 ```
 
-The use of the **~/.aws** folder worked previously for other Golang I've done. In fact just using the aws cli with commands like:
+The use of the **~/.aws** folder worked previously for other Golang work I've done. In fact just using the aws cli with commands like:
 
 ```
-aws s3 ls s3//www.gabrielsargeant.com
+aws s3 ls s3://www.gabrielsargeant.com
 ```
-worked perfectly. But when hugo ran it totally blanked on that config. 
+worked perfectly. But hugo totally blanked on picking up that config. 
 Eventually I RTFM a few times over and noticed that the **AWS_SDK_LOAD_CONFIG** environment variable needed to be set to true for the AWS Golang SDK to work. 
 Though, from memory It feels like I didn't need to do this in the past.
 
@@ -75,11 +73,11 @@ Anyway, I tried and that failed as well. So I just pivoted to ripping out the AW
 
 Things didn't get better at this point.
 Reading yet more documentation on AWS, I found 
-[Environment variables to configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html) Theres no mention of **AWS_SDK_LOAD_CONFIG** so that must be a golang specific setting. 
+[Environment variables to configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html) Theres no mention of **AWS_SDK_LOAD_CONFIG** so that must be a golang specific setting. I couldn't find doco that elaborated on it more than what was in the AWS golang SDK doco.
 
-After all of this. I eventually caved and just set my AWS account key and secret using **export** in my .bashrc file. And that worked.
+After all of this. I eventually caved and just set my AWS account key and secret using **export** in my .bashrc file. And that worked easily.
 
-So the lesson here was, nothing is simple and my persistence only wasted time.
+So the lesson here was, nothing is simple and my persistence to avoid using exported environment variables only wasted time.
 
 
 **Lastly.**

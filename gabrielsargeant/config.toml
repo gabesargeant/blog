@@ -1,7 +1,7 @@
 baseURL = "http://gabrielsargeant.com/"
 title = "Gabriel Sargeant"
 theme = "smol"
-#uglyurls = true
+uglyurls = true
 
 [Author]
     name = "Gabriel Sargeant"
@@ -11,19 +11,19 @@ theme = "smol"
     [[menu.main]]
         identifier = "posts"
         name = "Posts"
-        url = "/posts"
+        url = "/posts.html"
         weight = 2 
 
     [[menu.main]]
         identifier = "about"
         name = "About"
-        url = "/posts/about"
+        url = "/posts/about.html"
         weight = 1 
     
     [[menu.main]]
         identifier = "contact"
         name = "Contact"
-        url = "/posts/contact"
+        url = "/posts/contact.html"
         weight = 1 
 
 # Footer
@@ -40,7 +40,7 @@ theme = "smol"
 # An arbitrary name for this target.
 name = "default"
 
-URL = "s3://www.gabrielsargeant.com?region=ap-southeast-2"
+URL = "s3://5b4b535f-e208-47fe-a30c-551a7d7800f3?region=ap-southeast-2"
 
 # If you are using a CloudFront CDN, deploy will invalidate the cache as needed.
 cloudFrontDistributionID = "E1EUL69ZEEK66P"
