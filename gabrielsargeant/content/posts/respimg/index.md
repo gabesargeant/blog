@@ -52,8 +52,8 @@ This code block does the following with the input
 The above Shortcode spews out the following code for the kiddo image at the top of this post. 
 
 ```
-<img srcset="/posts/respimg/kiddo_hu7ff2bc0492283bace055c958778ddb5e_104721_320x0_resize_box_2.png 320w,  
-        /posts/respimg/kiddo_hu7ff2bc0492283bace055c958778ddb5e_104721_400x0_resize_box_2.png 400w,     
+<img srcset="/posts/respimg/kiddo_...._104721_320x0_resize_box_2.png 320w,  
+        /posts/respimg/kiddo_...._104721_400x0_resize_box_2.png 400w,     
         /posts/respimg/kiddo.png 1x" alt="Kiddo meme saying, You can't just use one image for all devices; That's where you're wrong kiddo">
 ```
 
