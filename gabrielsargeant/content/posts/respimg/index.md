@@ -69,7 +69,14 @@ img {
 	max-width: 100%;
 	height: auto;
 }
+
+<!-- Also I added this to both, the p.a and pre tags to make any long string break. 
+This avoid having the x-scroll being used and images then becoming the max size of the available viewport.-->
+
+word-break: break-all;
+
 ```
+
 
 All in all I end up with a few different sizes of images, for different devices which will scale down if needed to match the screen size being used.
 
