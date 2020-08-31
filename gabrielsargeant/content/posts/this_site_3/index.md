@@ -45,11 +45,11 @@ I'm still about one week old with hugo, and I've never really done much with sta
 IF you're reading this AND the URL for the page still says site3.html. You can delete the html and make a request to see what happens. You should get the error page that CloudFront presents as a http 400. It's actually throwing a http 403 error against the resource which isn't there.   
 If the file was being presented by S3 acting as a webserver it would present the index.html without showing the file name or extension. 
 
-3. I may need to pivot back to having an S3 bucket acting as a webserver. I just need to see how far I can get with Hugo and OAI ans S3 as a REST container.
+3. I may need to pivot back to having an S3 bucket acting as a webserver. I just need to see how far I can get with Hugo and OAI and S3 as a REST container.
 
-Where I'm really at is....I don't care enough about URLs to push to present them *clean*. IMHO This is one of those topics in tech, like tabs and spaces and the glory of functional programming, that's just a tarpit for opinions and going around in circles. 
+Where I'm really at is....I don't care enough about URLs to push to present them *clean*. IMHO This is one of those topics in tech like, tabs vs spaces and the glory of functional programming, that's just a tar pit of opinions. It only leads to going around in circles. 
 
-I do care somewhat about security. Trading clean urls for dirty ones is a small price to pay in order to make everyone come through the front door.
+I do care somewhat more about security. Trading clean urls for dirty ones is a small price to pay in order to make everyone come through the front door.
 
 ...
 

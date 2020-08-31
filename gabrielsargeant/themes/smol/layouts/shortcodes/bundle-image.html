@@ -1,0 +1,11 @@
+{{ $altText := .Get "alt"}}
+{{ with $.Page.Resources.GetMatch (.Get "name") }}
+
+<img srcset='
+        {{ (.Resize "300x").RelPermalink }} 300w,
+        {{ (.Resize "400x").RelPermalink }} 400w,
+        {{ (.Resize "600x").RelPermalink }} 600w' src='{{ (.Resize "600x").RelPermalink }}' alt='{{$altText}}' />
+
+{{ else }}
+could not find image
+{{ end }}
