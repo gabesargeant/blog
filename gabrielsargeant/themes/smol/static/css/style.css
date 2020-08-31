@@ -55,12 +55,10 @@ article {
 }
 
 img {
-
 	display: block;
 	margin: 0 auto;
 	overflow: hidden;
 	max-width: 100%;
 	height: auto;
-
 }
 
