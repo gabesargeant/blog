@@ -26,11 +26,13 @@ Really easy and no drama. No real complaints. But I appreciate if you also had t
 **Learning Hugo so far**  
 I've found a few things tricky. Hugo documentation is a little rough and very 'happy path'.
 I started out with no idea at all about how I wanted to structure my site. And the Hugo doco doesn't really support that type of user too well. In addition to this Hugo's extensive support for a lot of options is a bit of an anti pattern in some ways. 
-I think if it shipped with a clean quick start theme that had some pretty complex features such as responsive images then I would have been happy to start there.  
+I think if it shipped with a clean quick start theme that had some pretty complex features such as responsive images then I would have been happy to start there.
+
+What I'm trying to ask for is someone else solve all my problems. Yeah, that one. :P
 
 While the Hugo theme library is good. It's not easy to be able to make a well informed decision about a theme and what they may lock you into. 
 
-I decided to start simple and get more complex but being about to roll out the gates with something complex but correct would also have suited me. This is not to say that the themes at Hugo are bad or not correct. It's just highly extensible software always adds a layer of complexity.
+I know I decided to start simple and get more complex on my own. However being able to roll out the gates with something complex but correct would also have suited me. This is not to say that the themes at Hugo are bad or not correct. It's just highly extensible software always adds a layer of complexity.
 
 **In the end**   
 Everything was easy enough. Hugo's simple and I'm on the net. I'll keep building and writing and see where things go.
