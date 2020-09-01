@@ -3,12 +3,10 @@ title: "My Reference Project Retrospective..."
 date: 2020-09-02T00:33:16+10:00
 draft: true
 ---
-### A Python Flask Framework, MySQL DB, ArcGIS Javascript, Ubuntu Server, Nginx, Gunicorn service running on an AWS ec2 instance"
-### Also implemented in PHP!
+### A Python (Flask Framework), MySQL DB, ArcGIS Javascript, Ubuntu Server, Nginx, Gunicorn service running on an AWS ec2 instance"
+#### Also implemented in PHP!
 
---- 
-
-**A Reference Project is**  
+**What a Reference Project is**  
 My definition of a reference project is a simple or complex project that you the developer know how to solve and like solving. 
 The goal of a reference project is act as a non trivial learning aide for new tech, or to push you to reach that next goal.
 
@@ -32,7 +30,7 @@ Anyway, as I plan on doing a bit more stuff with AWS now, I don't really need th
 
 **A GIF of the App in Action**
 
-{{< lazy_image name="dataandmaps.gif" alt="Gif Animation showing the program flow of my mapping reference application">}}
+{{< image name="dataandmaps.gif" alt="Gif Animation showing the program flow of my mapping reference application">}}
 
 **The ABS Map Layers**
 
