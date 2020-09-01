@@ -8,7 +8,7 @@ draft: false
 .....wait for it......  
 I read somewhere Hugo was a static website generator.... That's it.  
 I also think I also read that it was written in Go.
-I'm usually more choosy about things, but I like Go so yeah. Also I don't know what I don't know yet so I can't see the major product differentiation points between all the static site generators out there. 
+I'm usually more choosy about things, but I like Go. And importantly I don't know what I don't know yet. So I can't make a bad call with picking a static site generator.
 
 **Impression so far**
 I've been a little out of the loop on what's important to people on the internet for a while. It seems to me like Url prettiness is high up there. I have a lot of files named index.md and a lot of folders. I'm not sure how I like using folders as the main indicator of what the content is contained within. I was more hoping to have one big soup of .md files. But I'm open to new ways of doing things. As with any tool like Hugo there's probably a way around this issue. But it just feels awkward at the moment. 
