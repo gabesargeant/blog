@@ -32,17 +32,77 @@ Anyway, as I plan on doing a bit more stuff with AWS now, I don't really need th
 
 {{< image name="dataandmaps.gif" alt="Gif Animation showing the program flow of my mapping reference application">}}
 
+
+
 **The ABS Map Layers**
 
+[The ABS - Australian Statistical Geography Standard](https://www.abs.gov.au/websitedbs/d3310114.nsf/home/australian+statistical+geography+standard+(asgs))
+is pretty important to understanding the information that data packs contain. Simply put, every official boundary exists somewhere in a hierarchy in the above GIF you can see the POA layer, which is Postal Areas. They are non-official locations that don't fit too well into the official statistical boundaries. So to relate them to the standard you'd build them up from a set of statistical Mesh Blocks. 
+Mesh Blocks being the smallest reporting area means that these areas can and do fit into no statistical areas.
 
-**The Database and all the gory CSV data**
+Just for some rough sizes, There's 1 Australia, about 8000 Post Codes, 56,000 Statistical Area 1 and, over 400K Mesh Blocks.
 
-1.How you get the Census Data Packs from the ABS
+If you follow that above link, there's a few good diagrams which show the ASGS and related stuff and I've done up a tree diagram to show the relations. 
 
-2.
+{{< image name="asgs.png" alt="The structure of the ABS Census Data Packs" >}}
 
+What's really nice is that everyone of these areas has a unique code. Which sounds very much like the beginnings of a primary key. :) 
 
-**The API**
+So it's mostly important to know about eh ASGS to also know the ABS publishes Shapefiles and a free ArcGIS service putting out the layers. 
+Something which pretty much made this little application possible.
+
+[Statistical Geography](https://www.abs.gov.au/websitedbs/D3310114.nsf/home/geography)
+
+**Building the Database and all the gory CSV data**
+
+**1.How you get the Census Data Packs from the ABS and what's in them.**
+
+To get Census Data Packs [Go Here](https://datapacks.censusdata.abs.gov.au/datapacks/). Good Luck!
+
+Below is a really nice picture of the folders that come with the ZIP file for the General Community Profile Data Packs. It's nice because it doesn't show the 50+ CSV's that each leave AUST folder contains. 
+
+When you open the data pack zip file up for the first time, you can look in the States (STE) folder and you'll have ~50 CSV's with 10 rows only, The numbers are pretty large for everything as it's the rolled up totals for the states. Each folder going down the ASGS gets bigger and the numbers smaller. The 50 CSV's represent the topics that that are collected and extracted from the Census data. A personal observation is that the higher the CSV number, ie G15 and up, the more esoteric the topic is and usually smaller the numbers. This results in a lot of big sparse tables.
+
+{{< image name="datapacks.png" alt="The structure of the ABS Census Data Packs" >}}
+
+**2.How I loaded it into the DB.**  
+
+Once it clicked for me that each region had it's own code, I realized I could just smash all the layers into the same tables. From here I went about building just over 60 tables that matched the headers to create the Census 2016 datapacks database.
+
+I now know there's a lot of better ways to do this, but the database always returned results quicker than the UI loading, so it was good enough for this.
+
+I wrote a single line bash statement to list all the CSV files for one level of geography, this was to get the column information.
+
+```
+ls *.csv > file_list.sh
+```
+
+A small bit of search and replace with gedit and I was able to tack **head -n 1** on the front and a redirect onto the end of each line in order to extract the column names from each csv.
+```
+touch full_list.txt
+head -n 1 .2016Census_G01_AUS.csv >> full_list.txt
+head -n 1 .2016Census_G02_AUS.csv >> full_list.txt
+head -n 1 .2016Census_G03_AUS.csv >> full_list.txt
+etc up to G36
+```
+
+With this I went the manual route and used MySQL Studio to assist in creating the tables. This turned out to be about a few hours of work to do this. From memory not all the 'short' names were short enough for mysql and I wanted all the data included.
+
+Thankfully no csv's columns exceeded the max width of a table in MySQL. Otherwise I would have had to build a better designed database and do the *pivot* to get the csv's into a long skinny table.
+
+Eventually the time came and I had my Database Schema. 
+
+This was probably the best part so far. I had a list of all the CSV files at every level and each mapped to a table correctly. From this list I built a script which would call from MySQL to preform a [*load data local infile*](https://dev.mysql.com/doc/refman/8.0/en/load-data.html) to import the whole database. It only took about 6 minutes in total once this was all scripted up.  
+Very Nice!
+
+```
+#MySQL load data local infile - Lots of these
+
+>load data local infile '/.../../2016Census_G01_AUS.csv' into table c01 fields terminated by ',' optionally enclosed by '"' lines terminated by '\n' ignore 1 lines;
+```
+
+**The API**  
+At this point, I had tackled probably the biggest problem of sorting out all the data. Now was the application part of the project.
 
 **The Front End**
 
