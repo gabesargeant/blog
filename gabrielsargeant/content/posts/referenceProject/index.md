@@ -3,7 +3,7 @@ title: "My Reference Project Retrospective..."
 date: 2020-09-02T00:33:16+10:00
 draft: true
 ---
-### A Python (Flask Framework), MySQL DB, ArcGIS Javascript, Ubuntu Server, Nginx, Gunicorn service running on an AWS ec2 instance"
+### A Python (Flask Framework), MySQL DB, ArcGIS Javascript, Ubuntu Server, Nginx, Gunicorn service running on an AWS ec2 instance
 #### Also implemented in PHP!
 
 **What a Reference Project is**  
