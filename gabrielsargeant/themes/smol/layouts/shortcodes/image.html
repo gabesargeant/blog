@@ -4,7 +4,7 @@
 <img srcset='
         {{ (.Resize "320x").RelPermalink }} 320w,  
         {{ (.Resize "400x").RelPermalink }} 400w,     
-        {{ .RelPermalink }} 1x' alt='{{$altText}}' loading="lazy" />
+        {{ .RelPermalink }} 1x' alt='{{$altText}}' />
 
 {{ else }}
 could not find image
