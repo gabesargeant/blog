@@ -1,75 +1,87 @@
 ---
-title: "My Reference Project Retrospective..."
+title: "My Mapping Reference Project Retrospective..."
 date: 2020-09-02T00:33:16+10:00
 draft: true
 ---
-### A Python (Flask Framework), MySQL DB, ArcGIS Javascript, Ubuntu Server, Nginx, Gunicorn service running on an AWS ec2 instance
-#### Also implemented in PHP!
+### A Python (Flask Framework), MySQL DB, ArcGIS Javascript, Ubuntu Server, Nginx, Gunicorn application running on an AWS EC2 instance
+#### Also previously implemented in PHP!
 
 **What a Reference Project is**  
-My definition of a reference project is a simple or complex project that you the developer know how to solve and like solving. 
-The goal of a reference project is act as a non trivial learning aide for new tech, or to push you to reach that next goal.
+My definition of a reference project is an arbitrary complex project that *you* the developer know how to solve, and usually like solving. 
+The goal is to act as a non trivial learning aide for new tech, or to push yourself to reach a new goal.
 
-A common project is implementing something like a Sudoku solver every time you change languages to give you an idea of the basics on the new lang. 
+A common reference project is implementing something like a Sudoku solver every time you change languages to give you an idea of the basics on the new language. 
 
-A complex reference project I like is a web-mapping app that integrates with a database full of [Australian Census Data Pack data](https://datapacks.censusdata.abs.gov.au/datapacks/). 
-Based on a users selection from that map the app provides them with a table of data and a thematic web map. 
+A reasonably complex reference project I like is a web-mapping app that integrates with a database full of [Australian Census Data Pack data](https://datapacks.censusdata.abs.gov.au/datapacks/). 
 
-A generic overview of this system looks like:
+Based on a users selection from a basemap the program provides them with a table of data and a thematic web map. It's a simple CRUD application that actually has more use than something like a note taking app.
+
+An overview of this looks like:
 
 {{< image name="generic_network_layout.png" alt="the generic network layout for this web mapping reference project" >}}
 
-**The Retrospective**
+## The Retrospective
 
-About ~3 years ago I built this app and it was hard work. I didn't know much python, or networking, or really anything. However, It was so much work and I was really proud of it that I've been paying about $1 a month to hang onto the EC2 that I put it all together on. 
+About 4 years ago I build a PHP site I called CSV Ninja, The idea was to have a database full of data that was related to maps, and then to use a map an a selection tool to select areas and topics that you wanted to get CSV data about. I built that and it Amazingly worked.
 
-The reason it's been such a long lived ec2 is that I kind of forgot about it for 1.5 years. I changed credit cards and forgot/ignored my AWS account. Which incidentally got cancelled for a period of time after I didn't pay my monthly $1 to keep that ec2 alive. :P  
-I asked their support team for it back and they said "give us our $18 bucks". So I did and my account came back! Along with my favorite little ec2. Which I then ignored for about another year whilst work got busy. (If you can tell my childhood Tamagotchi didn't last long)
+About a year later I built this app which extended the original idea and implemented it in a new programming language to include dynamic visualizations. It was hard work. I didn't know much Python, or thematic web mapping, or really anything. *And that somewhat shows with my hand rolled flat CSS*. However, Building this mapping app was a lot of fun work and I was really proud of it all working in the end. So proud in fact that I've been paying about $1 a month to hang onto the Amazon EC2 instance that I put it all together on because I just can't bring myself to get rid of it.
 
-Anyway, as I plan on doing a bit more stuff with AWS now, I don't really need that ec2. So I want to preserve it's memory by documenting it. 
+The other reason it's been such a long lived EC2 is that I also kind of forgot about it for a little over a year. I changed credit cards and forgot/ignored my AWS account. Which incidentally got cancelled for a period of time after I didn't pay my monthly $1 to keep that EC2 alive. :P  
+I asked the AWS support team for my account back and they said "give us our $18 bucks". So I did and my account came back! Along with my favorite little EC2. Which I then ignored for about another year whilst work got busy. *If you can tell my childhood Tamagotchi didn't last long*
+
+I plan on doing a bit more stuff with AWS in the near future and I don't really need to pay for that server. So I want to preserve it's loving memory by documenting it while i've still got it. 
 
 **A GIF of the App in Action**
 
 {{< image name="dataandmaps.gif" alt="Gif Animation showing the program flow of my mapping reference application">}}
 
-
-
 **The ABS Map Layers**
 
 [The ABS - Australian Statistical Geography Standard](https://www.abs.gov.au/websitedbs/d3310114.nsf/home/australian+statistical+geography+standard+(asgs))
-is pretty important to understanding the information that data packs contain. Simply put, every official boundary exists somewhere in a hierarchy in the above GIF you can see the POA layer, which is Postal Areas. They are non-official locations that don't fit too well into the official statistical boundaries. So to relate them to the standard you'd build them up from a set of statistical Mesh Blocks. 
-Mesh Blocks being the smallest reporting area means that these areas can and do fit into no statistical areas.
+is pretty important to understanding the information that data packs contain. Simply put, every official boundary exists somewhere in a hierarchy of boundaries that are contained in Australia. In the above GIF you can see the Postal Areas (POA) layer. 
 
-Just for some rough sizes, There's 1 Australia, about 8000 Post Codes, 56,000 Statistical Area 1 and, over 400K Mesh Blocks.
-
-If you follow that above link, there's a few good diagrams which show the ASGS and related stuff and I've done up a tree diagram to show the relations. 
+If you follow that above link, there's a few good diagrams and description which show the ASGS and related content. I've done up a tree diagram to also show the relations. 
 
 {{< image name="asgs.png" alt="The structure of the ABS Census Data Packs" >}}
 
-What's really nice is that everyone of these areas has a unique code. Which sounds very much like the beginnings of a primary key. :) 
+Just for some rough sizes, There's 1 Australia, about 8000 Postal Areas, 56,000 Statistical Area 1 and, over 400K Mesh Blocks.
 
-So it's mostly important to know about eh ASGS to also know the ABS publishes Shapefiles and a free ArcGIS service putting out the layers. 
+All the Non statistical areas like Postal Areas can be made up of a fitting set of Mesh Blocks. Which is hand if you have SA2 Statistics and want to fit them into Postal Areas. You can do complex analysis such as SA2 --> MeshBlocks --> Postal Areas. But thats not eh topic of this writeup.
+
+What is really nice about those boundaries is that everyone of these areas has a unique code. Which sounds very much like the beginnings of a primary key. :) 
+
+What's most important to know about the ASGS to also know the ABS publishes Shapefiles and a free ArcGIS service putting out the layers. 
 Something which pretty much made this little application possible.
 
 [Statistical Geography](https://www.abs.gov.au/websitedbs/D3310114.nsf/home/geography)
 
-**Building the Database and all the gory CSV data**
+With all of that, I had data grouped by area, Maps of those Areas and web services I could integrate it all into. Easy right?
+
+## Building the Database with all the gory CSV data 
 
 **1.How you get the Census Data Packs from the ABS and what's in them.**
 
+The Census Data Packs are really well curated. You don't need to worry about data quality or much input cleaning or any shaping of the data. The gory part is just dealing with **so much** information. After a while it feels like sorting a lot of lego.
+
 To get Census Data Packs [Go Here](https://datapacks.censusdata.abs.gov.au/datapacks/). Good Luck!
 
-Below is a really nice picture of the folders that come with the ZIP file for the General Community Profile Data Packs. It's nice because it doesn't show the 50+ CSV's that each leave AUST folder contains. 
+Below is a really nice picture of the folders that come with the ZIP file for the General Community Profile Data Packs. It's nice because it doesn't show the 50+ CSV's that each leaf AUST folder contains. 
 
-When you open the data pack zip file up for the first time, you can look in the States (STE) folder and you'll have ~50 CSV's with 10 rows only, The numbers are pretty large for everything as it's the rolled up totals for the states. Each folder going down the ASGS gets bigger and the numbers smaller. The 50 CSV's represent the topics that that are collected and extracted from the Census data. A personal observation is that the higher the CSV number, ie G15 and up, the more esoteric the topic is and usually smaller the numbers. This results in a lot of big sparse tables.
+When you open the data pack zip file up for the first time, you can look in the States (STE) folder and you'll have ~50 CSV's with 10 rows only, The numbers are pretty large for everything as it's the rolled up totals for the states. Each folder going down the ASGS gets bigger and the numbers smaller. The 50 CSV's represent the topics that that are collected and extracted from the Census data. A personal observation is that the higher the CSV number, ie G15 and up, the more esoteric the topic is and usually smaller the numbers. This results in a lot of big sparse tables. And lots of Zeros.
 
 {{< image name="datapacks.png" alt="The structure of the ABS Census Data Packs" >}}
 
+In theory the numbers from All the MeshBlocks in an SA3 should total up to match the totals given for the SA3. In practice they don't. And it's totally fine. This is due to a privacy process that slightly alters the lower numbers to avoid disclosure of individual responses. It's mostly an issues for topics with very sparse tables.
+
 **2.How I loaded it into the DB.**  
 
-Once it clicked for me that each region had it's own code, I realized I could just smash all the layers into the same tables. From here I went about building just over 60 tables that matched the headers to create the Census 2016 datapacks database.
+Once it clicked for me that each region had it's own unique code and how I could use it. I realized I could just smash all the layers into the same tables based on their source CSV. 
 
-I now know there's a lot of better ways to do this, but the database always returned results quicker than the UI loading, so it was good enough for this.
+From here I started building just over 60 MySQL database tables that matched the headers of each CSV to create my Census 2016 datapacks database.
+
+I now know there's a lot of better ways to do this, but the database always returned results quicker than the UI loading, so it was good enough for this. And importantly there's always next time to make the database better designed.
+
+The data Import process went like this:  
 
 I wrote a single line bash statement to list all the CSV files for one level of geography, this was to get the column information.
 
@@ -77,32 +89,73 @@ I wrote a single line bash statement to list all the CSV files for one level of 
 ls *.csv > file_list.sh
 ```
 
-A small bit of search and replace with gedit and I was able to tack **head -n 1** on the front and a redirect onto the end of each line in order to extract the column names from each csv.
+I used GEdit search and replace to tack **head -n 1** on the front and a redirect onto the end of each line in order to extract the column names from each csv.
+
 ```
 touch full_list.txt
 head -n 1 .2016Census_G01_AUS.csv >> full_list.txt
 head -n 1 .2016Census_G02_AUS.csv >> full_list.txt
 head -n 1 .2016Census_G03_AUS.csv >> full_list.txt
+....
 etc up to G36
 ```
 
-With this I went the manual route and used MySQL Studio to assist in creating the tables. This turned out to be about a few hours of work to do this. From memory not all the 'short' names were short enough for mysql and I wanted all the data included.
+With this I went the manual route and used MySQL Studio to assist in creating the tables. This took a few hours to do this. From memory not all the 'short' names were short enough for mysql and I wanted all the data included.
 
-Thankfully no csv's columns exceeded the max width of a table in MySQL. Otherwise I would have had to build a better designed database and do the *pivot* to get the csv's into a long skinny table.
+Thankfully no csv's columns exceeded the max width of a table in MySQL. Otherwise I would have had to build a better designed database and do a *pivot* to get the csv's into a long skinny table. 
 
 Eventually the time came and I had my Database Schema. 
 
 This was probably the best part so far. I had a list of all the CSV files at every level and each mapped to a table correctly. From this list I built a script which would call from MySQL to preform a [*load data local infile*](https://dev.mysql.com/doc/refman/8.0/en/load-data.html) to import the whole database. It only took about 6 minutes in total once this was all scripted up.  
-Very Nice!
+
+This was a fun script to run.
 
 ```
 #MySQL load data local infile - Lots of these
 
->load data local infile '/.../../2016Census_G01_AUS.csv' into table c01 fields terminated by ',' optionally enclosed by '"' lines terminated by '\n' ignore 1 lines;
+>load data local infile '/.../../2016Census_G01_AUS.csv' 
+    into table c01 
+        fields terminated by ','
+        optionally enclosed by '"' 
+        lines terminated by '\n' 
+        ignore 1 lines;
+
 ```
 
 **The API**  
 At this point, I had tackled probably the biggest problem of sorting out all the data. Now was the application part of the project.
+
+**The PHP Version**  
+I said at the start, this was a reference project for myself. I have built this database a few times. The first time was with the 2011 Census Data Packs and then again with the 2016 Release. 
+The CSV Ninja site has my working but, very very poor PHP code in it. It's pretty much another version of the above app without the the thematic map. I had originally envisaged it as a data selection tool where you'd drive your search by a map to retrieve csv style data. It worked and did what I wanted, which was keep me sane during a slow month at work.
+Anyway, It was all plain PHP with no frameworks to help or hinder. The database was pretty similar and there really wasn't an API. It was classic PHP all on a box!
+
+[CSVNinja](https://github.com/gabesargeant/csv_ninja) Have a look if you like and don't judge :D
+
+**The Python Part** 
+Replacing PHP was pretty simple. I wanted to do something substantial with Python and needed some guide rails for structuring a simple REST API. Enter stage left, [The Flask Framework](https://flask.palletsprojects.com/en/1.1.x/)
+
+The requirements for the API were broadly to support the left to right flow of a user through the stages of the application:
+
+{{< image name="flow.png" alt="application pages" >}}
+
+
+1. The API had to take a POST request from the front end selection map. Which contained a set of location codes and column variables. 
+2. It had to then lint the content of that request, 
+3. And then make the database lookup and send this data to a template on the data page.
+4. The Data page used the Jinja templating system to display the rows and column and also a button at the top of each column which said "Visualize"
+
+If that was pressed then a new page would open with a thematic map visualizing the data from that column. 
+
+The two main files, [views.py](https://github.com/gabesargeant/maptodata/blob/master/views.py) and [query_proc.py](https://github.com/gabesargeant/maptodata/blob/master/query_proc.py) have pretty much all these mechanical parts to the API logic.
+
+From memory Flask was very easy to work with. I dabbled with Django but that was a bit of overkill for this project. If I ever end up doing more in python, I'd happily use it again. Probably the only thing I'd do differently is look at using some form of Swagger file to build up my API rather than rolling it by hand like I did during this.
+
+**The Front End**
+A year after the PHP version of this app, I decided I really wanted to do more dynamic map visualization stuff. I bought an actual paper book on the ArcGIS javascript framework! Which as expected was almost out of date the moment it arrived :D. I read it cover to cover and it mixed with a lot of hands on work. It really got me going with web mapping.
+
+I did a lot of mapping work with just HTML 5 on single static pages. Usually to build one off little helper apps for specific stuff.
+
 
 **The Front End**
 
