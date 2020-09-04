@@ -14,7 +14,9 @@ A common reference project is implementing something like a Sudoku solver every 
 
 A reasonably complex reference project I like is a web-mapping app that integrates with a database full of [Australian Census Data Pack data](https://datapacks.censusdata.abs.gov.au/datapacks/). 
 
-Based on a users selection from a basemap the program provides them with a table of data and a thematic web map. It's a simple CRUD application that actually has more use than something like a note taking app.
+A user makes a selection from a basemap and the program provides them with a table of data and a thematic web map. It's a simple CRUD application that actually has more use than something like a note taking app.
+
+I like this problem because there's actually a lot to it. Frontends, API's and databases and it's big enough that the focus can be on any of those parts.
 
 An overview of this looks like:
 
@@ -151,18 +153,42 @@ The two main files, [views.py](https://github.com/gabesargeant/maptodata/blob/ma
 
 From memory Flask was very easy to work with. I dabbled with Django but that was a bit of overkill for this project. If I ever end up doing more in python, I'd happily use it again. Probably the only thing I'd do differently is look at using some form of Swagger file to build up my API rather than rolling it by hand like I did during this.
 
-**The Front End**
-A year after the PHP version of this app, I decided I really wanted to do more dynamic map visualization stuff. I bought an actual paper book on the ArcGIS javascript framework! Which as expected was almost out of date the moment it arrived :D. I read it cover to cover and it mixed with a lot of hands on work. It really got me going with web mapping.
+**The Selection part of the Front End**  
+A year after the PHP version of this app, I decided I really wanted to do more dynamic map visualization stuff. I bought an actual paper book on the ArcGIS javascript framework! Which as expected was almost out of date the moment it arrived :D. I read it cover to cover and dit a lot of experimenting with the ArcGIS samples and HTML static maps. This really got me going with web mapping.
 
 I did a lot of mapping work with just HTML 5 on single static pages. Usually to build one off little helper apps for specific stuff.
 
+The Selection tool was the index page and was pretty simple. 
 
-**The Front End**
+The basic requirements were:
+1. Have a map.
+    This is the very first tutorial on Esri. So starting out was simple.
+2. Have a selection of layers that matched the Census Regions.
+3. Provide a way to switch from those layers. 
+    Thankfully the ABS publish these along side the datapacks and doing the switching ins't too tricky. Probably the most significant thing was considering the user's download burden. I've seen web mapping where the javascript ended up pulling down 5MB's of junk to show a map. I impressively only pull down 2.3 :P (I am well aware that web mapping is a monster on bandwidth.)
+
+4. Provide a way to select regions in those layers. 
+    The ArcGIS Javascript API is very large, and you can do a lot in it. I spent a lot of time working on this. The ArcGIS mapple sample cide really helped and really shaped my thoughts and opinions on how API's and libraries should ship. There should be a lot more quick-starts out there!
+5. Package all that up into a post request and send it off to the flask API. 
+    This again was reasonable challenging at the time. I was new to javascript (do you ever not feel new to javascript?) and I fell in all the traps. I spent a lot of time thrashing about not really clicking with the event model and how that should look. But it all worked out in the end and I just packed up a bundle of json and sent it off to the backend with a matching set of column selections.
+6. I also had to have a set of buttons that matched the topics that were available. 
+    This was really big. There were about 40 sets of selections and over 8000 columns to select from. The API provided an ajax method that would return the information to populate the options for a topic. Which I user could then select to get data from.
+
+**The Data Display part of the Front End**  
+
+After the API got a set of columns and regions from the users. It'd do a DB query and have a table results set. The display logic was simply to pour that data out into a template. The most significant part of that process was that each column had a button which said "Visualize' at the top. (I've currently acquiesced to just using American english as it's what my spell checker supports and I'm not bothered by it.) When you pressed this button it would open a new tab and transmit the column of data to it. This would essentially be something like 'Average household salary' and the rows would be all the areas you were interested in. This data was perfect for thematic mapping. 
+
+**The Thematic Map part of the Front End**  
+After the user clicked Visualize, the new table would open and a bit of my customer javascript would parse over the data arrays and find all the regions of interest. Find their extent, zoom to it, and then proceed to apply an ArcGIS class breaks renderer to it. It's nothing more than the class breaks renderer sample page hacked to accept an external data source and with a few triggers for a map reload. 
+
+I did put together a really nice little set of CSS colors based on [ColorBrewer2](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) which was great.
+
+And that was the full extent of the front end.
 
 **Hosting environment**
 
 
-
+**Things I did in hindsight that were either stupid or I didn't know better.**
 
 
 
