@@ -1,12 +1,12 @@
 ---
-title: "My Mapping Reference Project Retrospective..."
+title: "My Mapping Reference Project Retrospective"
 date: 2020-09-02T00:33:16+10:00
-draft: true
+draft: false
 ---
-### A Python (Flask Framework), MySQL DB, ArcGIS Javascript, Ubuntu Server, Nginx, Gunicorn application running on an AWS EC2 instance
-#### Also previously implemented in PHP!
+**A Python (Flask Framework), MySQL DB, ArcGIS Javascript, Ubuntu Server, Nginx, Gunicorn application running on an AWS EC2 instance**
+**Also previously implemented in PHP!**
 
-**What a Reference Project is**  
+**What is a Reference Project?**  
 My definition of a reference project is an arbitrary complex project that *you* the developer know how to solve, and usually like solving. 
 The goal is to act as a non trivial learning aide for new tech, or to push yourself to reach a new goal.
 
@@ -14,19 +14,19 @@ A common reference project is implementing something like a Sudoku solver every 
 
 A reasonably complex reference project I like is a web-mapping app that integrates with a database full of [Australian Census Data Pack data](https://datapacks.censusdata.abs.gov.au/datapacks/). 
 
-A user makes a selection from a basemap and the program provides them with a table of data and a thematic web map. It's a simple CRUD application that actually has more use than something like a note taking app.
+The idea is that a user makes a selection from a basemap and the program provides them with a table of data and a thematic web map. It's a simple [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) application that actually has more use than something like a note taking app.
 
-I like this problem because there's actually a lot to it. Frontends, API's and databases and it's big enough that the focus can be on any of those parts.
+I like this problem because there's actually a lot to it. Front-ends, API's and databases and it's big enough that the focus can be on any of those parts.
 
-An overview of this looks like:
+An general overview of application would be:
 
 {{< image name="generic_network_layout.png" alt="the generic network layout for this web mapping reference project" >}}
 
 ## The Retrospective
 
-About 4 years ago I build a PHP site I called CSV Ninja, The idea was to have a database full of data that was related to maps, and then to use a map an a selection tool to select areas and topics that you wanted to get CSV data about. I built that and it Amazingly worked.
+About 4 years ago I build a PHP site I called CSV Ninja, The idea was to have a database full of data that was related to maps, and then to use a map an a selection tool to select areas and topics that you wanted to get CSV data about. I built that and it amazingly worked.
 
-About a year later I built this app which extended the original idea and implemented it in a new programming language to include dynamic visualizations. It was hard work. I didn't know much Python, or thematic web mapping, or really anything. *And that somewhat shows with my hand rolled flat CSS*. However, Building this mapping app was a lot of fun work and I was really proud of it all working in the end. So proud in fact that I've been paying about $1 a month to hang onto the Amazon EC2 instance that I put it all together on because I just can't bring myself to get rid of it.
+About a year later I built an updated version of the app. As seen in the GIF below. It extended the original idea and implemented it in a new programming language to include dynamic visualizations. It was hard work. I didn't know much Python, or thematic web mapping, or really anything. *And that somewhat shows with my hand rolled flat CSS*. However, Building this mapping app was a lot of fun and I was really proud of it all working in the end. So proud in fact that I've been paying about $1 a month to hang onto the Amazon EC2 instance that I put it all together on because I just can't bring myself to get rid of it.
 
 The other reason it's been such a long lived EC2 is that I also kind of forgot about it for a little over a year. I changed credit cards and forgot/ignored my AWS account. Which incidentally got cancelled for a period of time after I didn't pay my monthly $1 to keep that EC2 alive. :P  
 I asked the AWS support team for my account back and they said "give us our $18 bucks". So I did and my account came back! Along with my favorite little EC2. Which I then ignored for about another year whilst work got busy. *If you can tell my childhood Tamagotchi didn't last long*
@@ -50,7 +50,7 @@ Just for some rough sizes, There's 1 Australia, about 8000 Postal Areas, 56,000 
 
 All the Non statistical areas like Postal Areas can be made up of a fitting set of Mesh Blocks. Which is hand if you have SA2 Statistics and want to fit them into Postal Areas. You can do complex analysis such as SA2 --> MeshBlocks --> Postal Areas. But thats not eh topic of this writeup.
 
-What is really nice about those boundaries is that everyone of these areas has a unique code. Which sounds very much like the beginnings of a primary key. :) 
+What is really nice about those boundaries is that everyone of these areas has a unique code. Which sounds very much like the beginnings of a [primary key](https://en.wikipedia.org/wiki/Primary_key). :) 
 
 What's most important to know about the ASGS to also know the ABS publishes Shapefiles and a free ArcGIS service putting out the layers. 
 Something which pretty much made this little application possible.
@@ -77,21 +77,21 @@ In theory the numbers from All the MeshBlocks in an SA3 should total up to match
 
 **2.How I loaded it into the DB.**  
 
-Once it clicked for me that each region had it's own unique code and how I could use it. I realized I could just smash all the layers into the same tables based on their source CSV. 
+Once it clicked for me that each region had it's own unique code and how I could use that I realized I could just smash all the layers into the same tables based on their source CSV. Mixing State and Postcode data without fear of each polluting the other. 
 
 From here I started building just over 60 MySQL database tables that matched the headers of each CSV to create my Census 2016 datapacks database.
 
-I now know there's a lot of better ways to do this, but the database always returned results quicker than the UI loading, so it was good enough for this. And importantly there's always next time to make the database better designed.
+I now know there's a lot of better ways to structure the database data, but the database always returned results quicker than the UI loading, so it was good enough for this. And importantly there's always next time to work on the database design.
 
-The data Import process went like this:  
+To inport the data I did this: 
 
-I wrote a single line bash statement to list all the CSV files for one level of geography, this was to get the column information.
+I wrote a single line bash statement to list all the CSV files for one level of geography in order to get the column information from the CSV's
 
 ```
 ls *.csv > file_list.sh
 ```
 
-I used GEdit search and replace to tack **head -n 1** on the front and a redirect onto the end of each line in order to extract the column names from each csv.
+I used GEdit 'search and replace' to tack **head -n 1** on the front and a redirect onto the end of each line in order to extract the column names from each csv.
 
 ```
 touch full_list.txt
@@ -135,7 +135,7 @@ Anyway, It was all plain PHP with no frameworks to help or hinder. The database 
 [CSVNinja](https://github.com/gabesargeant/csv_ninja) Have a look if you like and don't judge :D
 
 **The Python Part** 
-Replacing PHP was pretty simple. I wanted to do something substantial with Python and needed some guide rails for structuring a simple REST API. Enter stage left, [The Flask Framework](https://flask.palletsprojects.com/en/1.1.x/)
+Replacing PHP was pretty simple. I wanted to do something more substantial with Python and needed some guide rails for structuring a simple REST API. Enter stage left: [The Flask Framework](https://flask.palletsprojects.com/en/1.1.x/)
 
 The requirements for the API were broadly to support the left to right flow of a user through the stages of the application:
 
@@ -145,9 +145,7 @@ The requirements for the API were broadly to support the left to right flow of a
 1. The API had to take a POST request from the front end selection map. Which contained a set of location codes and column variables. 
 2. It had to then lint the content of that request, 
 3. And then make the database lookup and send this data to a template on the data page.
-4. The Data page used the Jinja templating system to display the rows and column and also a button at the top of each column which said "Visualize"
-
-If that was pressed then a new page would open with a thematic map visualizing the data from that column. 
+4. The Data page used the Jinja templating system to display the rows and column and also a button at the top of each column which said "Visualize". If that button was pressed then a new page would open with a thematic map visualizing the data from that column of the users selection. 
 
 The two main files, [views.py](https://github.com/gabesargeant/maptodata/blob/master/views.py) and [query_proc.py](https://github.com/gabesargeant/maptodata/blob/master/query_proc.py) have pretty much all these mechanical parts to the API logic.
 
@@ -165,30 +163,53 @@ The basic requirements were:
     This is the very first tutorial on Esri. So starting out was simple.
 2. Have a selection of layers that matched the Census Regions.
 3. Provide a way to switch from those layers. 
-    Thankfully the ABS publish these along side the datapacks and doing the switching ins't too tricky. Probably the most significant thing was considering the user's download burden. I've seen web mapping where the javascript ended up pulling down 5MB's of junk to show a map. I impressively only pull down 2.3 :P (I am well aware that web mapping is a monster on bandwidth.)
+    Thankfully the ABS publish these along side the datapacks and doing the switching isn't too tricky. Probably the most significant thing was considering the user's download burden. I've seen web mapping where the javascript ended up pulling down 5MB's of junk to show a map. I impressively only pull down 2.3 :P (I am well aware that web mapping is a monster on bandwidth.)
 
 4. Provide a way to select regions in those layers. 
-    The ArcGIS Javascript API is very large, and you can do a lot in it. I spent a lot of time working on this. The ArcGIS mapple sample cide really helped and really shaped my thoughts and opinions on how API's and libraries should ship. There should be a lot more quick-starts out there!
-5. Package all that up into a post request and send it off to the flask API. 
-    This again was reasonable challenging at the time. I was new to javascript (do you ever not feel new to javascript?) and I fell in all the traps. I spent a lot of time thrashing about not really clicking with the event model and how that should look. But it all worked out in the end and I just packed up a bundle of json and sent it off to the backend with a matching set of column selections.
+    The ArcGIS Javascript API is very large, and you can do a lot in it. I spent a lot of time working on this. The sample code really helped and really shaped my thoughts and opinions on how API's and libraries should ship. *There should be a lot more quick-starts out there!*
+5. Package a users selection into a post request and send it off to the flask API. 
+    This again was reasonable challenging at the time. I was new to javascript (do you ever not feel new to javascript?) and I fell in all the traps. I spent a lot of time thrashing about not really clicking with the event model and the mapping framework. But it all worked out in the end and I just packed up a bundle of json and sent it off to the backend with a matching set of column selections.
 6. I also had to have a set of buttons that matched the topics that were available. 
-    This was really big. There were about 40 sets of selections and over 8000 columns to select from. The API provided an ajax method that would return the information to populate the options for a topic. Which I user could then select to get data from.
+    This was really big. There were about 40 sets of selections and over 8000 columns to select from. The API provided an ajax method that would return the information to populate the options for a topic. Which a user could then select to get data from.
 
 **The Data Display part of the Front End**  
 
-After the API got a set of columns and regions from the users. It'd do a DB query and have a table results set. The display logic was simply to pour that data out into a template. The most significant part of that process was that each column had a button which said "Visualize' at the top. (I've currently acquiesced to just using American english as it's what my spell checker supports and I'm not bothered by it.) When you pressed this button it would open a new tab and transmit the column of data to it. This would essentially be something like 'Average household salary' and the rows would be all the areas you were interested in. This data was perfect for thematic mapping. 
+After the API got a set of columns and regions from the users. It would fetch a results set. The display logic was simply to pour that data out into a template. The most significant part of that process was that each column had a button which said "Visualize' at the top. (I've currently acquiesced to just using American english as it's what my spell checker supports and I'm not bothered by it.) When you pressed this button it would open a new tab and transmit the column of data to it. This would essentially be something like 'Average household salary' and the rows would be all the areas you were interested in. This data was perfect for thematic mapping. 
 
 **The Thematic Map part of the Front End**  
-After the user clicked Visualize, the new table would open and a bit of my customer javascript would parse over the data arrays and find all the regions of interest. Find their extent, zoom to it, and then proceed to apply an ArcGIS class breaks renderer to it. It's nothing more than the class breaks renderer sample page hacked to accept an external data source and with a few triggers for a map reload. 
+After the user clicked Visualize, the new table would open and my custom javascript would parse over the data arrays and find all the regions of interest. Find their map extent and zoom into that area and, finally proceed to apply an ArcGIS class breaks renderer to it.  The ArcGIS Class Breaks Renderer sample page was a great help here. As was [ColorBrewer2](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) which was great for creating different color palettes for the renderer.
 
-I did put together a really nice little set of CSS colors based on [ColorBrewer2](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) which was great.
+And that was the full **front end**.
 
-And that was the full extent of the front end.
+**Hosting environment**  
+I used [Ubuntu](https://ubuntu.com/) server 16.04 on an ec2 of some description. I hand built it all. The Database in mysql form is about 1.6 Gb so I had to expand the volume on the t2 instance I used. Other than that everything was stock.
+[Nginx](https://www.nginx.com/) acted as a reverse proxy for incoming connections. 
+[Gunicorn](https://gunicorn.org/) was the Python WSGI Server. 
+And a really crappy and simple Systemd unit file turned all that into a service. 
 
-**Hosting environment**
+I followed a tutorial to get flask running on a webserver but the eventual setup was to have it all configured as above. And before you about SSL remember I was trying to have fun here!
+
+This wasn't the tutorial I followed but it's pretty much exactly what I did but with and older version of everything. 
+[Serving Flask with Gunicorn, Nginx and Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04)
+
+**Final thoughts and things I realise in hindsight that were either stupid or I didn't know better.**
+
+ 1. The database could have been better designed for the content. I could have either used a long skinny table design where I pivoted result tables from it. I would have used the region Id and column name as a composite key and then associated any extra metadata to the cell based structure. Or alternatively I could have kept with the table-like design but instead used a NoSQL database and managed a big soup of key values with Primary index's on the region id and secondary indexes on the CSV table identifier allowing me to transmit extra information to the user and engage in some client side caching strategies. 
+
+2. I probably should have had a crack at SSL :D considering is uber easy on AWS.
+
+3. Whilst I was using Flask for the Rest API parts I could have extended the front end code with vue or react or some *fancy* framework to add a bit more flare than my crappy HTML5 was offering.
+
+4. I had 3 'screens' when I really should have had everything happen in one place so the user experience wasn't split. This would have been harder but I think it would have resulted in a better application. 
+
+5. I didn't use any of the Mysql features to actually help. I went really light on stored procedures. So light in fact I had none! There's a lot of work I could potentially push to the DB engine doing the data wrangling. If I do this application again in the future I think It'd be wise to lean hard on the DB.
+
+6. There's probably a lot more, but like always, I didn't do some of the above because it's sometimes more important to finish.
 
 
-**Things I did in hindsight that were either stupid or I didn't know better.**
+**Finally**  
+I'm pretty happy with what I got done in this project. Reflecting on myself and where I was at the time, it was a lot of new content and a good challenge. And I got to a point of *finished* I was aiming for.
+
 
 
 

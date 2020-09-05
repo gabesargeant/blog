@@ -3,5 +3,10 @@
         "asgs",
         "dataandmaps",
         "infile"
+    ],
+    "cSpell.ignoreWords": [
+        "api's",
+        "systemd",
+        "wsgi"
     ]
 }
