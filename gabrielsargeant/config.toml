@@ -2,6 +2,7 @@ baseURL = "http://gabrielsargeant.com/"
 title = "Gabriel Sargeant"
 theme = "smol"
 uglyurls = true
+summaryLength = 90
 
 [Author]
     name = "Gabriel Sargeant"
@@ -54,3 +55,4 @@ gzip = true
 [[deployment.matchers]]
 pattern = "^.+\\.(html|xml|json)$"
 gzip = true
+
