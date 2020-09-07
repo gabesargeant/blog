@@ -7,7 +7,7 @@ draft: false
 
 Is it just me or does Lambda get trickier to spell over time. 
 
-**A Serverless mapping project.**
+**A Serverless mapping project.**  
 In the previous post I talked about building a server app that displayed a map, let a user select regions from it, and then queried a database about those selections. 
 
 This post is a plan for my next crack at that project. This time I'm going Serverless!!! *Lightning strike. Montage of me coding whilst Eye of the Tiger plays. Aaaaand Done**
