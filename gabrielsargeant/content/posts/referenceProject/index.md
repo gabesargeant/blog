@@ -83,7 +83,7 @@ From here I started building just over 60 MySQL database tables that matched the
 
 I now know there's a lot of better ways to structure the database data, but the database always returned results quicker than the UI loading, so it was good enough for this. And importantly there's always next time to work on the database design.
 
-To inport the data I did this: 
+To import the data I did the following: 
 
 I wrote a single line bash statement to list all the CSV files for one level of geography in order to get the column information from the CSV's
 
