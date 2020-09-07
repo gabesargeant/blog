@@ -22,6 +22,8 @@ Actually I've done none of it so far and this is just the early thinking. Soon w
 4. Cloudfront protects the site and API gateway. 
 5. A slightly better designed front end is built. (No hard guarantees on this one, I'm not magic.)
 
+{{< image name="serverlessdesign.png" alt="diagram of serverless mapping tool design">}}
+
 **Tasks and self imposed rules**
 
 1. Do Everything and complete the project.
@@ -39,4 +41,19 @@ Reasons for a lazy non pivoted database.
 2. What to do about metadata. 
 3. How quick can I make my Lambda work. 
 4. Cost Management. Will drinking one less coffee a week pay for this.
+
+**rates and limits**
+I'm willing ot pay about $1 a month for API Gateway. I need to keep the request / month under 300 million.
+Easy! no one may read this or use the app. But if it does get a lot of use. I need that use to be high impact and READ sensible.  There's about 2.5 Million seconds in a month and a rate limit of 20 requests per second would be about 
+
+Seconds in an hour * Seconds in a day * Hours in a day * days in a month * rate limit = ~ 51 million So still with room to grow.
+
+DynamoDB is a little more expensive at
+0.25 per Million reads. And a free storage limit of 0$ for the first 25 GB. I'm not planning on going above 1.
+
+I have make my READS PHAT! and sensible. As DynamoDB has a 4KB limit on what is considered a read. So if each json blob is under 4k it makes forcasting easier.
+
+Lambda Pricing.
+
+$0.20 per million requests at 50 million per month with my rate limit or 20/second, That's 10 bucks. If only I could cache post requests.
 
