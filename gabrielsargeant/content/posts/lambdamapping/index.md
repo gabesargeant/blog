@@ -63,9 +63,9 @@ Which in real life looks like a big array of records like this..
         etc etc
 ```
 And finally just dump that file in a folder.
-Of significant note: The RegionID and TableID fields. They are related to Partition and Sort keys on the DynammoDB. Knowing that the the data comes in csv files with a topic sequence, I'm using these values as the sort key. This means that if the data ever grows past 10gig (it wont). Then it'll get split into sperate buckets for performance based on the sort key. The **G02** table id in the above example will have 70K region id's and so will all the other **GN**. This means that Dynamo should be able to spread out the load. 
+Of significant note: The RegionID and TableID fields. They are related to Partition and Sort keys on the DynammoDB. Knowing that the the data comes in csv files with a topic sequence, I'm using these values as the sort key. This means that if the data ever grows past 10gig (it wont). Then it'll get split into sperate buckets for performance based on the sort key. The **G02** table id in the above example will have 70K region id's and so will all the other **GN** tables. This means that Dynamo should be able to spread out the load. 
 
-All in all that's actually a moot point because I'm not going to hit the size where this starts getting used. But have a read of a really good explanation from AWS.
+Most importantly is that this is actually all moot because I'm not going to hit the size where this starts getting used. But do have a read of a really good explanation from AWS.
 
 [Choosing the Right DynamoDB Partition Key](https://aws.amazon.com/blogs/database/choosing-the-right-dynamodb-partition-key/)
 
