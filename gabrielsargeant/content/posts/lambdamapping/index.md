@@ -72,9 +72,9 @@ Importantly all of this is moot because I'm not going to hit the size where sort
 **The upload program**  
 **dbbuilder** is the other cli tool that handles a few tasks. At it's core, it reads the array of Record objects and fits them into the AWS SKD and then uploads them to DynamoDB. If the DB schemas doesn't exists it can also build that. And there's also flags to purge and or delete a DynamoDB table if needed.  
 
-Everything was simple until I started using the AWS Golang SDK. And then Batch uploads to dynamoDB happened. (╯°□°)╯︵ ┻━┻. [Cathartic Redit thread the AWS Golang SDK](https://www.reddit.com/r/golang/comments/65qyu2/aws_how_you_shouldnt_write_your_api/) 
+Everything was simple until I started using the AWS Golang SDK. And then Batch uploads to dynamoDB happened. (╯°□°)╯︵ ┻━┻. [Cathartic Redit thread about the AWS Golang SDK](https://www.reddit.com/r/golang/comments/65qyu2/aws_how_you_shouldnt_write_your_api/) 
 
-Long story short but this method is all about filling up a batch input request with records. I have ~56,000 of those for SA1 level data and the DB needs them in 25 record chunks. And that results in pretty gruesome code like this. Don't judge, I'll admit this may be a bad way of doing things but it was not easy to grok from the doco.  
+Long story short but this function is all about filling up a batch input request with records. I have ~56,000 of those for SA1 level data and the DB needs them in 25 record chunks. And that results in pretty gruesome code like this. Don't judge, I'll admit this may be a bad way of doing things but it was not easy to grok from the doco.  
 
 ```
 func composeBatchInputs(recs *[]record.Record, name string) 
@@ -112,10 +112,7 @@ func composeBatchInputs(recs *[]record.Record, name string)
                 fmt.Println("Got Error unmarshalling map")
                 fmt.Println((*recs)[i*j])
                 fmt.Print("Loop ", i, j)
-                fmt.Println(err.Error())
-                os.Exit(1)
-            }
-
+                fmt.Println(err.Error())Lastly I have to cleanup the go
             pr := dynamodb.PutRequest{}
             pr.SetItem(av)
             wr := dynamodb.WriteRequest{}
@@ -142,8 +139,23 @@ Father: It works, don't touch it!
 At least for the time being I'm not going to hack away too hard at this bit of the codebase. 
 AWS looks like they have a V2 of the Golang SDK on the way so maybe it'll get a bit of love. 
 
-I'm writing this as I'm building things. So I have to do some testing at the edges of the limits to make sure there are no offset errors and such. But things look good so far. 
-God help me if they are broke.
+I have to do some testing at the edges of the limits to make sure there are no offset errors and such but things look good so far. 
+God help me if they ain't'
+
+**One day Later**   
+In anticipation of developing the front end code and lambda function for the API gateway I needed to create the DB and put data in it.
+And it worked!  
+
+{{<image name="dynamoUpload.png" alt="Confirmation that the dbbuilder and upload go code works">}}
+
+And everything got uploaded!   
+
+{{<image name="dynamoUploadCheck.png" alt="The csvTransform program correctly transformed all the recrods and the dbbuilder uploaded everything as required">}}
+
+---
+
+**Building the Lambda Function and ApiGateway Http API**
+
 
 
 **Optimizing javascript in an attempt to be friendly to everyone's bandwidth**
