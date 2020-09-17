@@ -88,20 +88,16 @@ func composeBatchInputs(recs *[]record.Record, name string)
 
     for i := 0; i < buckets; i++ {
 
-        //putreqarr := make([]dynamodb.PutRequest, 25)
-        //wrArr := make([]*dynamodb.WriteRequest, 25)
         wrArr := []*dynamodb.WriteRequest{}
-        //tmp := []*dynamodb.WriteRequest{}
-
+ 
         stepValue := i * 25
 
-        for j := 0; j < 25; j++ {
-            //fmt.Println("tick")
+        for j := 0; j < 25; j++ {            
             //fmt.Println(stepValue + j)
 
             if j+stepValue == len(*recs) {
-                fmt.Println("Length of recs")
-                fmt.Println(len(*recs))
+                //fmt.Println("Length of recs")
+                //fmt.Println(len(*recs))
 
                 break
             }
@@ -113,12 +109,12 @@ func composeBatchInputs(recs *[]record.Record, name string)
                 fmt.Println((*recs)[i*j])
                 fmt.Print("Loop ", i, j)
                 fmt.Println(err.Error())Lastly I have to cleanup the go
-            pr := dynamodb.PutRequest{}
-            pr.SetItem(av)
-            wr := dynamodb.WriteRequest{}
-            wr.SetPutRequest(&pr)
-
-            wrArr = append(wrArr, &wr)
+           
+                pr := dynamodb.PutRequest{}
+                pr.SetItem(av)
+                wr := dynamodb.WriteRequest{}
+                wr.SetPutRequest(&pr)
+                wrArr = append(wrArr, &wr)
 
         }
         wrMap := make(map[string][]*dynamodb.WriteRequest, 1)
@@ -150,12 +146,42 @@ And it worked!
 
 And everything got uploaded!   
 
-{{<image name="dynamoUploadCheck.png" alt="The csvTransform program correctly transformed all the recrods and the dbbuilder uploaded everything as required">}}
+{{<image name="dynamoUploadCheck.png" alt="The csvTransform program correctly transformed all the recrods and the dbbuilder uploaded everything as required">}}   
 
----
 
-**Building the Lambda Function and ApiGateway Http API**
+**Building the Lambda function**
 
+*This little lambda function should be simple.*
+    --optimistic quote from Gabriel
+
+
+Checkout the [smap_web](https://github.com/gabesargeant/smap_web) / lambda folder for the final version.
+
+Basic stuff I need to do with this lambda: 
+1. Get a session. 
+2. Get a dynamoDB connection
+3. Connect to the DB table with the data packs
+4. Get the content matching the regionId and tableID, ie key and partition.
+5. Return all that. 
+
+Extra points. 
+
+6. Unit test the lambda function. ie mock out dynamoDB and the AWS API and have that code the final deployable version. 
+
+Extra Extra points
+
+7. Optimise all of the response code to lighten the burden when the response object is handed back to the javascript client.
+
+**Steps 1 -> 5** were pretty easy. Obviously API gateway isn't in the mix yet but the general mechanics of the lambda are pretty much the same.
+I followed this [AWS guide](https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html) on golang Lambda functions as a start, and that was actually pretty simple. At this point the lambda function was 'working'. I deployed it up to AWS and gave it a go. 
+
+{{< image name="basiclambda.png" alt="Image of basic lambda execution result">}}
+
+
+
+**Step 6** got really interesting. In my past life I've shied away from use of interfaces for testing and mocking, favoring a constructor based dependency injection via some top level factories and using frameworks such as Java's Mockito. I've always found this to be very testable and readable. However because the lambda function has only 7 allowable method signatures there needs to be another way around that. Which turns out to be dependency injection with [pointer receivers](https://tour.golang.org/methods/4) and the heavy use of AWS SKD interface types. 
+
+This [Unit Testing your AWS Lambda Functions in Go](https://youtu.be/dFY2hsBiFcI) webinar was so good I actually liked the video and subscribed to the channel.
 
 
 **Optimizing javascript in an attempt to be friendly to everyone's bandwidth**
