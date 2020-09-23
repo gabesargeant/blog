@@ -171,6 +171,7 @@ Extra points.
 Extra Extra points
 
 7. Optimise all of the response code to lighten the burden when the response object is handed back to the javascript client.
+8. Make a unit tests!
 
 **Steps 1 -> 5** were pretty easy. Obviously API gateway isn't in the mix yet but the general mechanics of the lambda are pretty much the same.
 I followed this [AWS guide](https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html) on golang Lambda functions as a start, and that was actually pretty simple. At this point the lambda function was 'working'. I deployed it up to AWS and gave it a go. 
@@ -179,9 +180,32 @@ I followed this [AWS guide](https://docs.aws.amazon.com/lambda/latest/dg/lambda-
 
 
 
-**Step 6** got really interesting. In my past life I've shied away from use of interfaces for testing and mocking, favoring a constructor based dependency injection via some top level factories and using frameworks such as Java's Mockito. I've always found this to be very testable and readable. However because the lambda function has only 7 allowable method signatures there needs to be another way around that. Which turns out to be dependency injection with [pointer receivers](https://tour.golang.org/methods/4) and the heavy use of AWS SKD interface types. 
+**Step 6** got really interesting. In my past life I've shied away from use of interfaces for testing and mocking, favoring a constructor based dependency injection via some top level factories and used testing frameworks such as Java's Mockito. I've always found this style of approach to be very testable and readable. However because the lambda function has only 7 allowable method signatures there needs to be another way around that. Which turns out to be dependency injection with [pointer receivers](https://tour.golang.org/methods/4) and the heavy use of AWS SKD interface types. 
 
-This [Unit Testing your AWS Lambda Functions in Go](https://youtu.be/dFY2hsBiFcI) webinar was so good I actually liked the video and subscribed to the channel.
+This aws events webinar was so good I actually liked the video and subscribed to the channel. [Youtube: Unit Testing your AWS Lambda Functions in Go](https://youtu.be/dFY2hsBiFcI)
+
+
+**Step 7**
+
+I'm just going to be kicking the client in the teeth :D
+
+*Hello JSON my old friend.*
+
+Not only because the AWS golang SDK is just so ;gah', Im going to grab a whole tuple from the db and get the front end to clean it up. ie. I'm going to get the Lambda function to send back an array of tuples and that's it. The Javascript will be doing the building of the data table. It's not terrible but also not great. I'll totally circle back and refactor maybe.
+
+DynamoDB supports a query syntax to enable pulling down sub results. What I'm doing right now is akin to ```select * from table;``` I'm not sure if the added overhead of naming columns and the work that involves is easier done, both in code terms and mental complexity in either the DB layer the Lambda Layer or the Front end.
+
+Considering I'll be doing the work. I'll start with the front end and then if that's terrible I'll try some stuff.
+
+**Step 8**
+The unit test was pretty straight forward due to the pointer reciever dependency injection. AWS supply their whole interface in the dynamobdiface package and then you just need to implement the desired methods for your tests. 
+
+In the git repo I have a pretty simple tests which does enough to show the happy path of the test. At the time of writing this I havn't quite figured out what I'll do with errors that pop up during lambda execution. I'm thinking of expanding the response record type to include an optional warnings and errors string. 
+
+Whilst I ponder on that and move forward with building the API Gatway components. One final thing to note, the API gateway request and response objects that are implmented in the lambda events package, events.APIGatewayProxyRequest & Response, mean that I'll be sending a lot of json in the Body field of the object. It's an extra marshalling and unmarshalling step that has to happen with the json. It's not really an issue just something I have to deal with.
+
+
+**API Gateway**
 
 
 **Optimizing javascript in an attempt to be friendly to everyone's bandwidth**
