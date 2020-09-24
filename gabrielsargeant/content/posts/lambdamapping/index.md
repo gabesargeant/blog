@@ -8,41 +8,41 @@ draft: true
 
 I'm going to just list in sections parts of the project as I build them with any significant notes along the way.
 
-I'm generally approaching this problem from back to front. I'm starting with the data processing then onto building the lambda and infra, then the javascript monstrosity. 
+I'm generally approaching this problem from back to front. I'm starting with the data processing then onto building the lambda and infra, then the javascript monstrosity. This should hopefully read like an exciting travel diary.
 
 # Building the Database.
 
 This repo contains my data packs code. [smap](https://github.com/gabesargeant/smap)
 
-There are two command line tools. And a lambda function.
-There will be another repo called smap_web which will contain the javascript bits and any API definitions that I build. Go repos are tricky and don't really play well with having a bunch of other junk dropped in with them. If I am able to, I will make it just one big repo with everything.
+There are two command line tools.
+There will be another repo called smap_web which will contain the javascript bits, any API definitions that I build and the Lambda function. Golang repositories are tricky and don't really play well with having a bunch of other filetypes dropped in with them. So this is why there's a split with smap and smap_web on github.
 
-**Why two command line tools?**  
+**smap - Why two command line tools?**  
 
-In the previous iteration of this project. I used mysql to load an in file record into the database. DynamoDB has an API, but it doesn't have ETL tools. That's really up to you with the SDK. (I'll be grumpy at my self if it does have tools and I find them as I've just made some.)
-The intent of the CLI tools is that they will be easy to wrap in a bash script. I want to simply run the datapacks through a transform process and then load them to AWS.
+In the previous iteration of this project. I used MySQL to load an in-file record into a database. DynamoDB doesn't have ETL tools direct from AWS, instead there's an SDK. Which means it's up to you to figure out your load process.
+The intent of my CLI tools is that they will be easy to wrap in a bash script. I want to simply run the datapacks through a transform process and then load them to AWS.
 
-The target for the CSV is a AWS DynamoDB. With how I intend to store the record I need to create a record that can be fully self describing ie. holding it's column name and value in a json object. 
-The first CLI tool I made was the **csvtransform.go** tool which parses an input CSV and then spits out json object.
+The target for the CSV is a AWS DynamoDB which is a NoSQL DB (A giant HashMap). I intend to store the records in a structure where they can be fully self describing.
+The first CLI tool I made was the **csvtransform.go** tool which parses an input CSV and then spits out json object. 
 
 The transform program uses an exported data structure (**record.go**) that I created to allow it to integrate with the loading program. 
 
-The intent of the csv transform is to take a csv file and for each row to try and fit it's contents into this shape.
+The intent of the csv transform is to take a csv file and for each row to try and fit it's contents into this shape. Which is like loading 1 row of a CSV into a DB tuple as a JSON map.
 
 ```
 // Record. A struct used to create a json object representing a region ID and then a set of key value pairs of data.
 type Record struct {
 	RegionID string             `json:"RegionID"`
-	TableID  string             `json:"TableID"`
+	PartitionID  string         `json:"PartitionID"`
 	KVPairs  map[string]float64 `json:"KVPairs"`
 }
 ```
 
-Which in real life looks like a big array of records like this..
+In real life looks like a big array of records like this..
 ```
 [{
-    "RegionID": "1",   #Aiming to be AWS Partition Key
-    "TableID": "G02",  #Aiming to be AWS SORT Key
+    "RegionID": "1",   #Aiming to be AWS SORT Key
+    "PartitionID": "G02",  #Aiming to be AWS Partition Key
     "KVPairs": {
 	"Average_household_size": 2.6,
 	"Average_num_psns_per_bedroom": 0.9,
@@ -52,24 +52,25 @@ Which in real life looks like a big array of records like this..
     }
 }, {
     "RegionID": "2",
-    "TableID": "G02",
+    "PartitionID": "G02",
     "KVPairs": {
         etc etc
 ```
-And finally just dump that json text into a file in and output folder.  
+Finally I just dump that json text into a file in and output folder.  And that's the transform step done.
 
-Of significant note: The RegionID and TableID fields. They are related to *Partition and Sort keys* on the DynammoDB. Knowing that the the data comes in csv files with a topic sequence, I'm using these topic code values as the sort key. This means that if the data ever grows past 10gig (it wont). Then it will get split into separate buckets for performance, based on the sort key. The **G02** table id in the above example will have 70K region id's and so will all the other **GN** tables thus giving everything pretty similar lookup speed.  
 
-Importantly all of this is moot because I'm not going to hit the size where sort keys starts getting used. But do have a read of a really good explanation from AWS.
+Of significant note: The RegionID and PartitionID fields. They are related to *Partition and Sort keys* on the DynamoDB. Knowing that the the data comes in csv files with a topic sequence, I'm using these topic code values as the partition key. This means that if the data ever grows past 10gig (it wont). Then it will get split into separate buckets for performance, based on the partition key. The **G02** partition id in the above example will have 70K region id's and so will all the other **GN** tables thus giving everything pretty similar lookup speed.  
+
+Importantly all of this is moot because I'm not going to hit the size where partition keys starts getting used to physically separate data. However you should have a read of a really good explanation from AWS. Funny note, I mixed these up and fixing it was aweful.
 
 [Choosing the Right DynamoDB Partition Key](https://aws.amazon.com/blogs/database/choosing-the-right-dynamodb-partition-key/)
 
 **The upload program**  
-**dbbuilder** is the other cli tool that handles a few tasks. At it's core, it reads the array of Record objects and fits them into the AWS SKD and then uploads them to DynamoDB. If the DB schemas doesn't exists it can also build that. And there's also flags to purge and or delete a DynamoDB table if needed.  
+**dbbuilder** is the other cli tool that handles a few tasks. At it's core, it reads the array of Record objects and fits them into the AWS Golang SKD structs and then uploads them to DynamoDB. If the DB schemas doesn't exists it can also build that. And there's also flags to purge and or delete a DynamoDB table if needed.  
 
-Everything was simple until I started using the AWS Golang SDK. And then Batch uploads to dynamoDB happened. (╯°□°)╯︵ ┻━┻. [Cathartic Reddit thread about the AWS Golang SDK](https://www.reddit.com/r/golang/comments/65qyu2/aws_how_you_shouldnt_write_your_api/) 
+It works well enough and everything was simple until I started using the AWS Golang SDK. And then Batch uploads to dynamoDB happened. (╯°□°)╯︵ ┻━┻. [Cathartic Reddit thread about the AWS Golang SDK](https://www.reddit.com/r/golang/comments/65qyu2/aws_how_you_shouldnt_write_your_api/) 
 
-Long story short but this function is all about filling up a batch input request with records. I have ~56,000 of those for SA1 level data and the DB needs them in 25 record chunks. And that results in pretty gruesome code like this. Don't judge, I'll admit this may be a bad way of doing things but it was not easy to grok from the doco. And the documentation has a bad habit of using examples where structs are coded as literals. This isn't beginner friendly IMHO. Have a glace at the doco and sample code for the [Golang SDK - DynamoDB - BatchGetItem](https://docs.aws.amazon.com/sdk-for-go/api/service/dynamodb/#DynamoDB.BatchGetItem) you may disagree, but I think a more instructive example would be to build a struct, then place it in another, then so on until you had the completed structures to use. 
+Long story short but this function is all about filling up a batch input request with records. I have >56,000 of those for SA1 level data and the DB needs them in 25 record chunks. And that results in pretty gruesome code like this. Don't judge, I'll admit this may be a bad way of doing things but it was not easy to grok from the doco. The documentation has a bad habit of using examples where structs are coded as literals. This isn't beginner friendly at all IMHO. Have a glace at the doco and sample code for the [Golang SDK - DynamoDB - BatchGetItem](https://docs.aws.amazon.com/sdk-for-go/api/service/dynamodb/#DynamoDB.BatchGetItem) you may disagree, but I think a more instructive example would be to build a struct, then place it in another, then so on until you had the completed structures to use. 
 
 ```
 func composeBatchInputs(recs *[]record.Record, name string) 
@@ -119,20 +120,21 @@ Son: Dad why does the Sun rise in the east and set in the West?
 Father: It works, don't touch it!
 ```
 At least for the time being I'm not going to hack away too hard at this bit of the codebase. 
-AWS looks like they have a V2 of the Golang SDK on the way so maybe it'll get a bit of love. 
+AWS looks like they have a V2 of the Golang SDK I'm sure it'll get a bit of love. 
 
 I have to do some testing at the edges of the limits to make sure there are no offset errors and such but things look good so far. 
-God help me if they ain't'
 
 **One day Later**   
-In anticipation of developing the front end code and lambda function for the API gateway I needed to create the DB and put data in it.
-And it worked!  
+In anticipation of developing the front end code and lambda function for the API gateway I needed to create the database and put data in it.
+And that all just worked!  
 
 {{<image name="dynamoUpload.png" alt="Confirmation that the dbbuilder and upload go code works">}}
 
 And everything got uploaded!   
 
 {{<image name="dynamoUploadCheck.png" alt="The csvTransform program correctly transformed all the records and the dbbuilder uploaded everything as required">}}   
+
+I'm pretty happy that went so well.
 &nbsp;
 
 ---
@@ -225,6 +227,31 @@ Stuff still TODO:
 2. Rate Limits for the API, just in case. 
 3. Figure out and deal with all the awful CORs issues related to 1.
 
+**One day later**
+
+I really wanted was to lay the API gateway across my domain like so
+```
+    my domain.com/lambdamapping.html <== the hugo / static parts of the site
+    my domain.com/app/smap <== this is the api gateway stage 
+```
+From /app with the resource urls at /smap/getregions It would have fit better and been more cosmetically pleasing to integrate this way.  *And I can't be called out on this desire consider all the crap I went through to understand the irrational desire for pretty urls with websites these days*
+
+As you can expect amazon has had other plans. Probably because they could see that overlaying two sets of url schemes on top of each other can lead to some extra complexity. So trying to make up for lost hours on earlier days my API lives at api.gabrielsargeant.com.
+
+Speaking of not saving any extra time. I started to read up and implement the new route for Api Gateway. All that was required was creating a new Route 53 alias certificate with the *api* prefix and mapping that the to API Gateway.  
+Then I realized that I built this site with an SSL certificate that didn't use a prefix wildcard. ＼(｀0´)／
+
+Let the certificate revocation begin! Which is actually pretty easy. It just meant going into AWS Certificate Manger and trying to delete the existing cert. Which doesn't work. So I went and requested a new cert before getting rid of the bad one by first removing it from the CloudFront Distributions it was associated with and then updating those with the new cert. And then I was the spelling mistake I made...spelling my own name *sigh*. Let's just put that one down to a rough day at work. But needless to say I got to try this process a few more times. 
+
+And then that didn't work! This picture explains my mistake.
+
+{{< image name="awpigatewaycomms.png" alt="Communications pathways between AWS cloud components">}}
+
+Essentially I need the route to go api.gabrielsargeant.com to cloudfront to terminate SSL with my certificate that has the *.gabrielsargeant.com name so that Cloudfront can handle comms between API Gateway and itself before rewrapping the request with my HTTPs cert.
+
+As always when working with SSL, Certificates and DNS. Never Again! at least for a little while.
+
+I am yet to deal with CORS, hopefully it's very simple considering I now have the API with the same origin!
  
 **Optimizing javascript in an attempt to be friendly to everyone's bandwidth**
 
