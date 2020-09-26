@@ -333,7 +333,18 @@ type MapDataResponse struct {
 
 ```
 
+**Thoughts on optimizing the lambda function**
+The current lambda function has the following request logic. 
 
+{{< image name="lambdaflow.png" alt="sequence diagram of the lambda functions interaction with AWS">}}
+
+If the performance from dynamoDB is and issue and im chasing milliseconds in Lambda execution speed then there's a few things I can do to making things happen faster.  
+
+I can play around with the initialization of the AWS session using an Init block in the golang code. [using global state](https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html). This may help. 
+
+One other thing I can do is use go-routines and channels to do as much work whilst the DB result is getting fetched. It may be something, it may be nothing to set that last metadata map. As opposed to the speed of a DB request. But if I do both at the same time I gain a little speed on the front end back. 
+
+Interestingly, my testing so far has focused mostly around getting either 1 object, or 100 objects. Aside from size in response the felt time of a non-cold start request seems to be about the same. 
 
 
 **Optimizing javascript in an attempt to be friendly to everyone's bandwidth**
