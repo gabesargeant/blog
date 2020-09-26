@@ -213,8 +213,8 @@ It can be summarized by this flow chart which oddly looks like a finite state ma
 
 {{<image name="rtfm.png" alt="flow chart describing my development process">}}
 
-I lost about ~5 hours to a really stupid mistake of not setting a HTTP response code in the lambda [events.APIGatewayProxyResponse](https://github.com/aws/aws-lambda-go/blob/master/events/apigw.go#L21) struct. It turns out that HTTP response codes are pretty important for a Http API. As described in the first sentences of the [doco about version 1.0](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html#http-api-develop-integrations-lambda.response). ಠ ∩ ಠ. Consequently API Gateway will not send a response if a HTTP code isn't set. 
-Why did I miss this? Two reasons. I really was skimming stack overflow trying to grok the answer to why my API wasn't just working. And the Events package has two version of the APIGatewayProxyResponse struct which both share most the same fields. As I didn't have a solid grasp of what I was doing I picked the first one and didn't bother with a response code. *This is where some code comments on the struct type would have helped AWS.*
+I lost about ~5 hours to a really stupid mistake of not setting a HTTP response code in the lambda [events.APIGatewayProxyResponse](https://github.com/aws/aws-lambda-go/blob/master/events/apigw.go#L21) struct. It turns out that HTTP response codes are pretty important for a Http API. As is clearly described in the first sentences of the [doco about version 1.0](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html#http-api-develop-integrations-lambda.response). ಠ ∩ ಠ. Consequently API Gateway will not send a response if a HTTP code isn't set. 
+Why did I miss this? Two reasons. I really was skimming stack overflow trying to grok the answer to *why my API wasn't just working*. And the Events package has two version of the APIGatewayProxyResponse struct which both share most the same fields. As I didn't have a solid grasp of what I was doing I picked the first one and didn't bother with a response code. *This is where some code comments on the struct type would have helped AWS.*
 
 In addition to this confusion, in the API Gateway when you configure the endpoint for the lambda integration you have to select a Payload Format Version. That needs to match up to your code. If it doesn't, it seems the API gateway just looks at the struct and makes a choice on what's best. So even when I toggled that to version 2.0. It was seeing the version 1 struct and throwing an error instead of responding in absence of the response code, which is the default behavior of version 2.0.
 
@@ -229,30 +229,113 @@ Stuff still TODO:
 
 **One day later**
 
-I really wanted was to lay the API gateway across my domain like so
+I really wanted was to lay the API gateway across my domain like so:
 ```
     my domain.com/lambdamapping.html <== the hugo / static parts of the site
     my domain.com/app/smap <== this is the api gateway stage 
 ```
-From /app with the resource urls at /smap/getregions It would have fit better and been more cosmetically pleasing to integrate this way.  *And I can't be called out on this desire consider all the crap I went through to understand the irrational desire for pretty urls with websites these days*
+The API Gateway root is /app and the POST request urls at /smap/getregions. It would have fit better and been more cosmetically pleasing to integrate the site and gateway this way to me.  *I can't be called out on this desire. If you consider all the crap I went through to understand the irrational desire for pretty urls on websites these days*
 
-As you can expect amazon has had other plans. Probably because they could see that overlaying two sets of url schemes on top of each other can lead to some extra complexity. So trying to make up for lost hours on earlier days my API lives at api.gabrielsargeant.com.
+As you can expect Amazon has had other designs in mind. Probably because doing this day and day out, they could easily anticipate that overlaying two sets of url schemes on top of each other will lead to bad times.
 
-Speaking of not saving any extra time. I started to read up and implement the new route for Api Gateway. All that was required was creating a new Route 53 alias certificate with the *api* prefix and mapping that the to API Gateway.  
-Then I realized that I built this site with an SSL certificate that didn't use a prefix wildcard. ＼(｀0´)／
+So I'm not going to fight with it. To make up some lost time, my api just follows the usual stock patterns.
 
-Let the certificate revocation begin! Which is actually pretty easy. It just meant going into AWS Certificate Manger and trying to delete the existing cert. Which doesn't work. So I went and requested a new cert before getting rid of the bad one by first removing it from the CloudFront Distributions it was associated with and then updating those with the new cert. And then I was the spelling mistake I made...spelling my own name *sigh*. Let's just put that one down to a rough day at work. But needless to say I got to try this process a few more times. 
+Speaking of saving extra time. I started to read up and implement the new route for API Gateway. All that was required was creating a new Route 53 alias certificate with the *api* prefix and mapping that the to my API Gateway.  
+Then I realized that I built this site with HTTPs and with an SSL certificate that didn't use a prefix wildcard. ＼(｀0´)／. *No time was saved. Not one time at all.*
 
-And then that didn't work! This picture explains my mistake.
+I started out knowing I had to change out certificates for my cloudfront distribution. Which is actually pretty easy. It just meant going into the AWS Certificate Manger and trying to delete the existing cert. Which doesn't work. You have to remove dependencies on certificates before you can remove the certificate.
+
+So I went and requested a new certificate and whilst that was provisioning I attempted to remove the bad one from CloudFront Distributions it was associated with. Then it should have been simply just updating CloudFront with the new certificate.   
+That's about the time I noticed the spelling mistake I made...in my own name *sigh*. I'm putting that one down to a rough day at work. But needless to say I got to try this process a few more times.  
+
+One thing does strike me about AWS. All of their products are reasonably good. They give you access to a lot of power. But the console UI is not amazing, it's getting better but still somewhat lacking. Case in point. I easily spent ~10 minutes trying to understand why a new SSL cert wasn't visible on my cloud front distribution's list of certificates. And this turned out to be because I had an existing certificate selected that needed to be deleted (via the backspace key) to allow the drop down of other certificates to present itself. I know the default response would be to use the SKD or CLI but I have rather a small opperation going on here.
+
+Anyway all of that was done and then that didn't work. This picture explains my mistake.
 
 {{< image name="awpigatewaycomms.png" alt="Communications pathways between AWS cloud components">}}
 
-Essentially I need the route to go api.gabrielsargeant.com to cloudfront to terminate SSL with my certificate that has the *.gabrielsargeant.com name so that Cloudfront can handle comms between API Gateway and itself before rewrapping the request with my HTTPs cert.
+I needed to the route to go api.gabrielsargeant.com to cloudfront to terminate SSL with my certificate that has the *.gabrielsargeant.com name so that Cloudfront can handle communications between API Gateway and itself before rewrapping the request with my HTTPs cert.
 
 As always when working with SSL, Certificates and DNS. Never Again! at least for a little while.
 
 I am yet to deal with CORS, hopefully it's very simple considering I now have the API with the same origin!
- 
+
+
+# Metadata - Lambda Function revisited.
+
+In some of the more detailed parts of the Census Data Packs the short column header names can get a little tough to understand.
+
+For Example 
+The Short hearder: **A15_24_SOLSE_PinE_NS_06_10**  
+means  
+**"Aged 15 24 YEARS Speaks other language and speaks English Proficiency in English not stated 2006 2010"**
+
+ABS provides conversion information in a few metadata files with the Data Packs. I needed to incorporate this information into the application. I had a few ideas on doing this.
+
+Firstly, I considered rewriting my CSVTransformer CLI tool too accept two data files as input, I'd need to do something to attach the metadata into a special record for each partition. 
+In broad strokes the DynamoDB data has the primary key structure of  **Sort Key, Region ID: PartitionKey: PartitionID** I was thinking about having a special record for each partition that was **Sort Key, PartitionID: PartitionID: PartitionID** This would have allowed me one item per partition in the dynamoDB that was non statistical data. I liked this option, however I think it would mean that all of the numeric data would have to be stored as String and not Numbers to make the KVPairs field work for this edge case. 
+
+The other idea I had was to put the metadata information into a JSON file and serve it with the webpage from S3. I wasn't thrilled about the idea of doing this though. The metadata is about 800Kb. One of the reasons I have a static site is to leverage the small page sizes and quick loads. The mapping and visualization parts of this project will have their own heft to them so i was keen to look for a solution that minimized initial page loads. 
+
+I could have easily added another DynamoDB table. But for 800Kb of information It probably wasn't worth the drama of it all. And I briefly considered splitting up the metadata file but that could get messy with about 100 partitions in play.
+
+Instead I opted for a wonderfully lazy approach, thats both hacky and not. 
+
+I made about 100 Golang Map Literal objects which *map* to the CSV Tables / PartitionID's. And then I put all of those in a map of maps as source code. This really gets the line count up on my lambda function but it doesn't affect much else. 
+
+The logic in the Lambda function is to read the PartitionID from a request. Get the Metadata from the MetadataMapOfMaps Object and then attach that to the response object.
+
+The result in the transmitted MapResponse is a json metadata map which gives out the human friendly names for the data keys.
+
+This looks somewhat bad from a code perspective, but it's not. It's a simple solution. If i was building a more generic data store. I would probably roll out a metadata table in Dynamo.
+
+This was one of those small foresight issues where I'd preference keeping up the momentum of moving towards a solution, rather than getting tripped up in a whirlpool of rewrites seeking out perfection.
+
+Importantly it works!
+
+
+```
+// MapDataResponse - The golang object for my response object
+type MapDataResponse struct {
+	Errors   []string          `json:"Errors,omitempty"`
+	MapData  []MapData         `json:"MapData"`
+	Metadata map[string]string `json:"Metadata"`
+}
+
+//And a sample output from a single area request.
+{
+    "MapData": [{
+    "RegionID": "1101118",
+    "PartitionID": "G02",
+    "KVPairs": {
+        "Average_household_size": 2.6,
+        "Average_num_psns_per_bedroom": 0.9,
+        "Median_age_persons": 44,
+        "Median_mortgage_repay_monthly": 1578,
+        "Median_rent_weekly": 220,
+        "Median_tot_fam_inc_weekly": 1792,
+        "Median_tot_hhd_inc_weekly": 1645,
+        "Median_tot_prsnl_inc_weekly": 803,
+        "SA1_7DIGITCODE_2016": 1101118
+    }
+    }],
+    "Metadata": {
+    "Average_household_size": "Average household size",
+    "Average_num_psns_per_bedroom": "Average number of Persons per bedroom",
+    "Median_age_persons": "Median age of persons",
+    "Median_mortgage_repay_monthly": "Median mortgage repayment monthly",
+    "Median_rent_weekly": "Median rent weekly",
+    "Median_tot_fam_inc_weekly": "Median total family income weekly",
+    "Median_tot_hhd_inc_weekly": "Median total household income weekly",
+    "Median_tot_prsnl_inc_weekly": "Median total personal income weekly"
+    }
+}
+
+```
+
+
+
+
 **Optimizing javascript in an attempt to be friendly to everyone's bandwidth**
 
 [ArcGIS API for JavaScript Web Optimizer](https://developers.arcgis.com/javascript/3/jshelp/inside_web_optimizer.html)
