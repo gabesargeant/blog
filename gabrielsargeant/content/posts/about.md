@@ -8,9 +8,9 @@ Hi I'm Gabriel Sargeant. I live in Tasmania and I do IT stuff for work. A lot of
 
 This site mostly exists to share stuff I think about and build. 
 
-I don't intend to host tutorial style content. I want to document things I think about and build. If only to be able to look back and smile at my own ignorance.
+I don't intend to host tutorial-style content. I want to document things I think about and build. If only to be able to look back and smile at my own ignorance.
 
-The adventure begins..
+The adventure begins...
 
 
 

@@ -7,23 +7,23 @@ draft: false
 
 There are a lot of ways to create responsive images for websites on the internet. Here's what I did.
 
-First off, I'm about the least qualified person with regards to this topic to proffer advice about it. However it wasn't that hard and I did manage to figure out a way that fits with the simplicity I was after.
+First off, I'm about the least qualified person with regards to this topic to proffer advice about it. However, it wasn't that hard and I did manage to figure out a way that fits with the simplicity I was after.
 
 **My overall intent**  
-I want to write about the things I do. Usually there's a visual or diagrammatic element to most things I do. As a consequence of this I want to be able to create markdown documents and include images so that if anyone ever reads this on their mobile, they can see the whole picture <sup>(wink)</sup> of what I'm trying to communicate.
+I want to write about the things I do. Usually, there's a visual or diagrammatic element to most things I do. As a consequence of this I want to be able to create markdown documents and include images so that if anyone ever reads this on their mobile, they can see the whole picture <sup>(wink)</sup> of what I'm trying to communicate.
 
 **My requirements** 
 1. I only want to use Hugo. I don't want to learn another tool today. 
-2. I wanted to be able to include the image as is for desktop use, and have Hugo scale it down for mobile use.
-3. If Hugo didn't support doing this then I wouldn't do it, 
+2. I wanted to be able to include the image 'as is' for desktop use, and have Hugo scale it down for mobile use.
+3. If Hugo didn't support it, then I'm not doing it, 
 
 **What I didn't know**  
 At the moment of writing this, I've got about a weeks worth of playing with Hugo. So I'm on a journey.   
-In order to be able to support responsive images I needed to create a Hugo [Shortcode](https://gohugo.io/content-management/shortcodes/), which is like a macro you can drop into markdown documents. The hope was to get away from using the markdown syntax ```![image](url)``` and instead have a Hugo Shortcode like:  
+In order to be able to support responsive images, I needed to create a Hugo [Shortcode](https://gohugo.io/content-management/shortcodes/), which is like a macro you can drop into markdown documents. The hope was to get away from using the markdown syntax ```![image](url)``` and instead have a Hugo Shortcode like:  
 
  ```{{ < image name="myimag.png" alt="text"> }}```.  
 
-This double braces script is essentially a method/function which accepts arguments. It passes them to a piece of templated html which will be evaluated by Hugo and dropped into the page when Hugo renders a page.
+This double braces script is essentially a method/function which accepts arguments. It passes them to a piece of templated HTML which will be evaluated by Hugo and dropped into the page when Hugo renders a page.
 
 Luckily a lot of people have done this. And Nils Haukas wrote a really good post which I simplified to fit my needs.
 I extended the smol theme I'm using and modified the layout to include a new shortcode ```image.html``` which was very closely based of the writeup by Nils Haukas.
@@ -57,9 +57,9 @@ The above Shortcode spews out the following code for the kiddo image at the top 
         /posts/respimg/kiddo.png 1x" alt="Kiddo meme saying, You can't just use one image for all devices; That's where you're wrong kiddo">
 ```
 
-In Nils writeup he chose to have a set of scales that shortcode work at. I decided to just have the image as I create it for the page on my laptop, and one other scaled down version for phones. This is enough in my opinion. And yes I know 320px is a pretty small image, but it will easily work on everything.
+In Nils writeup, he chose to have a set of scales that shortcode work at. I decided to just have the image as I create it for the page on my laptop, and one other scaled down version for phones. This is enough in my opinion. And yes I know 320px is a pretty small image, but it will easily work on everything.
 
-The bit of work was adding some extra CSS to make the images scale as required for changes in screen size.
+The bit of work was adding some extra CSS to make the scale of the image as required for changes in screen size.
 
 ```
 img {
@@ -71,21 +71,21 @@ img {
 }
 
 <!-- Also I added this to both, the p.a and pre tags to make any long string break. 
-This avoid having the x-scroll being used and images then becoming the max size of the available viewport.-->
+This avoids having the x-scroll being used and images then becoming the max size of the available viewport.-->
 
 word-break: break-word;
 
 ```
 
 
-All in all I end up with a few different sizes of images, for different devices which will scale down if needed to match the screen size being used.
+All in all, I end up with a few different sizes of images, for different devices which will scale down if needed to match the screen size being used.
 
 
 **The really hard part of getting this all to work**  
 Over the last week, I've been iterating a lot of project outline and structure and how that gels with AWS hosting and Hugo. Some of the features of each don't play so neatly together.   
-For image processing to work you have to do things the Hugo way and this meant each post being written in an index.md file in folder with it's resources. I'll explain this more in my next post about the site.
+For image processing to work you have to do things the Hugo way and this meant each post is written in an index.md file in folder with its resources. I'll explain this more in my next post about the site.
 
-Note: This doesn't work well with SVG's. I'm not fussed by this at the moment. I'll refactor  it later or do something else in the future. But I'm getting a lot out of what I have here.
+Note: This doesn't work well with SVG's. I'm not fussed by this at the moment. I'll refactor it later or do something else in the future. But I'm getting a lot out of what I have here.
 
 ---
 Sites I read to learn about the terrible world of responsive images.
