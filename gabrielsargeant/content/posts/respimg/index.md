@@ -83,7 +83,7 @@ All in all, I end up with a few different sizes of images, for different devices
 
 **The really hard part of getting this all to work**  
 Over the last week, I've been iterating a lot of project outline and structure and how that gels with AWS hosting and Hugo. Some of the features of each don't play so neatly together.   
-For image processing to work you have to do things the Hugo way and this meant each post is written in an index.md file in folder with its resources. I'll explain this more in my next post about the site.
+For image processing to work you have to do things the Hugo way and this means each post is written in an index.md file in folder with its resources. I'll explain this more in my next post about the site.
 
 Note: This doesn't work well with SVG's. I'm not fussed by this at the moment. I'll refactor it later or do something else in the future. But I'm getting a lot out of what I have here.
 
