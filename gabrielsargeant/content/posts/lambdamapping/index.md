@@ -346,6 +346,49 @@ One other thing I can do is use go-routines and channels to do as much work whil
 
 Interestingly, my testing so far has focused mostly around getting either 1 object, or 100 objects. Aside from size in response the felt time of a non-cold start request seems to be about the same. But I'll probably refactor the code to use channels because it looks fun.
 
+# CORS - 눈_눈 - I don't like CORS 
+
+CORS was about as complex as I expected. So that means I understand it, but I'll be second guessing myself forever.
+
+**How I got CORs working between API Gateway and the S3 site.**
+
+Firstly, I changed no settings with the S3 buckets or their CORS policies.
+
+In the [API Gatway doco about CORS and HTTP APIs](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html), it explains that you have the option to set COR's headers in your lambda function or integrating application. Or, you can take the easy route and set them at the API Gateway. This will have API Gateway dump any headers from the application and just uses what's set in the gateway. 
+
+I went with the API Gateway override option to avoid having to write header information into the Lambda function.
+
+I Allow:   
+```
+"Access-Control-Allow-Origin" : "https://www.gabrielsargeant.com"
+"Access-Control-Allow-Methods" : "POST, OPTIONS"
+
+```
+
+This means when a request comes from S3, API Gateway will accept it, do the work, and respond.
+
+Everything was setup there, so I wrote a quick and dirty web page to make a POST ajax request for data from the API. I put the test application into the static directory of this Hugo site and deployed the updated changes to the website.  
+
+Then it didn't work. And I spent a few hours with this!
+
+```
+Cross-Origin Request Blocked: 
+The Same Origin Policy disallows reading the remote resource at https://api.gabrielsargeant.com/app/smap/getregions. 
+(Reason: CORS header ‘Access-Control-Allow-Origin’ missing).
+```
+
+The issue ending up being CloudFront. I have 3 CloudFront Distributions. The first is this website, The second is the bare redirect to this website, the third is API Gateway. All of them strip headers from content being server.  
+This is to maximize caching behavior. In order to enable requests from the website origin, I configured the CloudFront Distribution for API Gateway to use the AWS *Managed-CORS-S3Origin* CORs policy.  
+This allows CloudFront to expose the above headers to requesting applications. It wasn't too hard setting this up, once I understood CloudFront was the issue. [CloudFront Dev guide - Managed CORS policies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html)
+
+Once this was done, things worked. Small win for the night.
+
+
+
+
+
+
+
 
 **Optimizing javascript in an attempt to be friendly to everyone's bandwidth**
 
