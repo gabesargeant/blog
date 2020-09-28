@@ -377,17 +377,45 @@ The Same Origin Policy disallows reading the remote resource at https://api.gabr
 (Reason: CORS header ‘Access-Control-Allow-Origin’ missing).
 ```
 
-The issue ending up being CloudFront. I have 3 CloudFront Distributions. The first is this website, The second is the bare redirect to this website, the third is API Gateway. All of them strip headers from content being server.  
-This is to maximize caching behavior. In order to enable requests from the website origin, I configured the CloudFront Distribution for API Gateway to use the AWS *Managed-CORS-S3Origin* CORs policy.  
-This allows CloudFront to expose the above headers to requesting applications. It wasn't too hard setting this up, once I understood CloudFront was the issue. [CloudFront Dev guide - Managed CORS policies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html)
+The issue ending up being CloudFront. I have 3 CloudFront Distributions. The first is this website, The second is the bare redirect to this website, the third is API Gateway. All of them strip headers from being sent by the server.  
+This is to maximize caching behavior. In order to enable requests from the website origin to the api gateway, I configured the CloudFront Distribution for API Gateway to use the AWS *Managed-CORS-S3Origin* CORs policy.  
+This allows CloudFront to expose the above headers to requesting applications.  
+It wasn't too hard setting this up, once I understood CloudFront was the issue. [CloudFront Dev guide - Managed CORS policies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html)
 
 Once this was done, things worked. Small win for the night.
 
 
+# The land of frontend....
 
+I have the following frontend tasks TODO:
 
+1. Turn the map response json into a html table. 
+2. Turn the map response json into a map and do all that fancy rendering stuff etc. 
+3. Style the monstrosity.
+4. Use reasonably sensible javascript. This is actually a really hard step. The market fragmentation in the JS language world has created so many extra features, like all the functional style syntax. This means that anything you do will generates opinions. I'll struggle through.
+5. Extra hard, Mobile friendly!
 
+*I may not do 5. It could be too much.*
 
+**Finding a reasonably irritating mistake in my data structures**
+If you look at the sample response from the above section on the Lambda Metadata. There's an issue. They KVParis object has the following entry in it. 
+ ```
+ "SA1_7DIGITCODE_2016": 1101118
+ ```
+ This isn't present in the metadata object. This is because of how I'm relying on the ASGS and region codes to be unique, allowing me store all data and hierarchies in one big table.
+
+This only shows up as an issue when I try and write out a table in Javascript. 
+I iterate through the metadata object to create the ```<hr></hr>``` header tags. I want to use the human friendly name and the machine name as the column/cell id. This works. However, the problem is there's an offset error. There isn't a metadata entry for the last row, which is the SA1_7DIGITCODE_2016 value. I think I should have included an extra attribute in the blob to also record the geography level of the data. 
+
+This issue stems from the cell descriptors file I used as the source of the metadata. And the KVPairs in the MapData array are direct from the CSV. The RegionID is what I put in the first column. It's just a copy of that other region identity. 
+
+Right now, I've fixed this with a hacky solution, but it makes me think that I should potentially not include the region code in the table data KVPairs object. Which means rewriting the csv_transformer go program. I think I can work around it. Probably something to sleep on as there could be a way around this issue that I havn't though of yet. 
+
+{{<image name="tablefail.png" alt="image showing a test table display method and a limitation with a json structure">}}
+
+Just a screen shot of a file I'm using to build up the feature before starting to integrate it into the main front end code. 
+
+**Tables Day 2**
 
 
 **Optimizing javascript in an attempt to be friendly to everyone's bandwidth**
