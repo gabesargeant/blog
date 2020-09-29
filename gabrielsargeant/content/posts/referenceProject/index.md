@@ -7,12 +7,12 @@ draft: false
 **Also previously implemented in PHP!**
 
 **What is a Reference Project?**  
-My definition of a reference project is an arbitrary complex project that *you* the developer knows how to solve and usually like solving. 
+My definition of a reference project is an arbitrary complex project. that *you* the developer, knows how to solve, and usually like solving. 
 The goal is for it to act as a non-trivial learning aide. To assist in learning new tech, or to help push yourself to reach a new goal.
 
 A common reference project is implementing something like a Sudoku solver every time you change language. With the hope that it gives you a good feel for the basics of the new language. 
 
-A reasonably complex reference project I like is a web-mapping app that integrates with a database full of [Australian Census Data Pack data](https://datapacks.censusdata.abs.gov.au/datapacks/). 
+A complex project I like to do is a web-mapping app that integrates with a database full of [Australian Census Data Pack data](https://datapacks.censusdata.abs.gov.au/datapacks/). 
 
 The idea is that a user makes a selection from a base map and the program provides them with a table of data and a thematic web map. It's a simple [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) application that actually has more use than something like a note-taking app.
 
