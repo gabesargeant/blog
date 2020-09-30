@@ -417,6 +417,23 @@ Just a screen shot of a file I'm using to build up the feature before starting t
 
 **Tables Day 2**
 
+I'm not fully finished with that metadata issue. I do want to finish this project as a working first pass before going back to refactor it. 
+
+Now, onto the front end.  
+As I expected, this isn't going to be mobile friendly at all. Which I'm fine with. No one doing actual GIS style work does 'apps'. Unless they're just a drone out collecting data. We have desktops for a reason. And in my case, that's a perfect reason I can use as shelter. :D
+
+Before doing any of the mapping bits and the wiring together of things, there's placement. As i discussed in my previous retrospective, I wanted to try and achieve just one page where you could do everything. I've got a working prototype of this.
+
+Please forgive the garish colors. But Im using the Z-index plane to overlay each of those pages. 
+
+{{< image name="mockPage.gif" alt="Mock webpage to test CSS and demo layout">}}
+
+
+
+I've got to cleanup the data table, think some more about limits, In the gif there's 100 data responses that get dumped into a table. with some of the larger areas im going to have issues with horizontal scroll. 
+Also with thematic mapping the number of selections may present an issue with render speed. In fact I know it will. So I may be dialing the selection limit back to around 20-40. Plus side of that is I save money.
+
+Otherwise I'll probably start with the maps in a day or two mre. I just want to build some of this boilerplate logic and setup the page well so when the complex work starts with dropping a map in I don't have too much of a code base that looks like dropped spaghetti. 
 
 **Optimizing javascript in an attempt to be friendly to everyone's bandwidth**
 
