@@ -1,3 +1,4 @@
+
 ---
 title: "Lambda Mapping Project"
 date: 2020-09-09T01:11:30+10:00
@@ -421,32 +422,30 @@ Just a screen shot of a file I'm using to build up the feature before starting t
 I'm not fully finished with that metadata issue. I do want to finish this project as a working first pass before going back to refactor it. 
 
 Now, onto the front end.  
-As I expected, this isn't going to be mobile friendly at all. Which I'm fine with. No one doing actual GIS style work does 'apps'. Unless they're just a drone out collecting data. We have desktops for a reason. And in my case, that's a perfect reason I can use as shelter. :D
+As I expected, this isn't going to be mobile friendly at all. Which I'm fine with. No one doing actual GIS style work does 'apps'. Unless they're just a worker drone out collecting data. We have desktops for a reason. And in my case, that's a perfect reason I can use as shelter to not worry about mobiles. :D
 
-Before doing any of the mapping bits and the wiring together of things, there's placement. As i discussed in my previous retrospective, I wanted to try and achieve just one page where you could do everything. I've got a working prototype of this.
+Before doing any of the mapping bits and the wiring together of things, there's placement. As I discussed in my previous retrospective, I wanted to try and achieve just one page where you could do everything. I've got a working prototype of this.
 
-Please forgive the garish colors. But Im using the Z-index plane to overlay each of those pages. 
+Please forgive the garish colors. But I'm using the Z-index plane to overlay each of those pages and it's easier to track state visually for me this way. 
 
 {{< image name="mockPage.gif" alt="Mock webpage to test CSS and demo layout">}}
 
 
-
-I've got to cleanup the data table, think some more about limits, In the gif there's 100 data responses that get dumped into a table. with some of the larger areas im going to have issues with horizontal scroll. 
+**Things to think about:**  
+I've got to cleanup the data table and think some more about limits. In the gif there's 100 data responses that get dumped into a table. With some of the larger areas im going to have issues with horizontal scroll. 
 Also with thematic mapping the number of selections may present an issue with render speed. In fact I know it will. So I may be dialing the selection limit back to around 20-40. Plus side of that is I save money.
 
-Otherwise I'll probably start with the maps in a day or two mre. I just want to build some of this boilerplate logic and setup the page well so when the complex work starts with dropping a map in I don't have too much of a code base that looks like dropped spaghetti. 
+Otherwise I'll probably start with the maps in a day or two. I just want to build some of this boilerplate logic and setup the page well so when the complex work starts with the map, I don't have a code base that looks like dropped spaghetti. 
 
 # Delays
 
+**Metadata, You suck.** 
 
-
-**Ahh metadata, You suck.** 
-
-So does the non ASGS regions. Australia is a somewhat progressive country. Lets' get rid of post codes and just use the ASGS.
+In addition to metadata sucking, so does the non-ASGS regions. Australia is a somewhat progressive country. Lets do it, lets get rid of post codes and just use the ASGS.
 
 In another late breaking mistake. The ASGS uses all numeric region identifiers. The non ASGS structures use alphanumeric codes. 
 My DynamoDB Table doesn't really gel well with this and needs to be changed so it's schema supports  RegionID is a string. FML.
-This is a sligthly big change. 
+This is a slightly big change. 
 
 Affecting, 
 1. The CSVTransformer,
@@ -454,27 +453,25 @@ Affecting,
 3. The Lambda, 
 4. and the front end. 
 
-So I'm going to take a moment and just start refactoring everything to fix that other metadata issue. I outlined previously. 
-
-Boooo! 
+From my perspective, the best way to solve the numeric and non-numeric regionID issues is to take a moment and refactor everything to fix all the other metadata issues I found previously. 
 
 **Fixing the metadata issue**  
-Tip of the hat to golang, the changes turned out to be only a few slice operation alterations to not include the first record of a row slice. Nice!
+Tip of the hat to golang, the changes turned out to be only a few slice alterations.
 
-The next issue I hit was the presence of characters like **..** these represent suppressed numbers, ie counts where it's likely the numbers are so low, ie 1 or 2 leading that there's a possibility of disclosure. I need these to be a number and not a set of dots to be able to ingest them. 
+When I consume a row of CSV I don't include the first element of the CSV row slice and that clips out the regionID which may have included A-z characters. This identifier is then placed in the MapResponseObject along with the GeoLevel which I extract from the filename. Problem solved.
 
-Those **..** actually do convey information. So they need to be kept. For simplicity, I'm converting them to -1. Saying that this category of information occurs at this region, but it's at low numbers.
+The next issue I hit was the presence of characters like **..** these represent suppressed numbers. Ie, counts of people where it's likely the response numbers are so low that there's a possibility of disclosure. I need these to be a number, and not a set of dots to be able to ingest them. 
+
+Those **..** actually do convey information. So they need to be kept. For simplicity, I'm converting them to -1. And I'll annotate as such on the front end.
 
 {{< image name="cellsupression.png" alt="example of a suppressed cell" >}}
 
-**The next problem of the day.**
+**Load Scripts**
 
-I started scripting up the load the DV script. 
-
-Which just use tree to spit out the full list of CSV's in the Data Folders. 
+This handy tree command outputs all the census data pack filenames into a folder. A little search and replace to build up the scripts and the bulk csvtransform script was written. 
 
 ```
-tree -ifR > dataload.sh
+tree -ifR > dataloadscript.sh
 ```
 
 **The Lots of Data Problem**
@@ -500,14 +497,33 @@ I'm going to exclude everything **but** the following tables in the app.
 - G59 Method of Travel to Work by Sex
 
 The reasons these got included and others didn't is twofold. 
-1. Census Data is really granular. If you look at G59, the Table is Method of Travel by Sex. That By Sex, means that there's a cross-product happening between two categories. 
-
-I excluded categories like 
+1. Census Data is really granular. If you look at G59, the Table is Method of Travel by Sex. That 'By Sex' means that there's a cross-product happening between two categories. Which results in massive data files. Hence why I excluded categories like 
 - G17	Total Personal Income (Weekly) by Age by Sex  
-because the amount of information in those is too much for a webpage to coherently display. *There's 110 age categories by a lot of income brackets*. And eventually what you'd want to do is reclassify these categories into new rolled up data, Such as 5 year groups. Which is a perfect reason to load the data into a database with cheap SQL features.
+The amount of information in those files is too much for a webpage to coherently display. *There's 110 age categories by a lot of income brackets*. And eventually what you'd want to do is reclassify these categories into new rolled up data, Such as 5 year groups. Which is a perfect reason to load the data into a database with cheap SQL features. (Next year maybe)
 
-and 2. Some of the table data didn't spark joy in my heart. And would probably not be easy to visualize with meaning.
+2. Some of the table data didn't spark joy in my heart. And it would probably not be hard or impossible to visualize with meaning in a web browser.
 
+And lastly, I'm not going to include SA1 level data. Only nerds know what their SA1 is and most people understand regions they can related to such as Post Codes and Suburbs generally relating to SA2 level data.
+Excluding SA1 data also helps save a bit of space. Than the above selection is about 2GB of data with SA1 and 800MB without. It's easier exclude them. 
+
+**Later that same day**
+
+All the geographies from AUS--> SA2 are loaded for my above selected topics. About 788MB of JSON in the end, totalling 333186 items in DynamoDB. It took about ~20 minutes to load it all up over my bad internet.
+
+Nothing too dramatic happened in the load process. I altered the Lambda to respond with the new GeoLevel attribute and that's about that.
+
+I look forward to my next AWS Bill summary of activity to see if there's any crazy (>$1) expensive charges. Everything I read and calculated says it should only cost about 50 cents to do the load, and then regular request activity shouldn't be much.
+
+I did run a live count scan on the table. So that may cost a bit (< $1) with 800MB of data. 800MB == 800000KB, 800000kb / 4kb unit cost = 200000 units. AWS Read Cost: $0.285 per million reads (ap-southeast-2/Sydney). I made 333186 reads. If I round up for simplicity 500K, 0.15 Cents USD. Roughly 20 Cents AUD.
+
+I only need to pay that price once. As of right now the DB is done!
+
+Now back to the front end.
+
+# Lambda edge case, G04 Age by Sex.
+
+
+#
 
 
 
