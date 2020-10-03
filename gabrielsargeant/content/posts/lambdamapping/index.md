@@ -5,6 +5,7 @@ draft: true
 ---
 
 **Building this Lambda / serverless mapping project**
+I started work on the 09-09-20
 
 I'm going to just list in sections the parts of the project as I build them with any significant notes along the way.
 
@@ -434,6 +435,81 @@ I've got to cleanup the data table, think some more about limits, In the gif the
 Also with thematic mapping the number of selections may present an issue with render speed. In fact I know it will. So I may be dialing the selection limit back to around 20-40. Plus side of that is I save money.
 
 Otherwise I'll probably start with the maps in a day or two mre. I just want to build some of this boilerplate logic and setup the page well so when the complex work starts with dropping a map in I don't have too much of a code base that looks like dropped spaghetti. 
+
+# Delays
+
+
+
+**Ahh metadata, You suck.** 
+
+So does the non ASGS regions. Australia is a somewhat progressive country. Lets' get rid of post codes and just use the ASGS.
+
+In another late breaking mistake. The ASGS uses all numeric region identifiers. The non ASGS structures use alphanumeric codes. 
+My DynamoDB Table doesn't really gel well with this and needs to be changed so it's schema supports  RegionID is a string. FML.
+This is a sligthly big change. 
+
+Affecting, 
+1. The CSVTransformer,
+2. The Upload,
+3. The Lambda, 
+4. and the front end. 
+
+So I'm going to take a moment and just start refactoring everything to fix that other metadata issue. I outlined previously. 
+
+Boooo! 
+
+**Fixing the metadata issue**  
+Tip of the hat to golang, the changes turned out to be only a few slice operation alterations to not include the first record of a row slice. Nice!
+
+The next issue I hit was the presence of characters like **..** these represent suppressed numbers, ie counts where it's likely the numbers are so low, ie 1 or 2 leading that there's a possibility of disclosure. I need these to be a number and not a set of dots to be able to ingest them. 
+
+Those **..** actually do convey information. So they need to be kept. For simplicity, I'm converting them to -1. Saying that this category of information occurs at this region, but it's at low numbers.
+
+{{< image name="cellsupression.png" alt="example of a suppressed cell" >}}
+
+**The next problem of the day.**
+
+I started scripting up the load the DV script. 
+
+Which just use tree to spit out the full list of CSV's in the Data Folders. 
+
+```
+tree -ifR > dataload.sh
+```
+
+**The Lots of Data Problem**
+
+After I made the changes to the csvtransform program I ran it against all 1870 csv's that make up the full Census data packs. This outputted about 30 Gig of json. That size is pretty much what I expected when I de-normalized the schema.
+
+However, I don't really want to have that much data in AWS for an App I may use infrequently. So I've been looking at the metadata catalog for table names that do and don't interest me. 
+
+I'm going to exclude everything **but** the following tables in the app. 
+
+- G01 Selected Person Characteristics by Sex
+- G02 Selected Medians and Averages
+- G04 Age by Sex
+- G05 Registered Marital Status by Age by Sex
+- G07 Indigenous Status by Age by Sex
+- G08 Ancestry by Country of Birth of Parents
+- G25 Family Composition
+- G27 Family Blending
+- G28 Total Family Income (Weekly) by Family Composition
+- G29 Total Household Income (Weekly) by Household Composition
+- G30 Number of Motor Vehicles by Dwellings
+- G31 Household Composition by Number of Persons Usually Resident
+- G59 Method of Travel to Work by Sex
+
+The reasons these got included and others didn't is twofold. 
+1. Census Data is really granular. If you look at G59, the Table is Method of Travel by Sex. That By Sex, means that there's a cross-product happening between two categories. 
+
+I excluded categories like 
+- G17	Total Personal Income (Weekly) by Age by Sex  
+because the amount of information in those is too much for a webpage to coherently display. *There's 110 age categories by a lot of income brackets*. And eventually what you'd want to do is reclassify these categories into new rolled up data, Such as 5 year groups. Which is a perfect reason to load the data into a database with cheap SQL features.
+
+and 2. Some of the table data didn't spark joy in my heart. And would probably not be easy to visualize with meaning.
+
+
+
 
 **Optimizing javascript in an attempt to be friendly to everyone's bandwidth**
 
