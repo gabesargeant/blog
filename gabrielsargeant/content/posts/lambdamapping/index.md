@@ -484,7 +484,7 @@ I'm going to exclude everything **but** the following tables in the app.
 
 - G01 Selected Person Characteristics by Sex
 - G02 Selected Medians and Averages
-- G04 Age by Sex
+- G04 Age by Sex 
 - G05 Registered Marital Status by Age by Sex
 - G07 Indigenous Status by Age by Sex
 - G08 Ancestry by Country of Birth of Parents
@@ -508,7 +508,7 @@ Excluding SA1 data also helps save a bit of space. Than the above selection is a
 
 **Later that same day**
 
-All the geographies from AUS--> SA2 are loaded for my above selected topics. About 788MB of JSON in the end, totalling 333186 items in DynamoDB. It took about ~20 minutes to load it all up over my bad internet.
+All the geographies from AUS--> SA2 are loaded for my above-selected topics. About 788MB of JSON in the end, totalling 333186 items in DynamoDB. It took about ~20 minutes to load it all up over my bad internet.
 
 Nothing too dramatic happened in the load process. I altered the Lambda to respond with the new GeoLevel attribute and that's about that.
 
@@ -516,14 +516,36 @@ I look forward to my next AWS Bill summary of activity to see if there's any cra
 
 I did run a live count scan on the table. So that may cost a bit (< $1) with 800MB of data. 800MB == 800000KB, 800000kb / 4kb unit cost = 200000 units. AWS Read Cost: $0.285 per million reads (ap-southeast-2/Sydney). I made 333186 reads. If I round up for simplicity 500K, 0.15 Cents USD. Roughly 20 Cents AUD.
 
-I only need to pay that price once. As of right now the DB is done!
+I only need to pay that price once. As of right now, the DB is done!
 
 Now back to the front end.
 
-# Lambda edge case, G04 Age by Sex.
+**The next morning**
 
+It cost $1.75 AUD. I made a few script errors and my internet dropped out. So I reran it, twice, doubling the charge :|
 
-#
+**Lambda edge case, G04 Age by Sex.**
+
+I have a motto about software processes. 
+
+*Eliminate conditions. The path through good software should be like walking down a road with only one destination* - Gabriel Sargeant
+
+And keeping in tradition with that. I'm not including the G04A and B tables. Age by sex is too specific and too out of date for it to be useful or interesting and the G01 tables features the rolled-up counts in 5 year groups. 
+
+This also avoids a bunch of join logic. Either at the base csv layer resulting in a new upload of a joined A and B table. Or a join at the Lambda layer with double requests against the DynamoDB.
+
+# Side Mission 
+**Deleting the already loaded data for G04A and B**
+
+I really want to write another whinging paragraph about the golang DynamoDB SDK. But, I won't.
+
+I had already loaded the G04A and B tables to DynamoDB. I wanted to remove them for cleanliness. 
+
+With DynamoDB, to do a Batch Delete you need to supply an Attribute pair of Hash and Sort keys in the same batch request format as above.
+I used the dbbuilder and chopped it up to do this. It was actually pretty simple. I just reread my input JSON files and then created a DeleteRecord struct that only had the Region and Partition ID fields. 
+
+So from there I just built a few batch write requests of DeleteRecord and, job done. 
+
 
 
 
