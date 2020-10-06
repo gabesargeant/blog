@@ -546,13 +546,45 @@ I used the dbbuilder and chopped it up to do this. It was actually pretty simple
 
 So from there I just built a few batch write requests of DeleteRecord and, job done. 
 
+**Back to the front end**
 
+Progress is a little slower towards the terminal ends of the project. 
+
+But things so far are going well. I've got topics, data returning on the webpage, a map that is selectable. All the parts dealing with getting data work.
+
+Here's where I'm at so far. 
+
+{{< image name="halfwaydone.gif" alt="Working Application with data selection and retrieves">}}
 
 
 **Optimizing javascript in an attempt to be friendly to everyone's bandwidth**
 
 [ArcGIS API for JavaScript Web Optimizer](https://developers.arcgis.com/javascript/3/jshelp/inside_web_optimizer.html)
 
-TODO optimize front end code. 
+This is a really good idea. However I'm not going to do it.  
+Partly because I'm lazy and other partly? :) because I won't use this demo much once I'm done. The web optimizer works when you're going to serve the cut down files yourself. in theory, I could do this and Cloudfront would deliver them from its CDN. That would be fast-ish. However, there'd always be that first time user experience that'd be a little slow on a cold cache. And it's realistic and likely there wouldn't be a second user on the site in time for that cached resource to get there even quicker. So the felt experience would just be what it is. I don't see a ton of benefit from doing it. Though I have done it in the past.
+
+Also I'm laying a lot of features on top of each other. The minified version just may not be that much smaller in the end. 
+
+Either way, this is the toolkit if the need arises.
+
+**Look and Feel**  
+The map looks good! Everything else has the usual utilitarian shine. I'm starting to be happy with it.
+
+
+# Metadata - Lambda Function revisited. REDUX!
+
+This was fun and easy. I already have a lot working on the site. The requests are stable. All the logic needs a shake out but otherwise it's in a good spot. 
+The only issue, My data tables look like this.
+
+{{< image name="regionNames.png" alt="a data table showing region numbers, not region names">}}
+
+There are lookup tables that map those region numbers to actual values. Ooops. That should have been in the **dbbuilder** tool. Anyway, I used the same trick as before. This time it's not as messy. But it is big. I totally know that I could fix this another way. But I'm just not ready to spend $4 re-uploading the changes to the DB.  
+So, the fix is a giant map which I put in the lambda function in a non breaking way. Not the worst outcome.
+
+I'll incorporate the change into the frontend in a day. Otherwise, things are speeding along. And for now, this issue goes onto the refactoring pile of problems.
+
+
+
 
 

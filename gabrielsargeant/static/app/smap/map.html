@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.33/esri/css/esri.css">
+
+    <link rel="stylesheet" href="databymap.css">
+
+</head>
+
+<body>
+    <div id="containerDiv">
+        <div id="banner">
+
+            <h1>Serverless Mapping, Visualizations, and a whole swag of Data</h1>
+            <h4>Read about it at <a href="https://www.gabrielsargeant.com" target="_blank">gabrielsargeant.com</a></h4>
+
+            <div id="controlPane">
+                <button id="topicUpBtn">Data Topics</button>
+                Select Layer Type :
+                <select id="selectLayer" name="selectLayer" class="select-style">
+                    <option value="1" selected="selected">Select the Level of Detail</option>
+                    <option value="0">Australia</option>
+                    <option value="1">State/Territory</option>
+                    <option value="2">Statistical Area Level 4</option>
+                    <option value="3">Statistical Area Level 3</option>
+                    <option value="4">Statistical Area Level 2</option>
+                    <option value="5">State Suburbs (Zoom in!)</option>
+                    <option value="6">Postal Areas (Zoom in!)</option>
+                    <option value="7">Greater Capital City Statistical Areas</option>
+                    <option value="8">Commonwealth Electoral Divisions</option>
+                    <option value="9">State Electoral Divisions</option>
+                    <option value="10">Local Government Areas</option>
+
+                </select>
+
+                <button id="selectAreaBtn">Select Area</button>
+                <button id="queryBtn">Get Data For Selection</button>
+                <button id="resetBtn">Reset</button>
+                <button id="mapUpBtn">Map</button>
+                <button id="dataUpBtn">Data Table</button>
+
+            </div>
+            <div id="errorMsg">
+
+            </div>
+        </div>
+        <hr />
+
+
+        <div id="mapDiv" style="z-index: 0;">
+        </div>
+
+        <div id="topicDiv" style="z-index: -1;">
+            <div id="topicList">
+                <h1>Topics</h1>
+                <input type='radio' id='G01' name='topic' value='G01' />
+                <span> Selected Person Characteristics by
+                    Sex<br />
+                </span>
+                <input type='radio' id='G02' name='topic' value='G02' checked="checked" />
+                <span>
+                    Selected Medians and Averages<br />
+                </span>
+                <input type='radio' id='G05' name='topic' value='G05' />
+                <span>
+                    Registered Marital Status by Age by Sex<br />
+                </span>
+                <input type='radio' id='G07' name='topic' value='G07' />
+                <span>
+                    Indigenous Status by Age by Sex<br /></span>
+                <input type='radio' id='G08' name='topic' value='G08' />
+                <span>
+                    Ancestry by Country of Birth of Parents<br /></span>
+                <input type='radio' id='G25' name='topic' value='G25' />
+                <span>
+                    Family Composition<br />
+                </span>
+                <input type='radio' id='G27' name='topic' value='G27' />
+                <span>
+                    Family Blending<br /></span>
+                <input type='radio' id='G28' name='topic' value='G28' />
+                <span>
+                    Total Family Income (Weekly) by Family Composition<br /></span>
+                <input type='radio' id='G29' name='topic' value='G29' />
+                <span>
+                    Total Household Income (Weekly) by Household Composition<br /></span>
+                <input type='radio' id='G30' name='topic' value='G30' />
+                <span>
+                    Number of Motor Vehicles by Dwellings<br />
+                </span>
+                <input type='radio' id='G31' name='topic' value='G31' />
+                <span>
+                    Household Composition by Number of Persons Usually Resident<br />
+                </span>
+                <input type='radio' id='G59' name='topic' value='G59' />
+                <span>
+                    Method of Travel to Work by Sex<br />
+                </span>
+
+
+
+            </div>
+
+        </div>
+        <div id="dataDiv" style="z-index: -2;">
+            <div id="dataTableTitle">
+                <b></b> Data on : <span id="dataOnTopic"></span></b><br />
+                <span id="dataLevel"></span>
+                <hr />
+            </div>
+            <div id="dataTableContainer">
+                <div id="dataTable" class="dataTable"></div>
+            </div>
+        </div>
+
+        <img id="loadingImg" src="img/loading.gif" />
+    </div>
+
+
+</body>
+<script type="text/javascript" src="dataFile.js"></script>
+<script type="text/javascript" src="ui.js"></script>
+<script src="https://js.arcgis.com/3.33/"></script>
+<script src="map.js"></script>
+
+</html>
