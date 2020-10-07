@@ -572,7 +572,7 @@ Either way, this is the toolkit if the need arises.
 The map looks good! Everything else has the usual utilitarian shine. I'm starting to be happy with it.
 
 
-# Metadata - Lambda Function revisited. REDUX!
+# Metadata REDUX! - Lambda Function revisited. 
 
 This was fun and easy. I already have a lot working on the site. The requests are stable. All the logic needs a shake out but otherwise it's in a good spot. 
 The only issue, My data tables look like this.

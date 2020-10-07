@@ -13,7 +13,7 @@ function buildTableFromMapDataResponse(response) {
 
 
     response.MapData.forEach(function (obj) {
-        row = "<tr><td id='RegionID'>" + obj.RegionID + "</td>"
+        row = "<tr><td id='RegionID'>" + obj.RegionName + " (" + obj.RegionID + ")</td>"
 
         var i = 0;
         for (const [key, value] of Object.entries(obj.KVPairs)) {
@@ -31,7 +31,7 @@ function buildTableFromMapDataResponse(response) {
 }
 
 function buildTableHeaderString(metadata, metadataMap) {
-    var header = "<tr><th id='RegionID'>Region ID</th>"
+    var header = "<tr><th id='RegionID'>Region Name (Region ID)</th>"
     var headerSequenceMap = {};
     var sequence = 0;
 
