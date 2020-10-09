@@ -10,9 +10,18 @@
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://js.arcgis.com/3.33/esri/css/esri.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/simple-statistics@7.0.8/dist/simple-statistics.min.js"></script>
     <link rel="stylesheet" href="databymap.css">
+    <script>
 
+        var min_max = [];
+        var data = [];
+        var ckMeansData = [];
+    // var column = "test";
+    // var real_column = "test";
+
+    </script>
 </head>
 
 <body>
@@ -46,6 +55,7 @@
                 <button id="resetBtn">Reset</button>
                 <button id="mapUpBtn">Map</button>
                 <button id="dataUpBtn">Data Table</button>
+                <button id="vizTest">Visualise TEST</button>
 
             </div>
             <div id="errorMsg">
@@ -56,6 +66,81 @@
 
 
         <div id="mapDiv" style="z-index: 0;">
+            <table id="mapLegend">
+
+                <tr>
+                    <td colspan="4"><b>Data Field</b></td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="acenter"><b><select id="selectData" name="selectColor"
+                                style="width: 90%" /></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="acenter"><b>Class Breaks Legend</b></td>
+                </tr>
+                <tr>
+                    <td id="one_c"></td>
+                    <td class="acenter"><input type="text" size="10" id="one_b"></td>
+                    <td> to </td>
+                    <td id="one_a"> </td>
+
+                </tr>
+                <tr>
+                    <td id="two_c"></td>
+                    <td class="acenter"><input type="text" size="10" id="two_b"></td>
+                    <td> to </td>
+                    <td id="two_a"></td>
+                </tr>
+
+                <tr>
+                    <td id="three_c"></td>
+                    <td class="acenter"><input type="text" size="10" id="three_b"></td>
+                    <td> to </td>
+                    <td id="three_a"></td>
+                </tr>
+
+                <tr>
+                    <td id="four_c"></td>
+                    <td class="acenter"><input type="text" size="10" id="four_b"></td>
+                    <td> to </td>
+                    <td id="four_a"></td>
+                </tr>
+
+                <tr>
+                    <td id="five_c"></td>
+                    <td class="acenter"><input type="text" size="10" id="five_b"></td>
+                    <td> to </td>
+                    <td><input type="text" size="10" id="five_a"></td>
+                </tr>
+
+
+                <tr>
+                    <td><select id="selectColor" name="selectColor">
+
+                            <option value="0">Green to Red</option>
+                            <option value="1">Green scale</option>
+                            <option value="2">Orange to Red</option>
+                            <option value="3">Purple scale</option>
+                            <option value="4">Blue to Red</option>
+                            <option value="5">Pastel</option>
+                            <option value="6">Monochrome</option>
+
+
+                        </select></td>
+                    <td><input id="ckmeans" type="checkbox" checked>Means
+                        Clustering</td>
+                    <td></td>
+                    <td><input type="button" class="btn updatebtn" id="updateBreaks" value="Update Map"></td>
+                </tr>
+                <tr>
+                    <td><input id="flip_ramp" type="checkbox"> Flip Ramp</td>
+                    <td>
+                        <input id="check_label" type="checkbox">Show Codes</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
         </div>
 
         <div id="topicDiv" style="z-index: -1;">
@@ -114,6 +199,7 @@
             <div id="dataTableTitle">
                 <b></b> Data on : <span id="dataOnTopic"></span></b><br />
                 <span id="dataLevel"></span>
+                <button id="vizData">See this Dataset on the Map</button>
                 <hr />
             </div>
             <div id="dataTableContainer">

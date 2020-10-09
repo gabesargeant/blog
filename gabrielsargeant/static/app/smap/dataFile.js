@@ -51,7 +51,7 @@ function buildTableHeaderString(metadata, metadataMap) {
     return [header, headerSequenceMap]
 }
 
-var dataResponse = {
+var mockdataResponse = {
     "MapData": [{
         "RegionID": "2",
         "PartitionID": "G02",
@@ -85,6 +85,7 @@ var dataResponse = {
         "PartitionID": "G02",
         "GeoLevel": "STE",
         "KVPairs": {
+
             "Average_household_size": 2.6,
             "Average_num_psns_per_bedroom": 0.8,
             "Median_age_persons": 36,

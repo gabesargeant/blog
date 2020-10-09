@@ -584,6 +584,26 @@ So, the fix is a giant map which I put in the lambda function in a non breaking 
 
 I'll incorporate the change into the frontend in a day. Otherwise, things are speeding along. And for now, this issue goes onto the refactoring pile of problems.
 
+# Finishing off the front end.
+
+So, I gave in an used jQuery. I'll have a lot to refactor. But, I have a working project. 
+
+Thanks to my fat data model, I can just have a drop down for different data items on the visualization page. 
+This works smashingly fast in practice because there's no calls past the point where you see the data table. And that usually tops out at ~1 second max. 
+
+{{< image name="genericVisBtn.png" alt="data page with viz button" >}}
+
+An example of the quick vizualization from a small selection of inner melbourne.
+
+{{< image name="quickViz.gif" alt="gif of visualization.">}}
+
+I have to set a few events to fire once the features are all downloaded and rendered. 
+Other than that. Everything should be good.
+
+I'm close to ending this death march.
+
+
+
 
 
 

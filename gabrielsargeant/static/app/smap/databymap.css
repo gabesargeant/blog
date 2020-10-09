@@ -111,9 +111,10 @@ overflow: scroll;
 #mapLegend{
 	background-color: #ffffff;
 	position: absolute;
-	bottom:18%;
-	left:20px;
-	z-index: 100;
+	bottom:28%;
+	
+	left: 30px;
+	
 }
 
 .acenter{
