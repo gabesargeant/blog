@@ -1,9 +1,12 @@
+var vizLayerUp = false;
+
+
 function vizUp() {
     document.getElementById('mapLegend').style.zIndex = 1;
     document.getElementById('mapDiv').style.zIndex = 0;
     document.getElementById('topicDiv').style.zIndex = -1;
     document.getElementById('dataDiv').style.zIndex = -2;
-
+    vizLayerUp = true;
 }
 
 
@@ -13,6 +16,7 @@ function mapUp() {
     document.getElementById('topicDiv').style.zIndex = -1;
     document.getElementById('dataDiv').style.zIndex = -2;
     document.getElementById('mapLegend').style.zIndex = -2;
+    vizLayerUp = false;
 
 }
 //Display data
@@ -22,6 +26,7 @@ function dataUp() {
     document.getElementById('mapDiv').style.zIndex = -1;
     document.getElementById('topicDiv').style.zIndex = -2;
     document.getElementById('mapLegend').style.zIndex = -2;
+    vizLayerUp = false;
 }
 //Disply Topics
 function topicUp() {
@@ -29,15 +34,18 @@ function topicUp() {
     document.getElementById('mapDiv').style.zIndex = -1;
     document.getElementById('dataDiv').style.zIndex = -2;
     document.getElementById('mapLegend').style.zIndex = -2;
+    vizLayerUp = false;
 }
 
 //Maybe move this to map.js
 function visualizeCol() {
+    //uncomment to use mock data in the request.
+    //latestRequestData = mockdataResponse;
 
     $('#selectData').empty();
     $.each(latestRequestData.Metadata, function (key, value) {
         $('#selectData').append('<option value="' + key + '">' + value + '</option>');
-        console.log('tick');
+
     });
 
     //click the update data button to render the first field.
@@ -56,9 +64,8 @@ async function getDataFromAPI(callback, tried) {
         });
 
         const data = await response.json();
-        console.log("data");
-
-        console.log(data);
+        //console.log("data");
+        //console.log(data);
 
         if (!data.hasOwnProperty("message")) {
             latestRequestData = data
@@ -94,9 +101,6 @@ function clear() {
     mapUp();
 }
 
-// var queryBtn = document.getElementById('queryBtn');
-// queryBtn.addEventListener('click', getDataFromAPI);
-
 var resetBtn = document.getElementById('resetBtn');
 resetBtn.addEventListener('click', clear);
 
@@ -112,14 +116,6 @@ dataUpBtn.addEventListener('click', dataUp)
 //The select area button will drive a Esri JS event but also ensure that the map is visible
 var selectAreaEvent = document.getElementById('selectAreaBtn');
 selectAreaEvent.addEventListener('click', mapUp)
-
-
-//********************
-// Visualization test button, to be removed.
-//
-//
-var vizTestBtn = document.getElementById('vizTest');
-vizTestBtn.addEventListener('click', visualizeCol);
 
 var vizDataBtn = document.getElementById('vizData');
 vizDataBtn.addEventListener('click', visualizeCol);

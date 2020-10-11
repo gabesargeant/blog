@@ -1,12 +1,12 @@
 
 ---
 title: "Lambda Mapping Project"
-date: 2020-09-09T01:11:30+10:00
-draft: true
+date: 2020-10-10
+draft: false
 ---
 
 **Building this Lambda / serverless mapping project**
-I started work on the 09-09-20
+I started work on the 09-09-20, 99% finished on the 10-10-20.
 
 I'm going to just list in sections the parts of the project as I build them with any significant notes along the way.
 
@@ -356,7 +356,7 @@ CORS was about as complex as I expected. So that means I understand it, but I'll
 
 Firstly, I changed no settings with the S3 buckets or their CORS policies.
 
-In the [API Gatway doco about CORS and HTTP APIs](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html), it explains that you have the option to set COR's headers in your lambda function or integrating application. Or, you can take the easy route and set them at the API Gateway. This will have API Gateway dump any headers from the application and just uses what's set in the gateway. 
+In the [API Gateway doco about CORS and HTTP APIs](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html), it explains that you have the option to set COR's headers in your lambda function or integrating application. Or, you can take the easy route and set them at the API Gateway. This will have API Gateway dump any headers from the application and just uses what's set in the gateway. 
 
 I went with the API Gateway override option to avoid having to write header information into the Lambda function.
 
@@ -411,7 +411,7 @@ I iterate through the metadata object to create the ```<hr></hr>``` header tags.
 
 This issue stems from the cell descriptors file I used as the source of the metadata. And the KVPairs in the MapData array are direct from the CSV. The RegionID is what I put in the first column. It's just a copy of that other region identity. 
 
-Right now, I've fixed this with a hacky solution, but it makes me think that I should potentially not include the region code in the table data KVPairs object. Which means rewriting the csv_transformer go program. I think I can work around it. Probably something to sleep on as there could be a way around this issue that I havn't though of yet. 
+Right now, I've fixed this with a hacky solution, but it makes me think that I should potentially not include the region code in the table data KVPairs object. Which means rewriting the csv_transformer go program. I think I can work around it. Probably something to sleep on as there could be a way around this issue that I haven't though of yet. 
 
 {{<image name="tablefail.png" alt="image showing a test table display method and a limitation with a json structure">}}
 
@@ -593,7 +593,9 @@ This works smashingly fast in practice because there's no calls past the point w
 
 {{< image name="genericVisBtn.png" alt="data page with viz button" >}}
 
-An example of the quick vizualization from a small selection of inner melbourne.
+An example of the quick visualization from a small selection of inner melbourne.
+
+*please forgive the black side bar*
 
 {{< image name="quickViz.gif" alt="gif of visualization.">}}
 
@@ -601,6 +603,34 @@ I have to set a few events to fire once the features are all downloaded and rend
 Other than that. Everything should be good.
 
 I'm close to ending this death march.
+
+# Last few bugs.
+
+In 2016 Australia had 9 State level areas. 'Other Territories' is the 9th. Moving down the ASGS it had, 107 SA4's, 358 SA3's, and 2310 SA2 regions.
+In both the front end and Lambda function I have a limit on 100 regions. This creates a UX bug with the Select Areas button. 
+
+The UX issues is that most users will drill down to show all the suburbs in Melbourne. If they try and get the data they will only get ~100 of those regions, and when they try and visualize that it will come up as a spotty image. Some of the regions will not be shown as they were clipped out of the request. In the image below the blue box is the original request area.
+
+{{< image name="fieldlimits.png" alt="example of limits ux bug showing partial results.">}}
+
+I'm keeping my limits. However, the ASGS isn't randomly assigned numbers, there's a sort of an order, and a slight relationship between close region numbers  being also close physically to each other. 
+
+I now sort the requests by RegionID and then take the top 100 of that sorted list. I alert the user to the issue but still return the somewhat patchy response. As the owner, I am happy with this quality of service ¯\\_(ツ)_/¯
+
+It is possible to just lift the lid on limits, but this is all happening in a web browser. Something will break. 
+This mostly becomes an issue at the SA2, Post Code, and Suburb Levels. Everywhere else, things are pretty sensible.
+
+I'm still working out a few small bugs, mostly around the info templates that pop up when you click on the render. But other than that.
+
+# ☞(ﾟヮﾟ)☜ I'm DONE ☞(ﾟヮﾟ)☜ 
+
+#### This link is to the 99% finished site. 
+#### [Serverless Mapping, Visualizations, and a whole swag of Data](https://www.gabrielsargeant.com/app/smap/map.html)
+
+---
+
+ In a day or two, I'll write up a retro and some thoughts.
+
 
 
 
