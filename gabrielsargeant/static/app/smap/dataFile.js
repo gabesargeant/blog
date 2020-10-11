@@ -56,7 +56,7 @@ function getRegionNameFromID(data, regionID) {
     var rtn = "region name not found"
     for (var i = 0; i < data.MapData.length; i++) {
         rtn = data.MapData[i].RegionName;
-        if (data.MapData[i].regionName == regionID) {
+        if (data.MapData[i].RegionID == regionID) {
             return rtn;
         }
     }

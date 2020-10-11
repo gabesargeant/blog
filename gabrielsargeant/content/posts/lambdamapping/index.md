@@ -5,7 +5,8 @@ date: 2020-10-10
 draft: false
 ---
 
-**Building this Lambda / serverless mapping project**
+# Building this serverless mapping project**
+
 I started work on the 09-09-20, 99% finished on the 10-10-20.
 
 I'm going to just list in sections the parts of the project as I build them with any significant notes along the way.

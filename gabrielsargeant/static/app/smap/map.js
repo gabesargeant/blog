@@ -630,7 +630,10 @@ require([
         }
 
         //Get code to use to build extent.
-        var code = getLayerAttributesGIS(layerNum)
+        var code = getLayerAttributesGIS(layerNum);
+
+        var regionName = getRegionNameFromID(latestRequestData, graphic.attributes[code]);
+        var regionCode = graphic.attributes[code];
 
         if (typeof fval === "undefined") {
             return "<br/>No Data available for this region. Sorry!. Use <b>Select Area</b> then <b>Get Data For Selection</b> to explore.";
@@ -638,7 +641,7 @@ require([
         rtn_str = "Topic :" + document.querySelector('input[name="topic"]:checked').nextElementSibling.innerHTML + "<hr/>" +
 
             "<br/> The value of the selected attribute <b>" + $("#selectData option:selected").text() + "</b>" +
-            ", for the area <b>" + getRegionNameFromID(latestRequestData, graphic.attributes[code]) + " " + graphic.attributes[code] +
+            ", for the area <b>" + regionName + " " + regionCode +
             "</b> is <b>" + fval + "</b>";
         return rtn_str;
     }
