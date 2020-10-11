@@ -58,7 +58,9 @@ overflow: scroll;
 	padding: 7px;
 }
 
-
+#selectData {
+	max-width: 370px;
+}
 
 
 #map{

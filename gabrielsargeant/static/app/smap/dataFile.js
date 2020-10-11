@@ -7,7 +7,7 @@ function buildTableFromMapDataResponse(response) {
 
     tableString += results[0]
     headerSequenceMap = results[1];
-    console.log(headerSequenceMap)
+    //console.log(headerSequenceMap)
 
     //Do something with the partition
 
@@ -1651,7 +1651,7 @@ function getRegionNameFromID(data, regionID) {
 //         }
 //     ],
 //     "Metadata": {
-//         "Average_household_size": "Average household size",
+//         "Average_household_size": "Average household sizeAverage household sizeAverage household sizeAverage household size",
 //         "Average_num_psns_per_bedroom": "Average number of Persons per bedroom",
 //         "Median_age_persons": "Median age of persons",
 //         "Median_mortgage_repay_monthly": "Median mortgage repayment monthly",
