@@ -94,8 +94,8 @@ require([
     SimpleRenderer,
 
     Draw,
-    Query,
-    Ready
+    Query
+
 ) {
     map = new Map("mapDiv", {
         basemap: "osm",
@@ -103,14 +103,15 @@ require([
         zoom: 4,
     });
 
+    //reset 'default' line symbol.
+    var resetLine = new SimpleLineSymbol();
+    resetLine.setWidth(1.5);
+    resetLine.setStyle(SimpleLineSymbol.SOLID);
+    resetLine.setColor(new Color([225, 0, 0, 1]));
 
-    var line = new SimpleLineSymbol();
-    line.setWidth(1.5);
-    line.setStyle(SimpleLineSymbol.SOLID);
-    line.setColor(new Color([225, 0, 0, 0.4]));
+    var resetSymbol = new SimpleFillSymbol();
+    resetSymbol = resetSymbol.setOutline(resetLine);
 
-    var symbol = new SimpleFillSymbol();
-    symbol = symbol.setOutline(line);
 
     //This function is for the Renderer to 'find' the value associated with a region code.
     function findValue(graphic) {
@@ -242,6 +243,16 @@ require([
         currentSelection = query;
 
     });
+
+    var line = new SimpleLineSymbol();
+    line.setWidth(1.5);
+    line.setStyle(SimpleLineSymbol.SOLID);
+    line.setColor(new Color([225, 0, 0, 0.4]));
+
+    var symbol = new SimpleFillSymbol();
+    symbol = symbol.setOutline(line);
+
+
     var selectionSymbol = new SimpleFillSymbol(
         SimpleFillSymbol.STYLE_SOLID,
         new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
@@ -276,10 +287,14 @@ require([
     //aus.hide();current
     currentLayer = ste;
 
+
+
+
     on(dom.byId('selectAreaBtn'), 'click', function () {
 
-        currentLayer.redraw();
         clearSelectedAreas();
+        currentLayer.setRenderer(new SimpleRenderer(resetSymbol));
+        currentLayer.refresh();
         drawToolbar.activate(Draw.POLYGON);
 
     });
@@ -287,6 +302,7 @@ require([
     on(dom.byId('selectLayer'), 'change', function (e) {
         //make sure map is in focus
         mapUp()
+
 
         var layer;
         var layerID
@@ -309,15 +325,18 @@ require([
 
 
 
+
     on(dom.byId('resetBtn'), 'click', function () {
         drawToolbar.deactivate();
         clearSelectedAreas();
+
+        currentLayer.setRenderer(new SimpleRenderer(resetSymbol));
+        currentLayer.refresh();
 
     });
 
 
     on(dom.byId('queryBtn'), 'click', function () {
-
         showLoading();
         document.getElementById('errorMsg').innerHTML = "";
         document.getElementById("queryBtn").disabled = true;
@@ -350,12 +369,13 @@ require([
         //get the topic selected in the topic div
 
 
-        if (selection.length == 0) {
-            document.getElementById('errorMsg').innerHTML = "No Selection Made. Select over Australia";
+        if (selection.length < 5) {
+            document.getElementById('errorMsg').innerHTML = "Select at least 5 elements for best effect. Select over Australia";
             hideLoading();
             document.getElementById("queryBtn").disabled = false;
             return;
         }
+
 
         selectedRegionsCodeArray = []
         //sort selections then trim to first 100 ordered.
@@ -457,7 +477,7 @@ require([
     //But that's not the point of side projects.
     on(updateBreaks, "click", function () {
         clearSelectedAreas(); //get rid of the selection.
-        currentLayer.renderer = null;
+
         visDataField = $("#selectData").val();
 
         //START Calculate Min Max and Step value of selected data field.

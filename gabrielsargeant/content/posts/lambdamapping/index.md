@@ -9,9 +9,9 @@ draft: false
 
 I started work on the 09-09-20, 99% finished on the 10-10-20.
 
-I'm going to just list in sections the parts of the project as I build them with any significant notes along the way.
+I'm going to list in sections the parts of the project as I build it, keeping any important notes along the way.
 
-I'm generally approaching this problem from back to front. Starting with the data processing. Then onto building the lambda and infrastructure, and then the javascript monstrosity. This will hopefully read like an exciting travel diary.
+I'm generally approaching this problem from back to front. Starting with the data processing. Then I'll build the Lambda and infrastructure, and then the javascript monstrosity. Hopefully, this will read like an exciting travel diary.
 
 # Building the Database.
 
