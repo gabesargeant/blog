@@ -8,7 +8,7 @@ body {
 	margin: 40px auto;
 	padding: 0 5px;
 	font-size: 14px;
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 	color: #444;
 	line-height:1.35rem;
 }
@@ -69,3 +69,6 @@ p.a {
   word-break: break-word;
 }
 
+.nextPost{
+float: right;
+}

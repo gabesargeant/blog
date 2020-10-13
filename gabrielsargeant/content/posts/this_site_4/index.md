@@ -36,5 +36,3 @@ I know I decided to start simple and get more complex on my own. However, being 
 
 **In the end**   
 Everything was easy enough. Hugo's simple and I'm on the net. I'll keep building and writing and see where things go.
-
----

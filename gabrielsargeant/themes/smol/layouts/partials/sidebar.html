@@ -1,4 +1,14 @@
 <aside>
+	<!--{{ strings.Repeat ( .Site.Title | len | add 6 ) "=" }}<br>-->
+	{{ if .PrevPage }}
+	<a class="previousPost" href="{{ .PrevPage.Permalink }}">Previous</a>
+	{{ end }}
+	{{ if .NextPage }}
+	<a class="nextPost" href="{{ .NextPage.Permalink }}">Next</a>
+	{{ end }}
+
+
+	<hr />
 	<div>
 		<div>
 			<h3>LATEST POSTS</h3>
@@ -6,7 +16,8 @@
 		<div>
 			<ul>
 				{{ range first 5 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
-				<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+				<li>{{ .Date.Format "2006-01-02" }} <a href="{{ .RelPermalink }}">{{ .Title }} </a>
+				</li>
 				{{ end }}
 			</ul>
 		</div>

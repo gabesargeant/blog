@@ -5,7 +5,9 @@ date: 2020-10-10
 draft: false
 ---
 
-# Building this serverless mapping project**
+
+
+# Building this serverless mapping project
 
 I started work on the 09-09-20, 99% finished on the 10-10-20.
 
@@ -627,8 +629,6 @@ I'm still working out a few small bugs, mostly around the info templates that po
 
 #### This link is to the 99% finished site. 
 #### [Serverless Mapping, Visualizations, and a whole swag of Data](https://www.gabrielsargeant.com/app/smap/map.html)
-
----
 
  In a day or two, I'll write up a retro and some thoughts.
 
