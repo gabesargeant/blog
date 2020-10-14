@@ -13,7 +13,7 @@ I'm happy with what I got done. I made many mistakes along the way but I learnt 
 
 The goal of the project was to select features on a map, and use that selection to drive a data query, and then to visualize that data. 
 
-**Mission Accomplished. **
+**Mission Accomplished.**
 
 
 
