@@ -5,8 +5,11 @@ draft: false
 ---
 
 **Contact Me @**  
+```
+gabe.sargeant@gmail.com
+```
 
-    gabe.sargeant@gmail.com
+
 
 
 
