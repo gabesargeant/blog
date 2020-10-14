@@ -32,15 +32,15 @@ Ie. If there's data in chunks like ages 0-5, 5-10, 10-15. In the data-packs, tho
 * Learning Golang whilst doing everything may have made some tasks harder.
 Kind of what I signed up for, but I probably should have tried a sudoku solver first. :P
 
-* The AWS Golang SDK for DynamoDB was tricky to learn. I assumed a noSQL DB would be easier.
+* The AWS Golang SDK for DynamoDB was tricky to learn. I assumed a NoSQL DB would be easier.
 
-I'm not on my own here, there's plenty of hate out there for the Golang DynamoDB API. But It didn't help that I was also learning Golang. And that API's motto could be *Take me down to pointer town*. 
+I'm not on my own here, there's plenty of hate out there for the Golang DynamoDB API. But It didn't help that I was also learning Golang. The Golang DyanamoDB API's motto really could be *Take me down to pointer town*. 
 
 As for NoSQL not being easy. It was Sort and Partition keys that got me. I'm a pretty visual person and the info graphic in this kept confusing me. [Choosing the Right DynamoDB Partition Key](https://aws.amazon.com/blogs/database/choosing-the-right-dynamodb-partition-key/). It very well could be me, but I was thinking in relational DB terms and kept thinking that all of those tuples were different things, rather than them being just items. 
 
 New language, new DB paradigm, and new terms. The usual *sort* of confusion. The pun being that sort keys are really indexes' that are scoped inside a partition. It would have been way, way easier if AWS had just named those partition index's or something. 
 
-And just to prove im still learning, I had a little panic, and got myself thinking I had the partition and sort keys wrong. So I reread that article and checked over everything. I'm 85% sure it's ok.
+And just to prove I'm still learning, I had a little panic, and got myself thinking I had the partition and sort keys wrong. So I reread that article and checked over everything. I'm 85% sure it's ok.
 
 * API Gateway and Lambda Functions.  
 
