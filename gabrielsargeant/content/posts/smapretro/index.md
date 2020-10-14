@@ -73,7 +73,7 @@ GET .../getregions?r=101...151&t=G02
 ```
 But, this seems like a fast train to the land of edge cases. It may not be. But in all my past attempts I've not done this and just used POST requests. If I come back to refactor the application, building a request Pathway that is GET request based would be a good feature to reach for. 
 
-Lambda Cold Starts.
+* Lambda Cold Starts.
 
 I *feel* lambda cold-starts add about half a second to initial response times from a data request. They are a hard problem to deal with. Even AWS warns of them. I pondered if python or javascript would have similar issues. I also considered a health-check on a user's initial page load might warm things up. At least before the first big request. But I ended up not Implement this as once the first request was complete, I found myself dazzled by the visualization. 
 But most data requests are fast, but not lighting fast. And this seems mostly to be the cold start. I'm not sure extra effort here would yield significant enough results.
