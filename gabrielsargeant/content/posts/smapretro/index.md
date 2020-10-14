@@ -56,9 +56,9 @@ I didn't do this. I got tired, and it was a low value task to me. I did have aut
 
 * CORs is always tricky.  
 
-I feel like I always *just* manage to get CORs' working. It never feels like it *click*. After grinding through that issue on my own I certainly have a better understanding of it now. But it's still one of those tricky bits of config I feel like I'll always be a bit behind in.
+I feel like I always *just* manage to get CORs' working. It never feels like it *clicks*. After grinding through the CORs issues on my own, I certainly have a better understanding of it now. But it is still one of those tricky bits of config I feel like I'm always a bit behind in.
 
-* I'm still bad at javascript. 
+* I'm still bad at javascript. Was I ever good...
 
 No shocker here. By the time I got to work on the front end I was a bit tired of the project. Putting in the time to design, build, and deploy the frontend and then debugging it was actually pretty draining. I wanted to finish the project more than I wanted to have a perfect UI. So I'm comfortable with the MVP. 
 
