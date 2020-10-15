@@ -75,8 +75,8 @@ But, this seems like a fast train to the land of edge cases. It may not be. But 
 
 * Lambda Cold Starts.
 
-I *feel* lambda cold-starts add about half a second to initial response times from a data request. They are a hard problem to deal with. Even AWS warns of them. I pondered if python or javascript would have similar issues. I also considered a health-check on a user's initial page load might warm things up. At least before the first big request. But I ended up not Implement this as once the first request was complete, I found myself dazzled by the visualization. 
-But most data requests are fast, but not lighting fast. And this seems mostly to be the cold start. I'm not sure extra effort here would yield significant enough results.
+I *feel* like lambda cold-starts add about half a second to initial response times from a data request. They are a hard problem to deal with. Even AWS warns of them. I pondered if python or javascript would have similar issues. I also considered a health-check on a user's initial page visit might warm things up. At least before the first big request. But I ended up not implementing this. As once the first request was complete, I found myself dazzled by the visualization. So I assumed, so would everyone else. 
+Most data requests are fast, but not lighting fast. And this seems mostly to be the cold start. I'm not sure extra effort here would yield significant enough results.
 
 ### Fin
 
