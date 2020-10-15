@@ -2,6 +2,9 @@
 title: "Geospatial visualizations, on the fly"
 draft: false
 date: 2020-08-20
+tags:
+- ArcGIS
+- Mapping
 ---
 
 ## [Map Tool.](/app/maptool/map.html)  
