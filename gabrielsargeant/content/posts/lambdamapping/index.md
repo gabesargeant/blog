@@ -3,6 +3,11 @@
 title: "Lambda Mapping Project"
 date: 2020-10-10
 draft: false
+tags: 
+- Mapping
+- Golang
+- AWS
+- ArcGIS
 ---
 
 

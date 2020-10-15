@@ -2,6 +2,11 @@
 title: "Serverless Web Mapping Retro"
 date: 2020-10-14T00:11:24+11:00
 draft: false
+tags:
+- AWS
+- Lambda
+- Mapping
+- Retro
 ---
 
 ### Wait!

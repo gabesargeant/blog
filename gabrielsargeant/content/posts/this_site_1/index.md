@@ -2,6 +2,9 @@
 title: "Thinking about building this site"
 date: 2020-08-23
 draft: false
+tags:
+- AWS
+- Hugo
 ---
 
 This is an early rundown of how I plan to get this site up on the web.

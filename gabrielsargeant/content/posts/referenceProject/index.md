@@ -2,6 +2,10 @@
 title: "My Mapping Reference Project Retrospective"
 date: 2020-09-02T00:33:16+10:00
 draft: false
+tags:
+- Retro
+- Reference Project
+- Mapping
 ---
 **A Python (Flask Framework), MySQL DB, ArcGIS Javascript, Ubuntu Server, Nginx, Gunicorn application running on an AWS EC2 instance**
 **Also previously implemented in PHP!**

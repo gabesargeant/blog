@@ -2,6 +2,9 @@
 title: "Rebuilding this site again."
 date: 2020-08-27
 draft: false
+tags:
+- AWS
+- Hugo
 ---
 
 I deployed this site to the web on the 26th. And before that day was over I was already in the AWS console ripping it to shreds. 

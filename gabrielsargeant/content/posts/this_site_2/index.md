@@ -2,6 +2,9 @@
 title: "Actually building this site"
 date: 2020-08-26
 draft: false
+tags:
+- AWS
+- Hugo
 ---
 
 **Getting this all setup.**

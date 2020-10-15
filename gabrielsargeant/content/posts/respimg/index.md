@@ -2,6 +2,9 @@
 title: "Somewhat simple responsive images with Hugo"
 date: 2020-08-31
 draft: false
+tags:
+- Hugo
+- Responsive
 ---
 {{< image name="kiddo.png" alt="Kiddo meme saying, You can't just use one image for all devices; That's where you're wrong kiddo" >}}
 

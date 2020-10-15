@@ -9,15 +9,20 @@
 	{{ end }}
 
 	<ul>
+		{{ if ne $listtitle "Tags" }}
 		{{ range .Paginator.Pages }}
 		<li>
 			<div class="post-title">
-				{{ if eq $listtitle "Posts" }}
+
 				{{ .Date.Format "2006-01-02" }} <a href="{{ .RelPermalink }}">{{.Title }}</a>
-				{{ else }}
-				<a href="{{ .RelPermalink }}">{{.Title }}</a>
-				{{ end }}
 			</div>
+		</li>
+		{{ end }}
+		{{ end }}
+
+		{{ range .Data.Terms }}
+		<li>
+			<a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a> ({{ .Count }})
 		</li>
 		{{ end }}
 	</ul>

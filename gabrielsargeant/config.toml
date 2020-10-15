@@ -16,6 +16,12 @@ summaryLength = 90
         weight = 2 
 
     [[menu.main]]
+        identifier = "tags"
+        name = "Tags"
+        url = "/tags.html"
+        weight = 2 
+
+    [[menu.main]]
         identifier = "about"
         name = "About"
         url = "/posts/about.html"
@@ -26,6 +32,12 @@ summaryLength = 90
         name = "Contact"
         url = "/posts/contact.html"
         weight = 1 
+
+    [[menu.main]]
+        identifier = "interactiveStuff"
+        name = "Interactive Stuff"
+        url = "/posts/applist.html"
+        weight = 0 
 
 # Footer
     [[menu.footer]]
