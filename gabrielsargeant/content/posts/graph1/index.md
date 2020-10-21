@@ -18,9 +18,9 @@ Time to build something to make this process faster.
 
 **Time to unleash the power of machine learning**
 
-Kidding, the title was click bait. There's no ML in what im doing here. The ASGS will be present, but no ML. Just plain ole regular graph and tree traversal algorithms. First I've got to find the data. And my god, it's very very tricky to find ASGS correspondence files. These essentially match things like Suburbs to SA? areas. Usually, you'd head to ABS to find these things. But now they live on data.gov.au. 
+Kidding, the title was click bait. There's no ML in what I'm doing here. The ASGS will be present, but no ML. Just plain ole regular graph and tree traversal algorithms. First I've got to find the data. And my god, it's very, very tricky to find ASGS allocation files. These essentially match things like Suburbs to SA1 areas. Usually, you'd head to ABS to find these things. But now they live on data.gov.au. 
 
-Im zeroing in on the 2016 areas for fun. Which can be found here. [ASGS Geographic Correspondences (2016)]](https://data.gov.au/dataset/ds-dga-23fe168c-09a7-42d2-a2f9-fd08fbd0a4ce/details?q=)
+Im zeroing in on the 2016 areas for fun and profit. Which can be found here. [ASGS Allocation Files (2016)]](https://data.gov.au/dataset/ds-dga-d056f2ed-faa7-4140-b950-6cccfb72e3fd/details?q=asgs%20(2016)).
 
 
 
