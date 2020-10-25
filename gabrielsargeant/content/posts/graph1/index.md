@@ -171,17 +171,41 @@ From having a peak at the contents it seemed the removal of the pointers was a c
 
 **Going for a walk with my dog**  
 
-The next day I went for a walk with my dog, she enjoyed it, and so did I. I thought about the time complexity of recursing over the ASGS tree. 
+The next day I went for a walk with my dog, she enjoyed the walk, and so did I. I thought about the time complexity of recursing over the ASGS tree. 
 Whilst I like having the *live* version with active pointers, storing it is complex. 
 
-I have not personally had to do this, but I know from DB developers that storing tree like structures in a database requires carefull thinking. Often you want to store associations in a way that has the least cardinality. So if for example, I tree has node with only 1 parent. Like a classic Binary Search Tree, then you can store that tree in single table, if you invert the relationships and Each child knows it's parent. then everything fits easily in a table. But when you reason about tree's you usually start from the top and work your way down, rather than build from the bottom up. Or at least my predominate experience has been like this.
+I know from talking with DB developers that storing tree like structures in a database requires careful thinking. Often you want to store associations in a way that has the least cardinality to maximize storage in a relational database. So for example, if a tree has node with only 1 parent, like a classic binary search tree, then you can store that tree in single table. The only thing you need to do is invert the "has a node" relationship and to make each child know it's parent instead of each parent know all their children. With this change, everything fits easily in a table.  
+When you're reasoning about a tree on paper, you're usually starting from the top and working your way down, rather than building from the bottom up. Or at least most of my experience has been like this. Though my thinking is changing with experience.
 
 Anyway, I walked and I thought. Eventually I thought instead of pointers, I could keep references to each child and parent region in arrays. 
  And I could stores the regions in a set of flat map objects. I pondered this for a bit but eventually....
 {{< image name="imokwt.png" alt="I'm Ok with this, Comic from KC Greens's Comics">}}
 
- It's not rocket science, but i wasn't sure really what I wanted to do yet with the tree. 
+ It's not rocket science, but I wasn't sure really what I wanted to do yet with the tree. 
 
 
- 
+ **Static references work.**  
+ I implemented the tree to output essentially a giant map of node structs, each with references to its parents and children. I did switch to use maps rather than string arrays. This was to make use of the set-like features of maps. Thankfully, this worked, and was easy to do.  
+
+ Thinking about how I want to put all this information into a service, I will probably end up using a storage layer like DynamoDB to hold the json. From my previous work with DynamoDB I know that the I want to create 'fat' objects. The idea behind this is to create a piece of data and then collect a constellation of similar data around it. This makes reads from DynamoDB richer, and make the client app less 'chatty' with the DB that is pay for request.
+
+ As an example of this, In my mapping app I would return a table of data to the user and then let them slice and dice the topic locally before needing to request new content. In contrast to something like a regular Relational DB, where I'd probably lean towards making tighter calls for data due to how the query language works. 
+
+ So what does a 'fat' or 'phat' ASGS node look like? I think it means having a lot of relative information locally present.
+
+ **Step back and what me de-normalize**
+
+ I think I am going to revive the pointer based graph, and use it to build up a set of output nodes for the whole ASGS. I'd like to produce an output node that contain their position in the ASGS and the names of all of their ancestors up and down the graph.
+
+Doing this would allow me to jump levels and If I used a storage layer like DynamoDB. I could potentially have a query execute like.
+```
+Get Suburb 'Sydney' 
+> returns the Sydney suburb node, with information about what Mesh Blocks are in it. 
+Get those MeshBlocks
+```
+For all of those blocks I could then merge their parents to get a list of all of the large structures they exists in, so if the Suburb of 'Sydney' exists across two boundaries higher up, then it would be visible. And then making a jump up a level would be just 1 jump rather than multiple.
+
+If I don't include all the parent information then I can't just merge the lists, I have to walk from each Mesh Block all the way to the Australia region at the top of the tree. Or bottom of the tree, depending on which way you draw things. :)
+
+
 
