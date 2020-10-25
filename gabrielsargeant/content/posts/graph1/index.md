@@ -207,5 +207,7 @@ For all of those blocks I could then merge their parents to get a list of all of
 
 If I don't include all the parent information then I can't just merge the lists, I have to walk from each Mesh Block all the way to the Australia region at the top of the tree. Or bottom of the tree, depending on which way you draw things. :)
 
+Anyway, I'll try that and see if it works.
+
 
 
