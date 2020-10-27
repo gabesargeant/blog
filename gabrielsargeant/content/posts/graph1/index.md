@@ -193,7 +193,7 @@ Anyway, I walked and I thought. Eventually I thought instead of pointers, I coul
 
  So what does a 'fat' or 'phat' ASGS node look like? I think it means having a lot of relative information locally present.
 
- **Step back and what me de-normalize**
+ **Step back and watch me de-normalize**
 
  I think I am going to revive the pointer based graph, and use it to build up a set of output nodes for the whole ASGS. I'd like to produce an output node that contain their position in the ASGS and the names of all of their ancestors up and down the graph.
 
@@ -208,6 +208,47 @@ For all of those blocks I could then merge their parents to get a list of all of
 If I don't include all the parent information then I can't just merge the lists, I have to walk from each Mesh Block all the way to the Australia region at the top of the tree. Or bottom of the tree, depending on which way you draw things. :)
 
 Anyway, I'll try that and see if it works.
+
+**It worked**
+
+The general process is, 
+1. Put the regular ASGS tree together. Everything linked to all the Mesh Blocks. 
+2. Then for every region in that tree build up an output node. 
+3. Walk all the pointers up the parent chain to collect the ASGS areas above and then put those inside the output objects.
+4. As Each region is produced, print it to a file in an output folder
+
+The output objects look like this:
+
+```
+
+//OutputAsgsRegionNode is the final output format for each node.
+type OutputAsgsRegionNode struct {
+	RegionID      string
+	RegionName    string
+	LevelType     string
+	LevelIDName   string
+	ParentRegions map[string]*ParentRegion
+	ChildRegions  map[string]string
+}
+
+//ParentRegion lighter parent structure
+type ParentRegion struct {
+	RegionID string
+	RegionName string
+	LevelType string
+	ParentRegions map[string]*ParentRegion
+}
+```
+The Parent regions do get a little nested, but I do capture pretty useful information along the way. And I finally got to use recursion for the first time since university. :P
+
+Interestingly. The source CSV file is ~250MB as a 350K row csv. That skinny's down to ~430K 16MB worth of 0.5 -1.5kb json files.
+
+The whole process takes around 1 minute to compute. The real performance win was to use maps to avoid duplicates in parent and child arrays. Before I figurued that out it was taking around ~2-3 minutes to produce 1 node.
+
+**Hosting**
+~430K worth of files is a lot. I need to consider the UI or service layer im going to build. Thankfully the files are small. I'm very tempted to build a lambda function to add onto my exiting API gateway but back the lambda function with an S3 bucket for this content. That would fit in this website and because the files are 'tiny' like really really small, like smaller than the images on this page small. I can probably get away with it. 
+
+I shall have a ponder. 
 
 
 
