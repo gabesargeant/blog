@@ -250,5 +250,20 @@ The whole process takes around 1 minute to compute. The real performance win was
 
 I shall have a ponder. 
 
+**S3, the AWS Golang SDK V2, my tears, and Linux ls and du**
 
+A day or two later. 
+
+S3 uploading, hmmm, What if I have a million bajillion files? Dynamo would cost what 10 bucks?
+
+the SDK changed! omfg. Like overnight!
+
+ls doesn't actually work that well. crazy. Also shouldn't have trusted what it was saying, lesson learnt. 
+
+https://unix.stackexchange.com/questions/185764/how-do-i-get-the-size-of-a-directory-on-the-command-line
+
+
+https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/
+
+How get more files up to AWS?
 
