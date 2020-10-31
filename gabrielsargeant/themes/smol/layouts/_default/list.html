@@ -9,23 +9,24 @@
 	{{ end }}
 
 	<ul>
-		{{ if ne $listtitle "Tags" }}
+	{{ if ne $listtitle "Tags" }}
 		{{ range .Paginator.Pages }}
 		<li>
 			<div class="post-title">
-
 				{{ .Date.Format "2006-01-02" }} <a href="{{ .RelPermalink }}">{{.Title }}</a>
 			</div>
 		</li>
 		{{ end }}
-		{{ end }}
+	{{ end }}
 
-		{{ range .Data.Terms }}
+	{{ range .Data.Terms.ByCount }}
 		<li>
 			<a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a> ({{ .Count }})
 		</li>
-		{{ end }}
+	{{ end }}
 	</ul>
-	{{ partial "pagination.html" . }}
+	{{ if ne $listtitle "Tags" }}
+		{{ partial "pagination.html" . }}
+	{{ end }}
 </main>
 {{ end }}
