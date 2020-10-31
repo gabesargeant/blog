@@ -7,10 +7,6 @@ tags:
 
 ---
 
-
----  
-
-
 #### This link is to the 99% finished site. 
 #### [Serverless Mapping, Visualizations, and a whole swag of Data.](https://www.gabrielsargeant.com/app/smap/map.html)
 

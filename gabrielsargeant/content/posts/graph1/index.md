@@ -1,7 +1,10 @@
 ---
 title: "Graphs and the ASGS"
 date: 2020-10-17
-draft: true
+draft: false
+tags:
+- Golang
+- AWS
 ---
 
 A friend of mine recently had a dataset provided to her that had statistics in it at the SA3 level. The work she does focuses on information based around  Suburbs and Local Government Areas. This SA3 data created a question for her. What Suburbs exists in what SA3's?  It's surprisingly difficult to answer this question quickly. In her case she needed an answer to this, because regular people who drive out to places, they don't go to SA3's. They go to suburbs and towns.
