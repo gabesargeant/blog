@@ -10,10 +10,6 @@ tags:
 - ArcGIS
 ---
 
-
-
-# Building this serverless mapping project
-
 I started work on the 09-09-20, 99% finished on the 10-10-20.
 
 I'm going to list in sections the parts of the project as I build it, keeping any important notes along the way.

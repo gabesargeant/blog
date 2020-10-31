@@ -4,8 +4,6 @@ date: 2020-10-17
 draft: true
 ---
 
-**The problem**
-
 A friend of mine recently had a dataset provided to her that had statistics in it at the SA3 level. The work she does focuses on information based around  Suburbs and Local Government Areas. This SA3 data created a question for her. What Suburbs exists in what SA3's?  It's surprisingly difficult to answer this question quickly. In her case she needed an answer to this, because regular people who drive out to places, they don't go to SA3's. They go to suburbs and towns.
 
 I've written in other posts about the ASGS and non ASGS regions and how they sort of overlap.  
@@ -276,23 +274,17 @@ Short story, AWS knows how to make money. There's no good shortcut. I did think 
 
 **Pivoting**
 
-I'm not giving up. I'm just not sure what to do now. 
+I'm not giving up. I'm just not sure what to do now. I'm taking a few days to think.
 
-I think what I want is to use the tree I can build now, but to use it to output a graph that doesn't include mesh blocks. Something like this.
+I'm thinking I want to use the tree that I can build now, but to use it to output a graph that doesn't include mesh blocks. Something like this.
 
 {{<image name="tree2.png" alt="Possible new output tree">}}
 
-The discussion then turns to what is the actual intent of what I'm building. And how important are those mesh blocks. 
+Taht chops out a lot of extra mesh block junk from the output. About ~360K objects. Which makes S3, or Dynamo cheaper. But then, the discussion turns to what is the actual intent of what I'm building. And how important are those mesh blocks. 
 
 In part two, I'll let you know what I come up with.
 
 
----
 
-Helpful stuff I never use enough:
-
+**Helpful stuff I never use enough to know by heart**  
 [How To Find Largest Top 10 Files and Directories On Linux / UNIX / BSD](https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/)
-
-
-
-

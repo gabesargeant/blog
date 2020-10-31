@@ -9,7 +9,6 @@ tags:
 - Retro
 ---
 
-### Wait!
 If you don't know what this is about, then follow this link and read up on the design and implementation of my little side project. [Lambda Mapping Project]({{< ref "/posts/smap/index.md" >}})
 
 
