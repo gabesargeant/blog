@@ -1,12 +1,12 @@
 ---
-title: "ML, Graphs and the ASGS"
+title: "Graphs and the ASGS"
 date: 2020-10-17
 draft: true
 ---
 
 **The problem**
 
-A friend of mine recently had a dataset provided to her that had statistics in it at the SA3 level. The work she does focuses on information based around  Suburbs and Local Government Areas. This SA3 data created a question for her. What Suburbs exists in what SA3's?  It's suprisingly difficult to answer this question quickly. In her case She needed an answer to this, because regular people who drive out to places, they don't go to SA3's. They go to suburbs and towns.
+A friend of mine recently had a dataset provided to her that had statistics in it at the SA3 level. The work she does focuses on information based around  Suburbs and Local Government Areas. This SA3 data created a question for her. What Suburbs exists in what SA3's?  It's surprisingly difficult to answer this question quickly. In her case she needed an answer to this, because regular people who drive out to places, they don't go to SA3's. They go to suburbs and towns.
 
 I've written in other posts about the ASGS and non ASGS regions and how they sort of overlap.  
 The ABS has this big long article about the ASGS which is useful to read and understand if you deal with this stuff. [The ASGS](https://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS)). 
@@ -15,23 +15,21 @@ Anyway, the ABS provides correspondences and allocation files which essentially 
 
 *cracks knuckles*
 
-**Time to unleash the power of machine learning**
+**Time to solve a sort of solved problem...maybe**
 
-Kidding, the title was click bait. There's no ML in what I'm doing here. The ASGS will be present, but no ML. Just plain ole regular graph and tree traversal algorithms. Sorry :P
+First off, I've got to find the data. And my god, it's very tricky to find ASGS allocation files. Usually, you'd head to ABS to find these things. But now the files live on https://data.gov.au. I didn't save the link when I helped my friend them, and it was actually pretty challenging finding them again a second time.
 
-First I've got to find the data. And my god, it's very, very tricky to find ASGS allocation files. Usually, you'd head to ABS to find these things. But now they live on data.gov.au. I didn't save the link when I help my friend out and it was actually pretty hard finding them again a second time.
-
-Im zeroing in on the 2016 areas for fun. Which can be found here. [ASGS Allocation Files (2016)](https://data.gov.au/dataset/ds-dga-d056f2ed-faa7-4140-b950-6cccfb72e3fd/details?q=asgs%20(2016)). 
+Good news, I found it. I'm zeroing in on the 2016 areas for this post. [ASGS Allocation Files (2016)](https://data.gov.au/dataset/ds-dga-d056f2ed-faa7-4140-b950-6cccfb72e3fd/details?q=asgs%20(2016)). 
 
 
 **What I think I'm trying to build**
 
 I think I want to build 
-1. something to consume the ASGS and turn it a graph.
+1. Something to consume the ASGS and turn it a graph.
 2. Create a search webservice that interacts with that graph.
-3. And for that graph to be storable so I can then use it like database file elsewhere.
+3. And for that graph to be storable so I can then use it like a database file.
 
-If this seems vauge, it is. Wish me luck.
+If this seems vague, it is. Wish me luck.
 
 **Starting**
 
@@ -52,13 +50,13 @@ type AsgsRegionNode struct {
 	ChildRegions  []*AsgsRegionNode
 }
 ```
-My intent is to use this structure to create two tree's that join on the terminal leaves they share, ie MeshBlock regions. Something that looks like this. 
+My idea is to use this structure to create two tree's that join on the terminal leaves they share, ie MeshBlock regions. Something that looks like this. 
 {{<image name="tree.png" alt="the parts of the ASGS I'm interacting with for this little side gig.">}}
-Note, the dotted lines are not included in the tree. Whilst Suburbs and postal areas fall under states, I haven't segmented them that way. As this graph doesn't have nodes that point at different types of children. If I did make those dotted lines solid in my program, the effect would be that an instance of a State Node would have up to three different region types under it. Because I'm not using a interfaces and instead using just a single generic node for all objects I'd need to do extra work, for little benefit right now. I'm happy with this little short fall in the project.
+Note, the dotted lines are not included in the tree. Whilst Suburbs and postal areas fall under states, I haven't segmented them that way. As this graph doesn't have nodes that point at different types of children. If I did make those dotted lines solid in my program, the effect would be that an instance of a State Node would have up to three different region under it. This isn't such a problem, but it's extra complexity I don't want or need right now. 
 
 **Tree Construction**
 
-The allocation file has 75 columns of data and about 390K rows. It has a lot of repeats for non meshbock information. This is unfortunately the only way you fit hierarchy information into a square file. So it ends up looking like this:
+The allocation file has 75 columns of data and about 390K rows. It has a lot of repeats for non mesh bock information. This is unfortunately the only way you fit hierarchy information into a square file. So it ends up looking like this:
 ```   
 MB(1) -> SA1 (X) -> SA2 (A) ->  SA3(H) -> SA4(P) -> STE(ACT) --> AUS
 MB(2) -> SA1 (y) -> SA2 (A) ->  SA3(H) -> SA4(P) -> STE(ACT) --> AUS
@@ -66,11 +64,12 @@ MB(3) -> SA1 (z) -> SA2 (B) ->  SA3(H) -> SA4(P) -> STE(ACT) --> AUS
 MB(4) -> SA1 (A) -> SA2 (C) ->  SA3(I) -> SA4(Q) -> STE(QLD) --> AUS
 ```
 
-Each row contains relationship information on 1 unique Mesh block and every region that it relates to. From that I can infer that all the other regions also relate to each other in that same row. 
-In the very simple example above. The forth entry. Mesh Block 4, exists in SA1 A and up and up. 
-To build up the tree of nodes I wrote up some state information into a few helper arrays in a second go file. [co-tree-default.go](https://github.com/gabesargeant/asgs-co-tree/blob/main/co-tree-default.go). This information is about what columns are of interest in the csv file, and what order I should build up the nodes from a row of data. And then some extra helper stuff.
+Each row contains relationship information on 1 unique Mesh block and every region that it relates to. Using this I can infer that all the other regions also relate to each other in that same row. 
+In the very simple example above. The forth entry. Mesh Block 4, exists in SA1 A and up and up.   
 
-Building up the graph was rather simple. 
+To build up the tree of nodes I wrote up some state information into a few helper arrays in a second go file. [co-tree-default.go](https://github.com/gabesargeant/asgs-co-tree/blob/main/co-tree-default.go). This information is about what columns are of interest in the csv file, and what order I should build up the nodes from a row of data. And then some extra helper stuff. If I were to have a none generic Node struct I would probably use interfaces to to create a set of relationships between the regions and try and capture this inforamtion in a data structure rather than arrays.
+
+Thankfully, building up the graph was rather simple. 
 the following pseudo code covers the main logic for building the tree.
 
 ```
@@ -128,7 +127,7 @@ for each row in the CSV:
 ```
 
 **Saving the tree**
-It was very quick to get this far with the parser and just generic file handling. 
+It was very quick to get this far with the parser and generic file handling. 
 
 When running the program before any of the search functionality I get the following timing from building the graph
 ```
@@ -210,8 +209,8 @@ If I don't include all the parent information then I can't just merge the lists,
 Anyway, I'll try that and see if it works.
 
 **It worked**
+I generally knew this would work as I wasn't going to stop until it did. However the general process is, 
 
-The general process is, 
 1. Put the regular ASGS tree together. Everything linked to all the Mesh Blocks. 
 2. Then for every region in that tree build up an output node. 
 3. Walk all the pointers up the parent chain to collect the ASGS areas above and then put those inside the output objects.
@@ -241,29 +240,59 @@ type ParentRegion struct {
 ```
 The Parent regions do get a little nested, but I do capture pretty useful information along the way. And I finally got to use recursion for the first time since university. :P
 
-Interestingly. The source CSV file is ~250MB as a 350K row csv. That skinny's down to ~430K 16MB worth of 0.5 -1.5kb json files.
+Interestingly. The source CSV file is ~250MB as a 350K row csv. That skinny's down to ~430K 16MB worth of 0.5 -1.5kb json files. (this turns out to be way wrong)
 
-The whole process takes around 1 minute to compute. The real performance win was to use maps to avoid duplicates in parent and child arrays. Before I figurued that out it was taking around ~2-3 minutes to produce 1 node.
+The whole process takes around 1 minute to compute. The real performance win was to use maps to avoid duplicates in parent and child arrays. Before I figured that out it was taking around ~2-3 minutes to produce 1 node and this was from there being ~800 duplicates in the parents and child arrays.
 
-**Hosting**
+**Hosting the files**  
 ~430K worth of files is a lot. I need to consider the UI or service layer im going to build. Thankfully the files are small. I'm very tempted to build a lambda function to add onto my exiting API gateway but back the lambda function with an S3 bucket for this content. That would fit in this website and because the files are 'tiny' like really really small, like smaller than the images on this page small. I can probably get away with it. 
 
 I shall have a ponder. 
 
-**S3, the AWS Golang SDK V2, my tears, and Linux ls and du**
+**S3, the AWS Golang SDK V2, my tears, and Linux ls and du OR Two days and 27 cents later.**
 
-A day or two later. 
+I had intended to get the content up onto s3. The *expected* cost for the upload should be around ~5 bucks, which I'm willing to pay. But, I soon found out what I wasn't willing to pay was the upload speed. *You suck Australian Internet!* 
+Getting the files up to AWS was slow! like really really slow. And I hit some odd issues along the way.
 
-S3 uploading, hmmm, What if I have a million bajillion files? Dynamo would cost what 10 bucks?
+Just to recap, the input file, the ASGS allocation csv is about 250MB. After building the outputs, I had ~430K worth of files. Oddly the   
+```> ll --block-size=MB ```   
+command reported 16 MB. In real life, the size was 1.7 GB of output files. It seems with large numbers of files the **ls** command fails and it's better to use ```du```. [Thanks Kamil from Stack Overflow](https://unix.stackexchange.com/a/185765)
 
-the SDK changed! omfg. Like overnight!
+I tried a few things to get stuff onto AWS.
 
-ls doesn't actually work that well. crazy. Also shouldn't have trusted what it was saying, lesson learnt. 
+Firstly,I wanted use the AWS golang SDK Version 2 that's currently in developer preview. I didn't love Version 1 and wanted to compare and contrast. Mostly to see if it was me or version 1. I went and got the new SDK and working out my approach when I saw the time, and decided to get some sleep.
+The very next day before I had even attempted an upload, bang! the AWS Golang V2 SDK changed... Like overnight!, and it was a biggie. The 25 to 26 minor version number increment pretty much wrecked all my work. And if you go read the AWS gitter chanel about it. It seems a lot of people got a surprise by this change. 
 
-https://unix.stackexchange.com/questions/185764/how-do-i-get-the-size-of-a-directory-on-the-command-line
+I know that was a possibility with a developer preview however, I never thought that it would happen to me! :P
+
+After that first failure, I then pivoted straight to google asking **s3 batch upload?** to which google said ... **Nope** щ(ಠ益ಠщ)
+
+I did try the s3 synch command, that I read about on Stack Overflow. [Does the s3 API support uploading multiple objects in a single HTTP call?](https://stackoverflow.com/a/15050914)
+
+Again, painfully slow internet came to haunt me. I didn't want to just let the process run and risk something stupid happening, like me having to miss out on two or three coffees due to a loop or something. I watched the s3 synch command for about 15 mins before calling it quits for the night and going to bed. 
+I did get 45K worth of files up, and then get the charge for the ~27 cents for it.
+
+Short story, AWS knows how to make money. There's no good shortcut. I did think about throwing up a zip file and then getting a ec2 or lambda to unzip it. But you still pay the cost of putting the items on S3. Also, the time saver element probably isn't there, with have to write the lambda or ec2 process and also risk making a mistake and paying twice or three times like I did when playing with DynamoDB.
+
+**Pivoting**
+
+I'm not giving up. I'm just not sure what to do now. 
+
+I think what I want is to use the tree I can build now, but to use it to output a graph that doesn't include mesh blocks. Something like this.
+
+{{<image name="tree2.png" alt="Possible new output tree">}}
+
+The discussion then turns to what is the actual intent of what I'm building. And how important are those mesh blocks. 
+
+In part two, I'll let you know what I come up with.
 
 
-https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/
+---
 
-How get more files up to AWS?
+Helpful stuff I never use enough:
+
+[How To Find Largest Top 10 Files and Directories On Linux / UNIX / BSD](https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/)
+
+
+
 
