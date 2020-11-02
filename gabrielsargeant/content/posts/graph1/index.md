@@ -253,17 +253,17 @@ I shall have a ponder.
 
 **S3, the AWS Golang SDK V2, my tears, and Linux ls and du OR Two days and 27 cents later.**
 
-I had intended to get the content up onto s3. The *expected* cost for the upload should be around ~5 bucks, which I'm willing to pay. But, I soon found out what I wasn't willing to pay was the upload speed. *You suck Australian Internet!* 
+I had intended to get the content up and on to S3. The *expected* cost for the upload should be around ~5 bucks, which I'm willing to pay. But, I soon found out what I wasn't willing to pay was the upload speed. *You suck Australian Internet!* 
 Getting the files up to AWS was slow! like really really slow. And I hit some odd issues along the way.
 
 Just to recap, the input file, the ASGS allocation csv is about 250MB. After building the outputs, I had ~430K worth of files. Oddly the   
 ```> ll --block-size=MB ```   
 command reported 16 MB. In real life, the size was 1.7 GB of output files. It seems with large numbers of files the **ls** command fails and it's better to use ```du```. [Thanks Kamil from Stack Overflow](https://unix.stackexchange.com/a/185765)
 
-I tried a few things to get stuff onto AWS.
+I tried a few other approaches to get stuff onto AWS.
 
-Firstly,I wanted use the AWS golang SDK Version 2 that's currently in developer preview. I didn't love Version 1 and wanted to compare and contrast. Mostly to see if it was me or version 1. I went and got the new SDK and working out my approach when I saw the time, and decided to get some sleep.
-The very next day before I had even attempted an upload, bang! the AWS Golang V2 SDK changed... Like overnight!, and it was a biggie. The 25 to 26 minor version number increment pretty much wrecked all my work. And if you go read the AWS gitter chanel about it. It seems a lot of people got a surprise by this change. 
+Firstly, I wanted use the AWS golang SDK Version 2 that's currently in developer preview. I didn't love Version 1 and wanted to compare and contrast. Mostly to see if it was me or version 1. I went and got the new SDK and working out my approach when I saw the time, and decided to get some sleep.
+The very next day before I had even attempted an upload, bang! the AWS Golang V2 SDK changed... Like overnight!, and it was a biggie. The 25 to 26 minor version number increment pretty much wrecked all my work. And if you go read the AWS gitter chanel about it. It seems a lot of people got a surprise as well.
 
 I know that was a possibility with a developer preview however, I never thought that it would happen to me! :P
 
@@ -284,7 +284,7 @@ I'm thinking I want to use the tree that I can build now, but to use it to outpu
 
 {{<image name="tree2.png" alt="Possible new output tree">}}
 
-Taht chops out a lot of extra mesh block junk from the output. About ~360K objects. Which makes S3, or Dynamo cheaper. But then, the discussion turns to what is the actual intent of what I'm building. And how important are those mesh blocks. 
+That chops out a lot of extra mesh block junk from the output. About ~360K objects. Which makes S3, or Dynamo cheaper. But then, the discussion turns to what is the actual intent of what I'm building. And how important are those mesh blocks. 
 
 In part two, I'll let you know what I come up with.
 
