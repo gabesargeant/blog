@@ -13,9 +13,7 @@ This was a super helpful distraction because this little jaunt into the ASGS has
 
 I'm going to build two graphs. Or two tree's which I will join onto mesh blocks forming one graph. 
 
-{{<image name="tree2.png" alt="Possible new output tree">}}
-
-All have a trunk at the Austrlaia Level, but one is the ASGS the other is Non-ASGS regions. 
+All have a trunk at the Australia level, but one is the ASGS the other is Non-ASGS regions. 
 
 They join at the leaves. 
 
@@ -23,9 +21,15 @@ I then need to create a process to walk the graph and build objects that show th
 
 The POA and SSC areas are roughly like SA2 in sizes, both in population and physical space. Though in Australia you can find an example that breaks every rule. Because of this general similarity I'm going to omit outputting the Mesh Block and SA1 levels. Rather, I'd like to abstract them into SA2's as references that show the chain.
 
+{{< image name="asgs.gif" alt="Gif of the building a node and relations via the ASGS">}}
+
 **Thoughts so far**
 
+I usually write this stuff late at night and also think about the problems fairly late. And that's the reason why I totally blanked on the fact that the child regions for the State of NSW is everything in NSW. And that's a really dumb thing to try and capture in an single object. In that above GIF the bottom up search works because you're going up. But if you search down on the ASGS side, because there's nesting you end up with a ton of objects. 
 
+I think I have rediscovered the reason for pointers and databases. sigh. 
+
+It seems like I want to create
 
 
 
