@@ -27,9 +27,16 @@ The POA and SSC areas are roughly like SA2 in sizes, both in population and phys
 
 I usually write this stuff late at night and also think about the problems fairly late. And that's the reason why I totally blanked on the fact that the child regions for the State of NSW is everything in NSW. And that's a really dumb thing to try and capture in an single object. In that above GIF the bottom up search works because you're going up. But if you search down on the ASGS side, because there's nesting you end up with a ton of objects. 
 
-I think I have rediscovered the reason for pointers and databases. sigh. 
+I think I have rediscovered the reason for pointers and databases. Sigh. 
 
-It seems like I want to create
+**Revised plan**
+
+I'm going to make individual nodes, that know their parent and their direct child but nothing beyond those direct relationships. 
+I'll spend the $5 bucks and put it all in DynamoDB, and wrap a lambda function onto to expose another endpoint avoid Api Gateway.
+
+Now to ponder the indexes...
+
+
 
 
 
