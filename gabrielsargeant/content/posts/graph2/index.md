@@ -36,6 +36,20 @@ I'll spend the $5 bucks and put it all in DynamoDB, and wrap a lambda function o
 
 Now to ponder the indexes...
 
+**I legit hate this project now... The grim death march begins.**  
+Ok so I've been hard at work putting 400K objects into DynamoDB.   
+My old foe, the AWS DynamoDB Golang SDK has caused many issues. Most, actually all of them were my fault. However pointers.... 
+
+Long story short, it's now time to create a Lambda function to get a region and then based on that region, get it's children. 
+I'm thinking I will make one API: **/asgs/getRegions?code&code&code etc.**
+This time I'm going to use **GET**, as opposed to **POST* requests. Yay, a fiend of the cache. 
+
+**Doing something fun with javascript to interact with it.**  
+
+Hello [Sigma JS.](http://sigmajs.org/). An oddly not HTTPs site. :/
+Anyway, I was considering doing something with Graphvis, I still may, however the Golang interactions with the Graphviz engine looks too complex for a humble Lambda. And it'd be a lot of images over the network. So instead, we shaft the client and they get to pay in the cycles building the graph in their browser.
+
+
 
 
 
