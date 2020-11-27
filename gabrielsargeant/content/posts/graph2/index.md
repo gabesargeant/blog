@@ -49,6 +49,11 @@ This time I'm going to use **GET**, as opposed to **POST* requests. Yay, a fiend
 Enter stage left: [Sigma JS.](http://sigmajs.org/). An oddly not HTTPs site. :/
 Anyway, I was considering doing something with Graphvis, I still may, however the Golang interactions with the Graphviz engine looks too complex for a humble Lambda. And it'd be a lot of images over the network. So instead, we shaft the client and they get to pay in the cycles building the graph in their browser. (☞ﾟ∀ﾟ)☞
 
+**Lambda Function and the API Gateway**
+
+Going Camping, not thinking about this. 
+
+
 
 
 
