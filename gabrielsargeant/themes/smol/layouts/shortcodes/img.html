@@ -1,0 +1,79 @@
+{{/* get file that matches the filename as specified as src="" in shortcode */}}
+{{ $src := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) }}
+
+{{/* set image sizes, these are hardcoded for now, x dictates that images are resized to this width */}}
+
+{{ $lqipw := default "20x" }}
+{{ $tinyw := default "320x" }}
+{{ $smallw := default "420x" }}
+{{ $mediumw := default "520x" }}
+{{ $largew := default "620x" }}
+{{ $xlargew := default "720x" }}
+
+{{/* resize the src image to the given sizes */}}
+
+{{ $lqip := $src.Resize $lqipw }}
+{{ $tiny := $src.Resize $tinyw }}
+{{ $small := $src.Resize $smallw }}
+{{ $medium := $src.Resize $mediumw }}
+{{ $large := $src.Resize $largew }}
+{{ $xlarge := $src.Resize $xlargew }}
+
+{{/* only use images smaller than or equal to the src (original) image size, as Hugo will upscale small images */}}
+{{/* set the sizes attribute to (min-width: 35em) 1200px, 100vw unless overridden in shortcode */}}
+
+{{ $img := imageConfig ($src.RelPermalink | printf "content/%s" ) }}
+
+<div class="img" style="background: url(data:image/png;base64,{{ $lqip.Content | base64Encode  }}); 
+background-size: 100% 100%;
+width: {{ $img.Width }}px; 
+height: {{ $img.Height }}px;">
+  <svg width="{{ $img.Width }}px" height="{{ $img.Height }}px" aria-hidden="true"></svg>
+  <img
+    class="lazyload"
+    data-sizes="auto"
+    data-srcset='
+    {{ if ge $src.Width "320" }}
+      {{ with $tiny.RelPermalink }}{{.}} 320w{{ end }}
+    {{ end }}
+    {{ if ge $src.Width "420" }}
+      {{ with $small.RelPermalink }}, {{.}} 420w{{ end }}
+    {{ end }}
+    {{ if ge $src.Width "520" }}
+      {{ with $medium.RelPermalink }}, {{.}} 520w{{ end }}
+    {{ end }}
+    {{ if ge $src.Width "620" }}
+      {{ with $large.RelPermalink }}, {{.}} 620w{{ end }}
+    {{ end }} 
+    {{ if ge $src.Width "720" }}
+      {{ with $xlarge.RelPermalink }}, {{.}} 720w{{ end }}
+    {{ end }}'   
+    data-src="{{ $src.RelPermalink }}"
+  
+    width="{{ $img.Width }}px" height=" calc( {{ $img.Height }}px + 2px)"
+    {{ with .Get "alt" }}alt='{{.}}'{{ end }}>
+  <noscript>
+    <img
+      loading="lazy"
+      {{ with .Get "sizes" }}sizes='{{.}}'{{ else }}{{ end }}
+      srcset='
+       {{ if ge $src.Width "320" }}
+      {{ with $tiny.RelPermalink }}{{.}} 320w{{ end }}
+    {{ end }}
+    {{ if ge $src.Width "420" }}
+      {{ with $small.RelPermalink }}, {{.}} 420w{{ end }}
+    {{ end }}
+    {{ if ge $src.Width "520" }}
+      {{ with $medium.RelPermalink }}, {{.}} 520w{{ end }}
+    {{ end }}
+    {{ if ge $src.Width "620" }}
+      {{ with $large.RelPermalink }}, {{.}} 620w{{ end }}
+    {{ end }} 
+    {{ if ge $src.Width "720" }}
+      {{ with $xlarge.RelPermalink }}, {{.}} 720w{{ end }}
+    {{ end }}'  
+      src="{{ $src.RelPermalink }}"    
+    width="{{ $img.Width }}px" height=" calc( {{ $img.Height }}px + 2px)"
+    {{ with .Get "alt" }}alt='{{.}}'{{ end }}>
+  </noscript>
+</div>
