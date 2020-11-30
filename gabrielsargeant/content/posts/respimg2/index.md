@@ -12,3 +12,7 @@ I was wrong.
 
 the case sensitivity of paths became a thing. I think I've had this problem again. Anyway. referenceProject needed to be referenceproject for the updates to work. And i've retired the **image** short code I wrote about in part 1. And replaced it with the **img** one that I boosted from a few different write ups on the web.
 
+https://laurakalbag.com/processing-responsive-images-with-hugo/
+
+https://dev.to/stereobooster/responsive-images-for-hugo-dn9
+
