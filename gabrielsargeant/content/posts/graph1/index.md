@@ -53,7 +53,7 @@ type AsgsRegionNode struct {
 }
 ```
 My idea is to use this structure to create two tree's that join on the terminal leaves they share, ie MeshBlock regions. Something that looks like this. 
-{{<image name="tree.png" alt="the parts of the ASGS I'm interacting with for this little side gig.">}}
+{{< img src="tree.png" alt="the parts of the ASGS I'm interacting with for this little side gig." >}}
 Note, the dotted lines are not included in the tree. Whilst Suburbs and postal areas fall under states, I haven't segmented them that way. As this graph doesn't have nodes that point at different types of children. If I did make those dotted lines solid in my program, the effect would be that an instance of a State Node would have up to three different region under it. This isn't such a problem, but it's extra complexity I don't want or need right now. 
 
 **Tree Construction**
@@ -180,7 +180,7 @@ When you're reasoning about a tree on paper, you're usually starting from the to
 
 Anyway, I walked and I thought. Eventually I thought instead of pointers, I could keep references to each child and parent region in arrays. 
  And I could stores the regions in a set of flat map objects. I pondered this for a bit but eventually....
-{{< image name="imokwt.png" alt="I'm Ok with this, Comic from KC Greens's Comics">}}
+{{< img src="imokwt.png" alt="I'm Ok with this, Comic from KC Greens's Comics">}}
 
  It's not rocket science, but I wasn't sure really what I wanted to do yet with the tree. 
 
@@ -282,7 +282,7 @@ I'm not giving up. I'm just not sure what to do now. I'm taking a few days to th
 
 I'm thinking I want to use the tree that I can build now, but to use it to output a graph that doesn't include mesh blocks. Something like this.
 
-{{<image name="tree2.png" alt="Possible new output tree">}}
+{{<img src="tree2.png" alt="Possible new output tree">}}
 
 That chops out a lot of extra mesh block junk from the output. About ~360K objects. Which makes S3, or Dynamo cheaper. But then, the discussion turns to what is the actual intent of what I'm building. And how important are those mesh blocks. 
 

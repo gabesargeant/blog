@@ -25,7 +25,7 @@ I like this problem because there's actually a lot to it. Front-ends, API's and 
 
 A general overview of the application would be:
 
-{{< image name="generic_network_layout.png" alt="the generic network layout for this web mapping reference project" >}}
+{{< img src="generic_network_layout.png" alt="the generic network layout for this web mapping reference project" >}}
 
 ## The Retrospective
 
@@ -40,7 +40,7 @@ I plan on doing a bit more stuff with AWS in the near future and I don't really 
 
 **A GIF of the App in Action**
 
-{{< image name="dataandmaps.gif" alt="Gif Animation showing the program flow of my mapping reference application">}}
+{{< img src="dataandmaps.gif" alt="Gif Animation showing the program flow of my mapping reference application">}}
 
 **The ABS Map Layers**
 
@@ -49,7 +49,7 @@ is pretty important to understand the information that data packs contain. Simpl
 
 If you follow that above link, there's a few good diagrams and description which show the ASGS and related content. I've done up a tree diagram to also show the relations. 
 
-{{< image name="asgs.png" alt="The structure of the ABS Census Data Packs" >}}
+{{< img src="asgs.png" alt="The structure of the ABS Census Data Packs" >}}
 
 Just for some rough sizes, There's 1 Australia, about 8000 Postal Areas, 56,000 Statistical Area 1 and, over 400K Mesh Blocks.
 
@@ -76,7 +76,7 @@ Below is a really nice picture of the folders that come with the ZIP file for th
 
 When you open the data pack zip file up for the first time, you can look in the States (STE) folder and you'll have ~50 CSV's with 10 rows only, The numbers are pretty large for everything as it's the rolled up totals for the states. Each folder going down the ASGS gets bigger and the numbers smaller. The 50 CSV's represent the topics that are collected and extracted from the Census data. A personal observation is that the higher the CSV number, ie G15 and up, the more esoteric the topic is and usually smaller the numbers. This results in a lot of big sparse tables. And lots of Zeros.
 
-{{< image name="datapacks.png" alt="The structure of the ABS Census Data Packs" >}}
+{{< img src="datapacks.png" alt="The structure of the ABS Census Data Packs" >}}
 
 In theory, the numbers from All the MeshBlocks in an SA3 should total up to match the totals given for the SA3. In practice, they don't. And it's totally fine. This is due to a privacy process that slightly alters the lower numbers to avoid disclosure of individual responses. It's mostly an issue for topics with very sparse tables.
 
@@ -144,7 +144,7 @@ Replacing PHP was pretty simple. I wanted to do something more substantial with 
 
 The requirements for the API were broadly to support the left to right flow of a user through the stages of the application:
 
-{{< image name="flow.png" alt="application pages" >}}
+{{< img src="flow.png" alt="application pages" >}}
 
 
 1. The API had to take a POST request from the front end selection map. Which contained a set of location codes and column variables. 

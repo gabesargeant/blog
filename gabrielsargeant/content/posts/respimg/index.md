@@ -6,7 +6,7 @@ tags:
 - Hugo
 - Responsive
 ---
-{{< image name="kiddo.png" alt="Kiddo meme saying, You can't just use one image for all devices; That's where you're wrong kiddo" >}}
+{{< img src="kiddo.png" alt="Kiddo meme saying, You can't just use one image for all devices; That's where you're wrong kiddo" >}}
 
 There are a lot of ways to create responsive images for websites on the internet. Here's what I did.
 

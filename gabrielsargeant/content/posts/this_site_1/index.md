@@ -5,6 +5,7 @@ draft: false
 tags:
 - AWS
 - Hugo
+- This Site
 ---
 
 This is an early rundown of how I plan to get this site up on the web.
@@ -63,7 +64,7 @@ Oh for added fun, I'll write it in go to use the AWS Golang SDK, which I have fe
 
 **Network Architecture.**  
 
-{{< image name="site_1.png" alt="How this site will look on the network,  A user interacting with AWS Cloudfront which connects to AWS S3">}}
+{{< img src="site_1.png" alt="How this site will look on the network,  A user interacting with AWS Cloudfront which connects to AWS S3">}}
 As simple and cheap as possible.
 
 **Publish plan**

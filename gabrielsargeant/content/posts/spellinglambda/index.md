@@ -21,7 +21,7 @@ Actually, I've done nothing at all so far. This is just my early thinking. Soon 
 **A Brief design.**  
 Here's what it will look like:
 
-{{< image name="serverlessdesign.png" alt="diagram of serverless mapping tool design">}}
+{{< img src="serverlessdesign.png" alt="diagram of serverless mapping tool design">}}
 
 1. A DynamoDB table will hold the [Census Data Pack](https://datapacks.censusdata.abs.gov.au/datapacks/) rows as tuples.
 2. A Lambda function will do the lookups from the DynamoDB.

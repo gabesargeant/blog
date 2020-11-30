@@ -5,6 +5,7 @@ draft: false
 tags:
 - AWS
 - Hugo
+- This Site
 ---
 
 **Getting this all setup.**

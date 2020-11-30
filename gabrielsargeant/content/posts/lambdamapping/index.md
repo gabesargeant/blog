@@ -134,11 +134,11 @@ I have to do some testing at the edges of the limits to make sure there are no o
 In anticipation of developing the front end code and lambda function for the API gateway I needed to create the database and put data in it.
 And that all just worked!  
 
-{{<image name="dynamoUpload.png" alt="Confirmation that the dbbuilder and upload go code works">}}
+{{<img src="dynamoUpload.png" alt="Confirmation that the dbbuilder and upload go code works">}}
 
 And everything got uploaded!   
 
-{{<image name="dynamoUploadCheck.png" alt="The csvTransform program correctly transformed all the records and the dbbuilder uploaded everything as required">}}   
+{{<img src="dynamoUploadCheck.png" alt="The csvTransform program correctly transformed all the records and the dbbuilder uploaded everything as required">}}   
 
 I'm pretty happy that went so well.
 &nbsp;
@@ -174,7 +174,7 @@ Extra Extra points
 **Steps 1 --> 5** were pretty easy. Obviously, API Gateway isn't in the mix yet but the general mechanics of the lambda are pretty much the same.
 I followed this [AWS guide](https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html) on Golang Lambda functions as a start, and that was actually pretty simple. At this point, the lambda function was 'working'. I deployed it up to AWS and gave it a go. 
 
-{{< image name="basiclambda.png" alt="Image of basic lambda execution result">}}
+{{< img src="basiclambda.png" alt="Image of basic lambda execution result">}}
 
 
 
@@ -217,7 +217,7 @@ Setting up the API Gateway was hard and then it was really easy. It got easy onc
 
 It can be summarized by this flow chart which oddly looks like a finite state machine.
 
-{{<image name="rtfm.png" alt="flow chart describing my development process">}}
+{{<img src="rtfm.png" alt="flow chart describing my development process">}}
 
 I lost about ~5 hours to a really stupid mistake of not setting an HTTP response code in the lambda [events.APIGatewayProxyResponse](https://github.com/aws/aws-lambda-go/blob/master/events/apigw.go#L21) struct. It turns out that HTTP response codes are pretty important for a HTTP API. As is clearly described in the first sentences of the [doco about version 1.0](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html#http-api-develop-integrations-lambda.response). ಠ ∩ ಠ. Consequently, API Gateway will not send a response if a HTTP code isn't set. 
 Why did I miss this? Two reasons. I really was skimming stack overflow trying to grok the answer to *why my API wasn't just working*. And the Events package has two versions of the APIGatewayProxyResponse struct which both share most the same fields. As I didn't have a solid grasp of what I was doing I picked the first one and didn't bother with a response code. *This is where some code comments on the struct type would have helped AWS.*
@@ -258,7 +258,7 @@ One thing does strike me about AWS. All of their products are reasonably good. T
 
 Anyway, all of that was done and then it still didn't work. This picture explains my mistake.
 
-{{< image name="awpigatewaycomms.png" alt="Communications pathways between AWS cloud components">}}
+{{< img src="awpigatewaycomms.png" alt="Communications pathways between AWS cloud components">}}
 
 I needed to the route to go api.gabrielsargeant.com to CloudFront to terminate SSL with my certificate that has the *.gabrielsargeant.com name so that CloudFront can handle communications between API Gateway and itself before rewrapping the request with my HTTPs cert.
 
@@ -342,7 +342,7 @@ type MapDataResponse struct {
 **Thoughts on optimizing the lambda function**
 The current lambda function has the following request logic. 
 
-{{< image name="lambdaflow.png" alt="sequence diagram of the lambda functions interaction with AWS">}}
+{{< img src="lambdaflow.png" alt="sequence diagram of the lambda functions interaction with AWS">}}
 
 If the performance from dynamoDB is and issue and I'm chasing milliseconds in Lambda execution speed then there's a few things I can do to making things happen faster.  
 
@@ -417,7 +417,7 @@ This issue stems from the cell descriptors file I used as the source of the meta
 
 Right now, I've fixed this with a hacky solution, but it makes me think that I should potentially not include the region code in the table data KVPairs object. Which means rewriting the csv_transformer go program. I think I can work around it. Probably something to sleep on as there could be a way around this issue that I haven't though of yet. 
 
-{{<image name="tablefail.png" alt="image showing a test table display method and a limitation with a json structure">}}
+{{<img src="tablefail.png" alt="image showing a test table display method and a limitation with a json structure">}}
 
 Just a screen shot of a file I'm using to build up the feature before starting to integrate it into the main front end code. 
 
@@ -432,7 +432,7 @@ Before doing any of the mapping bits and the wiring together of things, there's 
 
 Please forgive the garish colors. But I'm using the Z-index plane to overlay each of those pages and it's easier to track state visually for me this way. 
 
-{{< image name="mockPage.gif" alt="Mock webpage to test CSS and demo layout">}}
+{{< img src="mockPage.gif" alt="Mock webpage to test CSS and demo layout">}}
 
 
 **Things to think about:**  
@@ -468,7 +468,7 @@ The next issue I hit was the presence of characters like **..** these represent 
 
 Those **..** actually do convey information. So they need to be kept. For simplicity, I'm converting them to -1. And I'll annotate as such on the front end.
 
-{{< image name="cellsupression.png" alt="example of a suppressed cell" >}}
+{{< img src="cellsupression.png" alt="example of a suppressed cell" >}}
 
 **Load Scripts**
 
@@ -558,7 +558,7 @@ But things so far are going well. I've got topics, data returning on the webpage
 
 Here's where I'm at so far. 
 
-{{< image name="halfwaydone.gif" alt="Working Application with data selection and retrieves">}}
+{{< img src="halfwaydone.gif" alt="Working Application with data selection and retrieves">}}
 
 
 **Optimizing javascript in an attempt to be friendly to everyone's bandwidth**
@@ -581,7 +581,7 @@ The map looks good! Everything else has the usual utilitarian shine. I'm startin
 This was fun and easy. I already have a lot working on the site. The requests are stable. All the logic needs a shake out but otherwise it's in a good spot. 
 The only issue, My data tables look like this.
 
-{{< image name="regionNames.png" alt="a data table showing region numbers, not region names">}}
+{{< img src="regionNames.png" alt="a data table showing region numbers, not region names">}}
 
 There are lookup tables that map those region numbers to actual values. Ooops. That should have been in the **dbbuilder** tool. Anyway, I used the same trick as before. This time it's not as messy. But it is big. I totally know that I could fix this another way. But I'm just not ready to spend $4 re-uploading the changes to the DB.  
 So, the fix is a giant map which I put in the lambda function in a non breaking way. Not the worst outcome.
@@ -595,13 +595,13 @@ So, I gave in an used jQuery. I'll have a lot to refactor. But, I have a working
 Thanks to my fat data model, I can just have a drop down for different data items on the visualization page. 
 This works smashingly fast in practice because there's no calls past the point where you see the data table. And that usually tops out at ~1 second max. 
 
-{{< image name="genericVisBtn.png" alt="data page with viz button" >}}
+{{< img src="genericVisBtn.png" alt="data page with viz button" >}}
 
 An example of the quick visualization from a small selection of inner melbourne.
 
 *please forgive the black side bar*
 
-{{< image name="quickViz.gif" alt="gif of visualization.">}}
+{{< img src="quickViz.gif" alt="gif of visualization.">}}
 
 I have to set a few events to fire once the features are all downloaded and rendered. 
 Other than that. Everything should be good.
@@ -615,7 +615,7 @@ In both the front end and Lambda function I have a limit on 100 regions. This cr
 
 The UX issues is that most users will drill down to show all the suburbs in Melbourne. If they try and get the data they will only get ~100 of those regions, and when they try and visualize that it will come up as a spotty image. Some of the regions will not be shown as they were clipped out of the request. In the image below the blue box is the original request area.
 
-{{< image name="fieldlimits.png" alt="example of limits ux bug showing partial results.">}}
+{{< img src="fieldlimits.png" alt="example of limits ux bug showing partial results.">}}
 
 I'm keeping my limits. However, the ASGS isn't randomly assigned numbers, there's a sort of an order, and a slight relationship between close region numbers  being also close physically to each other. 
 

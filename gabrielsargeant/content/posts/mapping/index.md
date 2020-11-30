@@ -34,8 +34,8 @@ Luckily for me when you copy data from Excel it TAB separates the content and ju
 The really powerful part of this visualization is the Map Join that occurs between a CSV data and the Shapefile.  
 This is the tool in Action. 
 
-{{< image name="mapjoin.jpg" alt="Example of the Map tool">}}
-{{< image name="mapjoin2.png" alt="Join onf Shared field">}}
+{{< img src="mapjoin.jpg" alt="Example of the Map tool">}}
+{{< img src="mapjoin2.png" alt="Join onf Shared field">}}
 
 The CSV to Map Join needs a field that is supplied by the Layer from the Map Service.
 I built the tool to use Australian Post Codes with the ABS Post Code area Map Layer.
@@ -44,7 +44,7 @@ Suburbs, Electoral Division and other locales in Australia such as the Australia
 
 It's important when thinking about what the join field will be. If you're like me and always use publicly exposed map servers then it'll be up to you to fit with what's provided.  
 
-{{< image name="outfields.jpg" alt="Layer out fields">}}
+{{< img src="outfields.jpg" alt="Layer out fields">}}
 
 If you have your own map server then you have a lot more control over the fields. The only downside is managing all the Shapefiles. It is its own whole big area of work that I don't really want to dip into anymore.
 
@@ -62,15 +62,15 @@ The key points are:
 Points 3 and 4 seem contradictory, but if you want to visualize Australia, the nature of our cities and rural divide make it hard. Whereas visualizing numbers across a city is pretty simple, but you lose the geographic context of the city as part of the wider country because you have to zoom in so far.
 
 ![The important half of Australia with it's suburbs drawn on it](lod.png)
-{{< image name="lod.png" alt="Level of detail example">}}
+{{< img src="lod.png" alt="Level of detail example">}}
 
 All of those points conspire to make it tricky to do visualizations about Australia. You need to create a map that gives you context, so you can recognize it. But you also want the ability to compare places far away so you can see the difference between two cities like Sydney and Melbourne whilst still understanding their relationship to their local environment.
 
-{{< image name="aus_election.png" alt="Australian election Map" >}}
+{{< img src="aus_election.png" alt="Australian election Map" >}}
 
 Countries, where the population has spread out into the countryside over centuries, are easier to make impactful visualizations with. A great example is comparing the USA and Australian election maps. In the US you can see the whole country and there are enough people in the regions that a county-level map gives you a good break down that is both reasonably understandable and readable on a screen. 
 
-{{< image name="us_election.jpg" alt="US election Map" >}}
+{{< img src="us_election.jpg" alt="US election Map" >}}
 
 [Level of Detail](https://en.wikipedia.org/wiki/Level_of_detail) is a tough-ish problem. It's made especially harder when you want to do anything dynamic as you can't anticipate what a user is going to do with the tool.
 

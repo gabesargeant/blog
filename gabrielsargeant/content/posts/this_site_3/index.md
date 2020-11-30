@@ -5,12 +5,13 @@ draft: false
 tags:
 - AWS
 - Hugo
+- This Site
 ---
 
 I deployed this site to the web on the 26th. And before that day was over I was already in the AWS console ripping it to shreds. 
 
 This is a picture of the network, before and after. In red is the *exposed* surface. It's not a huge thing but I wanted to provide only one way to see this site.
-{{< image name="site_3.png" alt="network layout">}}
+{{< img src="site_3.png" alt="network layout">}}  
 Following the previous tutorials from AWS and Mr. Baumgold, I essentially ended up with a CloudFront distribution that people can sidestep via the red path. It's not easy but if they are willing to guess the bucket name (which is kind of an easy guess), and then the region (finite options). Then they can interact with the website sans the CDN. Which isn't something I want to happen. 
 
 I was thinking about this and pottered around google looking for ways to really dial up the security on my S3 bucket. Mostly just so if the timeline skips and I end up getting a ton of traffic to this site then I don't want to pay through the nose for it.

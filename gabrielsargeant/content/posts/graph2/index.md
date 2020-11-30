@@ -21,7 +21,7 @@ I then need to create a process to walk the graph and build objects that show th
 
 The POA and SSC areas are roughly like SA2 in sizes, both in population and physical space. Though in Australia you can find an example that breaks every rule. Because of this general similarity I'm going to omit outputting the Mesh Block and SA1 levels. Rather, I'd like to abstract them into SA2's as references that show the chain.
 
-{{< image name="asgs.gif" alt="Gif of the building a node and relations via the ASGS">}}
+{{< img src="asgs.gif" alt="Gif of the building a node and relations via the ASGS">}}
 
 **Thoughts so far**
 
