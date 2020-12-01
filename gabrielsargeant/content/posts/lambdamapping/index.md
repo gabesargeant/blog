@@ -12,10 +12,10 @@ tags:
 
 I started work on the 09-09-20, 99% finished on the 10-10-20.
 
-I'm going to list in sections the parts of the project as I build it, keeping any important notes along the way.
+I'm just going to list in sections, the parts of the project as I build it, keeping any important notes along the way.
 
 I'm generally approaching this problem from back to front. Starting with the data processing. Then I'll build the Lambda and infrastructure, and then the javascript monstrosity. Hopefully, this will read like an exciting travel diary.
-
+<!--more-->
 # Building the Database.
 
 This repo contains my data packs code. [smap](https://github.com/gabesargeant/smap)

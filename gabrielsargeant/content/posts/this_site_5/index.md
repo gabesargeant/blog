@@ -8,7 +8,7 @@ tags:
 - This Site
 ---
 
-Small Update to the sites hosting. I've been pondering about the 'hackers' that are going to find my not well hidden public S3 bucket. 
+This is a small update to the sites hosting. I've been pondering about the 'hackers' that are going to find my not well hidden public S3 bucket. 
 
 What will they do with it in it's read-only form?
 
@@ -17,9 +17,6 @@ Will they make hundreds of thousands of non-cached requests against my content i
 Considering the awful possibilities. I, like a professional, put on my IT Security Hat and started thinking.
 
 {{< img src="SecurityHat.png" alt="Propella Cap Security Hat">}}
-
-
-
 
 In my previous post **[Rebuilding this site again.]({{< ref "/posts/this_site_3/index.md" >}})**. I was lamenting the difficulties I was hitting with using S3 as a private REST bucket. I can't actually remember what tipped me over the edge. But something made me roll back to just having a *insecure* origin for a while. I think it was how errors were being handled.
 

@@ -19,7 +19,7 @@ The goal of the project was to select features on a map, and use that selection 
 
 **Mission Accomplished.**
 
-
+<!--more-->
 
 ### Here's a list of my mistakes, assumptions, and traps I fell into. 
 

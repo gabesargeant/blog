@@ -10,7 +10,7 @@ tags:
 
 
 Is it just me or does Lambda get trickier to spell over time? 
-
+<!--more-->
 **A Serverless mapping project.**  
 In the previous post, I talked about building a server app that displayed a map, let a user select regions from it, and then queried a database about those selections. 
 
