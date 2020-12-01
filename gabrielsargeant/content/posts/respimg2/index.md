@@ -1,7 +1,7 @@
 ---
 title: "Responsive Images and Hugo...again!...Never again!"
 date: 2020-11-30
-draft: true
+draft: false
 tags:
 - Hugo
 - Responsive
@@ -33,10 +33,11 @@ Total in 78 ms
 Error: Error building site: "~/Documents/git/blog/gabrielsargeant/content/posts/referenceProject/index.md:28:1": failed to render shortcode "img": failed to process shortcode: execute of template failed: template: shortcodes/img.html:29:11: executing "shortcodes/img.html" at <imageConfig ($src.RelPermalink | printf "content/%s")>: error calling imageConfig: open ~/Documents/git/blog/gabrielsargeant/content/posts/referenceproject/generic_network_layout.png: no such file or directory
 ```
 
- I think I've had this problem in the past. Anyway, referenceProject needed to be referenceproject for the updates to work. That's done.
+ I think I've had this problem in the past. Anyway, reference**P**roject needed to be referenceproject for the updates to work. That's done. But it took me about 2 hours to spot that capitalization issue. (¬▂¬)
  
- And, I've retired the **image** short code I wrote about in part 1 and replaced it with the **img** one from the two guides above. 
+ I've retired the **image** shortcode I wrote about in part 1 and replaced it with the **img** one from the two guides above. 
  
  **Stuff that's still tricky**
 
- Gif images still remain a challenge. When they resize the animation isn't scaled. Only the first image. 
+ Gif images still remain a challenge. When they are resized their animation isn't scaled. Only the first frame of the Gif. 
+ I'm not sure if I'm going work to fix this. For the time being I can handle the limitation.
