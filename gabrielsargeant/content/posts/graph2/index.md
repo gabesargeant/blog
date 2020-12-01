@@ -54,13 +54,13 @@ Anyway, I was considering doing something with Graphvis, I still may, however th
 Going Camping, not thinking about this. 
 
 **After Camping**
-Camping was more a 30km daywalk in the Southern Ranges of Tasmania (Moonlight creek). I didn't feel crash hot as I started, I put this down to not being in the spirit of things as I started walking, hoping that I'd get more enthusiastic as the day progressed. 
+Camping was more a 30km daywalk in the Southern Ranges of Tasmania (Moonlight creek). I didn't feel crash hot as I started out. I put this down to not being in the spirit of things as I started walking. I pressed on hoping I'd get more enthusiastic as the day progressed. 
 
-As a side note, I'm someone a determined (stubborn) person. So ~14km and having climbed an elevation of 1000 meters. I had a think about pushing on and attempting my initial goals. It was at this point I decided to pike on the walk and turn back. The weather was good but also bad. It was sunny but with 40-50km winds being a constant. There was no cover and I thought about risk, the biggest risk I could see is I wasn't really pumped to be doing the hike. So I turned it around and headed out. Got home and slept for 16 hours. 
+As a side note, I'm somewhat a determined (stubborn) person. Only after walking approximately 14km and climbing an elevation of 1000 meters did I stop and have a think about pushing on and attempting my initial goals. It was at this point I decided to pike on the walk and turn back. The weather was good but also bad. It was sunny but with 40-50km winds that were constantly pushing me about. There was no cover and I thought about risk. The biggest risk I could see is I wasn't really pumped to be doing the hike. And spirit is everything when outdoors. I turned it around and headed out. Got home and slept for 16 hours. 
 
-I think I may have had a cold or something, because usually before I head out on these sorts of trips, I'm mega pumped for them. However it may have just been the location. Moonlight Ridge is a crappy crappy part of the world. Great past hill 1, but everything before that, thumbs down.
+I think I may have had a cold or something. Usually before I head out on these sorts of trips, I'm really pumped for them. However it may have just been the location. Moonlight Ridge is a crappy crappy part of the world. Great past hill 1, but everything before that, thumbs down.
 
-Anyway. I've been there before and I'll go again.
+Anyway, I've been there before, and I'll go again.
 
 **Back to this project.**
 

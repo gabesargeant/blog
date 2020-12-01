@@ -10,7 +10,6 @@
 {{ $mediumw := default "500x" }}
 {{ $largew := default "600x" }}
 {{ $xlargew := default "700x" }}
-{{ $xxlargew := default "800x" }}
 
 {{/* resize the src image to the given sizes */}}
 
@@ -20,7 +19,6 @@
 {{ $medium := $src.Resize $mediumw }}
 {{ $large := $src.Resize $largew }}
 {{ $xlarge := $src.Resize $xlargew }}
-{{ $xxlarge := $src.Resize $xxlargew }}
 
 
 {{/* only use images smaller than or equal to the src (original) image size, as Hugo will upscale small images */}}
@@ -50,9 +48,6 @@ background-size: cover; max-width: {{ $src.Width }}px; max-height: {{ $src.Heigh
       {{ if ge $src.Width "700" }}
       {{ with $xlarge.RelPermalink }}, {{.}} 700w{{ end }}
     {{ end }}
-    {{ if ge $src.Width "800" }}
-      {{ with $xxlarge.RelPermalink }}, {{.}} 800w{{ end }}
-    {{ end }}
     , {{ $src.RelPermalink }}, 4X' 
     data-src="{{ $src.RelPermalink }}"
   
@@ -79,9 +74,7 @@ background-size: cover; max-width: {{ $src.Width }}px; max-height: {{ $src.Heigh
     {{ if ge $src.Width "700" }}
       {{ with $xlarge.RelPermalink }}, {{.}} 700w{{ end }}
     {{ end }}
-    {{ if ge $src.Width "800" }}
-      {{ with $xxlarge.RelPermalink }}, {{.}} 800w{{ end }}
-    {{ end }}'  
+   '  
       src="{{ $src.RelPermalink }}"    
     width="{{ $img.Width }}px" height=" calc( {{ $img.Height }}px + 2px)"
     {{ with .Get "alt" }}alt='{{.}}'{{ end }}>
