@@ -8,7 +8,7 @@ Before you read this, read what came before this. [Graphs and the ASGS Part 1.](
 
 So... I Got slightly distracted by the 2020 election. Who didn't!. I think I watched like 96 hours of CNN. Won't be doing that again for ~4 years.
 This was a super helpful distraction because this little jaunt into the ASGS has kinda turned into a tiny bit of a death march. Anyway, I think I have a way forward.
-<!--more-->
+<!--more--> 
     
 **General Approach.**
 
