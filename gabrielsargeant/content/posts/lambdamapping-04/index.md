@@ -1,5 +1,5 @@
 ---
-title: "Serverless Web Mapping Retro"
+title: "Lambda Web Mapping: Part 4 - The Retro"
 date: 2020-10-14T00:11:24+11:00
 draft: false
 tags:
@@ -9,7 +9,7 @@ tags:
 - Retro
 ---
 
-If you don't know what this is about, then follow this link and read up on the design and implementation of my little side project. [Serverless Web Mapping]({{< ref "/posts/smap/index.md" >}})
+If you don't know what this is about, then follow this link and read up on the design and implementation of my little side project. [Serverless Web Mapping]({{< ref "/posts/lambdamapping-03/index.md" >}})
 
 
 ### In Summary

@@ -1,13 +1,13 @@
 <header>
-	<h2><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a><br></h2>
+	<h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a><br></h1>
 	<hr />
 	<div style="float: right;">{{ .Site.Params.subtitle }}</div><br>
 
 	<nav>
-		<a href="/"><b>Start</b></a>.
+		<a href="/">Start</a>.
 		{{ with .Site.Menus.main }}
 		{{ range . }}
-		<a href="{{ .URL | relURL }}"><b>{{ .Name }}</b></a>.
+		<a href="{{ .URL | relURL }}">{{ .Name }}</a>.
 		{{ end }}
 	</nav>
 	{{ end }}

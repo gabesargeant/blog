@@ -1,5 +1,5 @@
 ---
-title: "Thinking about building this site"
+title: "This site: 1 - Thinking about building this site"
 date: 2020-08-23
 draft: false
 tags:

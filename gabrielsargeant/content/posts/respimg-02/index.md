@@ -12,7 +12,7 @@ This week on "Things that seem simple, yet are really tricky", Gabriel gets twit
 
 **The problem**  
 I didn't like how the images on the site were scaling on mobile. Generally there was a point where images at some 'scale' would just look very very bad. 
-This was an effect of both the resize sizes of my old solution and CSS effects. You can read about what I did here. [Somewhat simple responsive images with Hugo]({{< ref "/posts/respimg/index.md" >}})
+This was an effect of both the resize sizes of my old solution and CSS effects. You can read about what I did here. [Somewhat simple responsive images with Hugo]({{< ref "/posts/respimg-01/index.md" >}})
 
 **The newer solution**  
 I pretty much followed these two blog posts. I used SteroBooster's solution. But Laura's blog was also useful for a few little tid bits that I had difficulty with.

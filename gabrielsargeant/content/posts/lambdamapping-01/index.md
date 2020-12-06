@@ -1,5 +1,5 @@
 ---
-title: "Spelling Lambda."
+title: "Lambda Web Mapping: Part 1 - Learning to spell Lambda."
 date: 2020-09-07
 draft: false
 tags:

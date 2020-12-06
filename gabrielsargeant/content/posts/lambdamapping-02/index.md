@@ -1,6 +1,5 @@
-
 ---
-title: "Lambda Mapping Project"
+title: "Lambda Web Mapping: Part 2 - Building it."
 date: 2020-10-10
 draft: false
 tags: 

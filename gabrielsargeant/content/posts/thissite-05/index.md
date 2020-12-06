@@ -1,5 +1,5 @@
 ---
-title: "The Zen-like sand garden of constantly tweaking this site."
+title: "This site: 5 - The Zen-like sand garden of constantly tweaking this site."
 date: 2020-11-30
 draft: false
 tags:
@@ -18,7 +18,7 @@ Considering the awful possibilities. I, like a professional, put on my IT Securi
 
 {{< img src="SecurityHat.png" alt="Propella Cap Security Hat">}}
 
-In my previous post **[Rebuilding this site again.]({{< ref "/posts/this_site_3/index.md" >}})**. I was lamenting the difficulties I was hitting with using S3 as a private REST bucket. I can't actually remember what tipped me over the edge. But something made me roll back to just having a *insecure* origin for a while. I think it was how errors were being handled.
+In my previous post **[Rebuilding this site again.]({{< ref "/posts/thissite-03/index.md" >}})**. I was lamenting the difficulties I was hitting with using S3 as a private REST bucket. I can't actually remember what tipped me over the edge. But something made me roll back to just having a *insecure* origin for a while. I think it was how errors were being handled.
 
 Anyway, Long story short. My S3 origin is a webserver again. And it's secure enough.
 
