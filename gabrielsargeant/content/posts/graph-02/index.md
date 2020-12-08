@@ -54,7 +54,7 @@ Anyway, I was considering doing something with Graphvis, I still may, however th
 
 Going Camping, not thinking about this. 
 
-**After Camping**
+**After Camping**  
 Camping was more a 30km daywalk in the Southern Ranges of Tasmania (Moonlight creek). I didn't feel crash hot as I started out. I put this down to not being in the spirit of things as I started walking. I pressed on hoping I'd get more enthusiastic as the day progressed. 
 
 As a side note, I'm somewhat a determined (stubborn) person. Only after walking approximately 14km and climbing an elevation of 1000 meters did I stop and have a think about pushing on and attempting my initial goals. It was at this point I decided to pike on the walk and turn back. The weather was good but also bad. It was sunny but with 40-50km winds that were constantly pushing me about. There was no cover and I thought about risk. The biggest risk I could see is I wasn't really pumped to be doing the hike. And spirit is everything when outdoors. I turned it around and headed out. Got home and slept for 16 hours. 
@@ -65,9 +65,24 @@ Anyway, I've been there before, and I'll go again.
 
 **Back to this project.**
 
+*When you start messing around with Lambda and integrations the Events package is really handy to read.*
+[aws/aws-lambda-go-events ](https://github.com/aws/aws-lambda-go/blob/master/events/apigw.go)
 
+Thankfully I had the original POST based Lambda to build most of this logic off. At the point of writing this I have that uploaded and 'working' somewhat. It's got no effective error handling at the moment but that can come in time. 
 
+I lost about two, or maybe three hours trying to figure out a small problem with AWS and what eventually turned out to be CloudFront. 
 
+I spent a lot of time just refreshing my browser and turnings things on and off again. I'm a little more methodical at work with comms bugs. Usually it's just a matter of testing each jump in the network to find the error. If I'd tried the Lambda, the APIGW the externally, I would have clued to the error not being on the Lambda or APIGW setup. Admittedly, I haven't done tons of Lambda stuff to be an old hand at it yet. I probably won't fall into that trap again. 
+
+It was late and I blame that for not following a process with my problem solving.
+
+Anyway some interesting tid bits that came out of it. 
+1. Caching and Pass through policies on the API's CloudFront distribution need to be enabled for query strings. Pretty easy to setup, also pretty easy to ignore.
+2. Interestingly, you can white list query parameters. And even more interestingly the order in which you specify them in the white list becomes significant to whom ever calls the API. Caches like Varnish (which Fastly use) use built in helpers in the cache libraries such as *querystort*. Querysort does just that and orders query params to increase cache hits. I wonder if AWS has done the math of that and decided against spending the extra compute?
+
+Anyway. It's done. the API works. 
+
+**The UI bits**
 
 
 
