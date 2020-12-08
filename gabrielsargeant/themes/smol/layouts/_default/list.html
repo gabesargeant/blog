@@ -10,7 +10,7 @@
 
 	<ul>
 	{{ if ne $listtitle "Tags" }}
-		{{ range .Paginator.Pages }}
+		{{ range (.Paginator 50).Pages }}
 		<li>
 			<div class="post-title">
 				{{ .Date.Format "2006-01-02" }} <a href="{{ .RelPermalink }}">{{.Title }}</a>

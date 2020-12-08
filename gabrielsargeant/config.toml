@@ -3,7 +3,7 @@ title = "Gabriel Sargeant"
 theme = "smol"
 uglyurls = true
 summaryLength = 50
-
+#Paginate = 50
 [Author]
     name = "Gabriel Sargeant"
     
