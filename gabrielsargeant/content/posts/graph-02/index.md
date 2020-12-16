@@ -48,16 +48,22 @@ This time I'm going to use **GET**, as opposed to **POST* requests. Yay, a fiend
 **Doing something fun with javascript to interact with it.**  
 
 Enter stage left: [Sigma JS.](http://sigmajs.org/). An oddly not HTTPs site. :/
-Anyway, I was considering doing something with Graphvis, I still may, however the Golang interactions with the Graphviz engine looks too complex for a humble Lambda. And it'd be a lot of images over the network. So instead, we shaft the client and they get to pay in the cycles building the graph in their browser. (☞ﾟ∀ﾟ)☞
+OR 
+[Data-Drive Documents, d3.js](https://d3js.org/)
+
+I'm going to do someting with one of these... Not sure what yet. But I'll figure it out.
+
+I was considering doing something with Graphvis, I still may, however the Golang interactions with the Graphviz engine looks too complex for a humble Lambda. And it'd be a lot of images over the network. So instead, we shaft the client and they get to pay in the cycles building the graph in their browser. (☞ﾟ∀ﾟ)☞
 
 **Lambda Function and the API Gateway**
 
 Going Camping, not thinking about this. 
 
 **After Camping**  
+
 Camping was more a 30km daywalk in the Southern Ranges of Tasmania (Moonlight creek). I didn't feel crash hot as I started out. I put this down to not being in the spirit of things as I started walking. I pressed on hoping I'd get more enthusiastic as the day progressed. 
 
-As a side note, I'm somewhat a determined (stubborn) person. Only after walking approximately 14km and climbing an elevation of 1000 meters did I stop and have a think about pushing on and attempting my initial goals. It was at this point I decided to pike on the walk and turn back. The weather was good but also bad. It was sunny but with 40-50km winds that were constantly pushing me about. There was no cover and I thought about risk. The biggest risk I could see is I wasn't really pumped to be doing the hike. And spirit is everything when outdoors. I turned it around and headed out. Got home and slept for 16 hours. 
+As a side note, I'm somewhat a determined (stubborn) person. Only after walking approximately 14km and climbing an elevation of 1000 meters did I stop and have a think about pushing on and attempting my initial goals. It was at this point I decided to pike on the walk and turn back. The weather was good but also bad. It was sunny, but with 40 to 50km winds that were constantly pushing me about. There was no cover and I thought about risk. The biggest risk I could see is I wasn't really pumped to be doing the hike. And spirit is everything when outdoors. I turned it around and headed out. Got home and slept for 16 hours. 
 
 I think I may have had a cold or something. Usually before I head out on these sorts of trips, I'm really pumped for them. However it may have just been the location. Moonlight Ridge is a crappy crappy part of the world. Great past hill 1, but everything before that, thumbs down.
 
@@ -68,13 +74,13 @@ Anyway, I've been there before, and I'll go again.
 *When you start messing around with Lambda and integrations the Events package is really handy to read.*
 [aws/aws-lambda-go-events ](https://github.com/aws/aws-lambda-go/blob/master/events/apigw.go)
 
-Thankfully I had the original POST based Lambda to build most of this logic off. At the point of writing this I have that uploaded and 'working' somewhat. It's got no effective error handling at the moment but that can come in time. 
+Thankfully I had the original POST based Lambda to build most of this logic off. At the point of writing this I have that uploaded and *working* . It's got no effective error handling at the moment but that can come in time. 
 
 I lost about two, or maybe three hours trying to figure out a small problem with AWS and what eventually turned out to be CloudFront. 
 
 I spent a lot of time just refreshing my browser and turnings things on and off again. I'm a little more methodical at work with comms bugs. Usually it's just a matter of testing each jump in the network to find the error. If I'd tried the Lambda, the APIGW the externally, I would have clued to the error not being on the Lambda or APIGW setup. Admittedly, I haven't done tons of Lambda stuff to be an old hand at it yet. I probably won't fall into that trap again. 
 
-It was late and I blame that for not following a process with my problem solving.
+It was late, I blame that for not following a process to solve my problem.
 
 Anyway some interesting tid bits that came out of it. 
 1. Caching and Pass through policies on the API's CloudFront distribution need to be enabled for query strings. Pretty easy to setup, also pretty easy to ignore.
@@ -82,7 +88,22 @@ Anyway some interesting tid bits that came out of it.
 
 Anyway. It's done. the API works. 
 
-**The UI bits**
+**The UI bits**  
+
+This little side project is great. So many problems, so little forethought. I must be using it all up at work....
+
+The most significant problem I have now, is I have a service which exposes a tree of data, but interacting with that tree is dependent on you knowing of a node. 
+I could think about building a search but gah! It's just awful to do that. 
+
+Instead, I'm going to do two things. 
+1. Create a D3 visualation that you can add elements to progressively as you click about nodes. 
+
+    Something like this really awesome demo from D3: [Mobile Patent Suits](https://observablehq.com/@d3/mobile-patent-suits)
+
+2. Design and build a different tool that does everything I actually want but with less fuss. 
+
+    I'm thinking along the lines of clicking a point on a Map of Aus and then finding out what regions exists in that point and what their relations up and down the chain chain is. I think I can do this pretty easily with the ArcGIS Javascript Query, using the FeatureLayer Query function ... I think. 
+
 
 
 
