@@ -1,7 +1,7 @@
 ---
 title: "Graphs and the ASGS: Part 2"
 date: 2020-11-05
-draft: true
+draft: false
 ---
 
 Before you read this, read what came before this. [Graphs and the ASGS Part 1.]({{< relref "/posts/graph-01/index.md" >}} )
@@ -50,7 +50,7 @@ Enter stage left: [Sigma JS.](http://sigmajs.org/). An oddly not HTTPs site. :/
 OR 
 [Data-Drive Documents, d3.js](https://d3js.org/)
 
-I'm going to do someting with one of these... Not sure what yet. But I'll figure it out.
+I'm going to do something with one of these... Not sure what yet. But I'll figure it out.
 
 I was considering doing something with Graphvis, I still may, however the Golang interactions with the Graphviz engine looks too complex for a humble Lambda. And it'd be a lot of images over the network. So instead, we shaft the client and they get to pay in the cycles building the graph in their browser. (☞ﾟ∀ﾟ)☞
 
