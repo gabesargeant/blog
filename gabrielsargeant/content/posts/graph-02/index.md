@@ -36,9 +36,6 @@ Now to ponder the indexes...
 
 **I legit hate this project now... The grim death march begins.**  
 Ok, so I've been hard at work putting 400K objects into DynamoDB.   
-My old foe, the AWS DynamoDB Golang SDK has caused many issues. Most, actually all of them were my fault. However pointers
-
-Ok, so I've been hard at work putting 400K objects into DynamoDB.   
 My old foe, the AWS DynamoDB Golang SDK has caused many issues. Most, actually all of them were my fault. However pointers...
 
 The API will be something like: **/asgs/getRegions?code&code&code etc.**
