@@ -40,16 +40,13 @@ Attention: whether a look works or not is up to you. CV Dazzle is a concept, not
 Extra to this, there are a few more esoteric versions listed in this article. [Business Insider - Out smart facial recognition](https://www.businessinsider.com.au/clothes-accessories-that-outsmart-facial-recognition-tech-2019-10?r=US&IR=T). 
 Or, you can try the ever ever [creepy human looking mask.](http://www.3dprintingnews.co.uk/3dprinting-3/create-your-own-doppelganger-with-3d-printing/) It's worth noting that masks didn't last long. People are working around COVID.  [National Geographic - face mask recognition has arrived](https://www.nationalgeographic.com/science/2020/09/face-mask-recognition-has-arrived-for-coronavirus-better-or-worse-cvd/)
 
-**Option 2**. Break your existing signature by,
+**Option 2**. Break your existing signature by trying to,
 
-- looking like someone else, or look like everyone else. I don't think this is practical. The dlib blog has a really cool post about [Fast Multiclass Object Detection in Dlib 19.7 ](http://blog.dlib.net/2017/09/fast-multiclass-object-detection-in.html) which snuffs out this approach.
+- *looking like someone else, or look like everyone else*. I don't think this is practical. The dlib blog has a really cool post about [Fast Multiclass Object Detection in Dlib 19.7 ](http://blog.dlib.net/2017/09/fast-multiclass-object-detection-in.html) which snuffs out this approach.
 
-- Try out CV-Dazzle like approaches to change points of the face with makeup. Easily countered with cross matching on other data. If you go through a FR checkpoint that has the ability to identify you, then it's probably they can capture things like your cell phone hadware MAC address, which is a much richer source of metadata.
+- *Try out CV-Dazzle like approaches to change points of the face with makeup*. IMHO this is easily countered with cross matching on other data. If you go through a FR checkpoint that has the ability to identify you, then it's probably they can capture things like your cell phone hadware MAC address, which is a much richer source of metadata about you and your vices.
 
-- Use post processing techniques on your image to be constantly make yourself unique. This is an attach on the search index, not on the system that detects your face. It's smart when you consider the cost and complexity of facial recognition systems at scale. 
-It's a SAS product for local LEO. 
-Pollute the well. 
-
+- *Use post processing techniques on your image to be constantly make yourself unique. ie. Polluting the well* This is an attack on the search index, not on the active system that detects your face. It's smart when you consider the cost and complexity of facial recognition systems at scale. For local law enforcement or commercial companies, there's little compettative edge in rolling your own. Hence why startups like ClearView AI, have poped up. [An NY Times article about them](https://www.nytimes.com/2020/01/18/technology/clearview-privacy-facial-recognition.html)
 
 There's a general problem with all of these face-based approaches. You still have a set of shoulders and a general outline to deal with. And you usually have a phone on you.
 
@@ -99,23 +96,30 @@ Is facial recognition really the issue here?
 
 *fun fact, first time I think I've ever used the word Surveiller*
 
-In my humble opinion, the biggest question is, do you want to ID all faces? Or do you want to be able to select someone and then ID them?
+The biggest question is, do you want to ID all faces? Or do you want to be able to select someone and then ID them?
 The next biggest question. Do you want to be able to search for a face live, or is time no object?
 
 If I was building the system, any answer to any of those questions would make me rich! :P
 
+Some quick thinking about Requreiments.
 Got to index faces, fast!
+Deploy cameras' or consume camera feed's at differing quality. 
 Create a searchable index of those
 OLAP or OTAP structures
 How much history do you keep?
 
-How good is the data, how big is the data? And what size is the population of people you're looking to track? All of that information feeds into a the spreadsheet that stops the IT project in it's track when you figure out you can mine bitcoin cheaper. Or at least you create 
+Live stream of data. 
+Captre a frame. 
+Search for a face. 
+If a face is present. extract it and extrat facial points. Add that observation to a time series databases along with collection metadata. Such as, localtion, camera, system used etc etc.
+Repeat
 
-
+How good is the data, how big is the data? And what size is the population of people you're looking to track? All of that information feeds into a the spreadsheet that stops the IT project in it's track when you figure out you can mine bitcoin cheaper.  
 
 [High Quality Face Recognition with Deep Metric Learning](http://blog.dlib.net/2017/02/high-quality-face-recognition-with-deep.html)
 [Fast Multiclass Object Detection in Dlib 19.7 ](http://blog.dlib.net/2017/09/fast-multiclass-object-detection-in.html)
 
+It feels like the technology is at the same place as automated fingerprints scanning technology. 
 
 **It's an arms race**
 
