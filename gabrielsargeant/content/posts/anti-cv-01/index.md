@@ -52,7 +52,8 @@ It's worth noting that masks didn't last long. People are working around them to
 
 The premise of this option is to consider it impossible to not be spotted, or highly unlikely you will avoid being detected and that approches under **option 1** like CV dazzle will fail. If you assume that, and knowing your face has a set of landmarks on it that can be detected, then you have an option. You can try to alter whats detected. I feel success here dependeds greatly on on the recognition approach. [About Facial Landmark detection](https://www.learnopencv.com/facial-landmark-detection/).
 
-- You could try classic disguise techniques, and looking like someone else, or look like everyone else!. However, this doesn't seem practical. The Dlib blog has a really cool post about [Fast Multiclass Object Detection in Dlib 19.7 ](http://blog.dlib.net/2017/09/fast-multiclass-object-detection-in.html) which suggests that any approach will eventually fail. Dlib and other libraries are going to get better. And If you wear a disguiess it starts to become a signature in itself. So you'd need to start changing out faces often enough to create noise. Added to this, there's the whole swag of other anomaly detection that could be overlayed on top of a Facial Recognition database. If you data matched housing records, even just occupancy levels against a the recognition data, you may get outlier information that looks odd, such as, "Why do 10 different people leave and enter a two bedroom house?".
+- You could try classic disguise techniques, and looking like someone else, or look like everyone else!. However, this doesn't seem practical. The Dlib blog has a really cool post about [Fast Multiclass Object Detection in Dlib 19.7 ](http://blog.dlib.net/2017/09/fast-multiclass-object-detection-in.html) and 
+[High Quality Face Recognition with Deep Metric Learning](http://blog.dlib.net/2017/02/high-quality-face-recognition-with-deep.html). Which suggests that any approach will eventually fail. Dlib and other libraries are going to get better. And If you wear a disguiess it starts to become a signature in itself. So you'd need to start changing out faces often enough to create noise. Added to this, there's the whole swag of other anomaly detection that could be overlayed on top of a Facial Recognition database. If you data matched housing records, even just occupancy levels against a the recognition data, you may get outlier information that looks odd, such as, "Why do 10 different people leave and enter a two bedroom house?".
 
 - If you assume your face will get snapped then why not try out CV-Dazzle like approaches to change points of the face with makeup. IMHO, this is easily countered with cross matching on other data. If you go through a FR checkpoint that has the ability to identify you, then it's probably true they can capture things like your cell phone hadware MAC address, which is a much richer source of metadata about you and your vices.
 
@@ -87,12 +88,15 @@ And thus, airport security gets the ability to make a person walk down a hallway
 
 And depending on what country your flying to, they'll also grab a copy of your fingerprints along the way.
 
-Can't win, don't try!
+The take away story here is. **Can't win, don't try!** 
 
-**Problems with trying to counter being detected.**
-Humans have been vilifying those who are different for longer than we've had computers. Avoiding facial recognition needs to include a strategy that is either widely adopted, or covert in application. So essentially you need to learn, then use covert personal counter survelience techniques to live out your daily life. Ask your friends who worked as spies in in East Germany during the 80's. Identifying a tail was hard work. Shaking it even harder. 
+The upside, if you don't fly, it's really good for the environment.
 
-Remember computers don't sleep.
+**Problems with trying to counter being detected.**  
+
+Humans have been vilifying those who are different for longer than we've had computers. Avoiding facial recognition needs to include a strategy that is either widely adopted, or covert in application. So essentially you need to learn, then use covert personal counter survelience techniques to live out your daily life. If you ask your friends who worked as spies in in East Germany during the 80's. Identifying a tail was hard work. Shaking it was even harder, and remember computers don't sleep.
+
+Remember, unless everyone adopts anti FR techniques, it just becomes a signature of you. You want to be right in the middle of the bell curve.
 
 **Target Pattern Analysis. Or why use facial recognition technology at all?**
 
@@ -104,38 +108,37 @@ People are creatures of habit. Knowing that, and depending on risk, it's usually
 
 Think about your habbits. For me, I work, I walk my dog, I go to Bunnings to buy supplies to fix my house. Sometimes I sleep. Everyone once and a while, my endless house chores are done and I take myself for a relaxing drudge through nature. Breaks from the pattern are noticeable!  
 
-**If** you wanted to establish my pattern, you'd use my phone. I always have it. I like to entertain the idea that I could leave it behind, but it's always with me. If i were off to a dead drop. I'd probably turn off my phone. So would facial recognition actually be of assistance to establishing my pattern? I don't think it would when technology like Dirt Boxes and the [Gorgon stare.](https://en.wikipedia.org/wiki/Gorgon_Stare) exist.
+**If** you wanted to establish my pattern, you'd use my phone. I always have it. I like to entertain the idea that I could leave it behind, but it's always with me. If I were off to a dead drop. I'd probably turn off my phone. So would facial recognition actually be of assistance to establishing my pattern? I don't think it would when technology like Dirt Boxes and the [Gorgon stare.](https://en.wikipedia.org/wiki/Gorgon_Stare) exist.
 
-Is facial recognition really the issue here? Or is it general surveilience. And am I being tracked actively, or am I just being recorded?
+Is facial recognition really the issue here? Or is it general surveillance. And am I being tracked actively, or am I just being recorded?
 
-**Targeting is tricky. So is Identification and creating a facial index. Let's have some compassion for the Surveiller's IT team.**
+**Targeting is tricky. So is Identification and creating a facial index. Let's have some compassion for the Surveillers IT team.**
 
 *fun fact, first time I think I've ever used the word Surveiller*
 
-Let's pivot to thinking about building a really large national sized facial recognition system. 
+Let's pivot to thinking about building a really large nation sized facial recognition system. 
 
-The biggest question is, do you want to ID all faces? Or do you want to be able to select someone and then ID them?
-The next biggest question. Do you want to be able to search for a face live, or is time no object?
+My two big discussion questions as the soon the be wealthy vendor would be:
+1. Do you want to ID all faces? Or do you want to be able to select someone and then ID them?
+2. Do you want to be able to search for a face live, or is time delay of minutes to hours acceptable?
 
-If I was building the system, any answer to any of those questions would make me rich! :P
+Any answer to any of those questions would make me rich! This stuff get's complex once you're out of the lab. 
 
 Some quick thinking about Requreiments.
-Got to index faces, fast!
-Deploy cameras' or consume camera feed's at differing quality. 
-Create a searchable index of those
-OLAP or OTAP structures
-How much history do you keep?
+Got to index faces. 
+Deploy cameras' or consume camera feed's at differing quality. Consumption of this data needs to be potentially live.
+Create a searchable index of the detections
+OLAP or OTAP structures for storage.
+How much history do you keep? Probably for ever
+How big is one event?
 
 Live stream of data. 
-Captre a frame. 
+Capture a frame. Probably captureing a timepoint in a video.
 Search for a face. 
 If a face is present. extract it and extrat facial points. Add that observation to a time series databases along with collection metadata. Such as, localtion, camera, system used etc etc.
 Repeat
 
 How good is the data, how big is the data? And what size is the population of people you're looking to track? All of that information feeds into a the spreadsheet that stops the IT project in it's track when you figure out you can mine bitcoin cheaper.  
-
-[High Quality Face Recognition with Deep Metric Learning](http://blog.dlib.net/2017/02/high-quality-face-recognition-with-deep.html)
-[Fast Multiclass Object Detection in Dlib 19.7 ](http://blog.dlib.net/2017/09/fast-multiclass-object-detection-in.html)
 
 It feels like the technology is at the same place as automated fingerprints scanning technology. 
 
