@@ -19,7 +19,7 @@ Anyway, the ABS provides correspondences and allocation files which essentially 
 
 **Time to solve a sort of solved problem...maybe**
 
-First off, I've got to find the data. And my god, it's very tricky to find ASGS allocation files. Usually, you'd head to ABS to find these things. But now the files live on https://data.gov.au. I didn't save the link when I helped my friend them, and it was actually pretty challenging finding them again a second time.
+First off, I've got to find the data. And my god, it's very tricky to find ASGS allocation files. Usually, you'd head to ABS to find these things. But now the files live on [data.gov.au](https://data.gov.au) I didn't save the link when I helped my friend them, and it was actually pretty challenging finding them again a second time.
 
 Good news, I found it. I'm zeroing in on the 2016 areas for this post. [ASGS Allocation Files (2016)](https://data.gov.au/dataset/ds-dga-d056f2ed-faa7-4140-b950-6cccfb72e3fd/details?q=asgs%20(2016)). 
 

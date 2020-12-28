@@ -6,95 +6,113 @@ draft: true
 
 Surveillance presents a problem for society and individuals. Thankfully, it's less of a problem for you, me, and this site. I don't collect logs or capture analytics on anything. The only reader of this site that I know anything about is my poor wife, who I lovingly encourage to proofread all of this... 
 
-Back to surveillance. Now days, there's a lot of technology that now exists that detects and tracks people. It's mostly your phone. But there's other stuff. Face stuff! And that's what I'm going to focus in on with this. 
+Back on surveillance. Now days, there's a lot of technology that detects and tracks people. It's mostly your phone and laptop. But there's other stuff. Face stuff! And that's what I'm going to focus in on with this. 
 
 There may be some phone stuff as well, read on to see. 
 
-**On we go**
+**Why would I be against facial recognition?**
 
-Some folk don't like the trend towards a more visible and accountable population. They are pushing back against the technology of facial recognition. They state both ethical and privacy reasons to oppose the technology. In addition to the virtuous, there is also be spies and regular criminals in there as well. I'm not going to repeat their arguments, the virtuous or otherwise here. Instead, I'll be writing about the technology. 
+Some folk don't like the trend towards a more visible and accountable population. They are pushing back against the technology of facial recognition. They state both ethical and privacy reasons to oppose the technology. In addition to the virtuous, there is also be spies and regular criminals in there as well. I'm not going to repeat the arguments for the virtuous or otherwise here. Instead, I'll be writing about the technology. 
 
 If you do want to read them, have a glance at [Social Cooling](https://www.socialcooling.com/)
 
 *side note:* 
-*a more visible and accountable population* -- I get triggered when people say accountable. Usually it means there person saying the word accountable is shifting blame for their shit leadership... ask me how I know. ಠ ∩ ಠ
+*a more visible and accountable population* -- I get triggered when people say accountable. Usually it means there person saying the word accountable is shifting blame from their shit leadership... ask me how I know. ಠ ∩ ಠ
 
 **And finally onto face stuff**
 
 The current thinking about defeating face detecting surveillance technology follows a few different approaches. All have limitations.
 
-**Option 1.** Hide or disappear in plain sight. 
+**Option 1.** Hide and or disappear in plain sight. 
 
-- CV Dazzle [CV Dazzle](https://cvdazzle.com/). There's a pretty good warning about how most of this doesn't work anymore. 
+All of these approaches work on the principle of making it hard for the system to spot a face. Thus, preempting and disrupting the automated recognition.
+
+- [CV Dazzle](https://cvdazzle.com/). 
 
 {{< img src="cv-dazzle.jpg" alt="picture of CV Dazzle Makeup">}} 
+Here's a pretty good warning about how most of this doesn't work anymore. 
 ```June 15, 2020
 Attention: whether a look works or not is up to you. CV Dazzle is a concept, not a product or pattern. Evading face detection requires prior knowledge of the algorithm. Most of the archived looks on this page were designed over 10 years ago for the Viola-Jones face detection algorithm. Current face surveillance uses deep convoluational neural networks (DCNNs). To use CV Dazzle you must design according to the algorithm (hint: don't use Viola-Jones looks for a DCNN face recognition system).
 ```
 
-- **Glasses**. I have seen various version of this. Similar in mechanism to Isao Echizen's glasses.
+- **Glasses**. I have seen various version of this. This is a commercial set of glasses similar in mechanism to Isao Echizen's glasses.
 [Phantom anti facial recognition glasses.](https://mashable.com/review/review-reflectacles-phantom-anti-facial-recognition-technology-glasses-frames/)
-{{< img src="anti-photo-glasses.jpg" alt="Isao Echizen's Anti Photography glasses." >}}My big concern is wrecking my already terrible sleep patterns by disrupting my circadian rhythms. I'm not even sure if this is a thing, but I do have the warm night light settings on for a reason.
+{{< img src="anti-photo-glasses.jpg" alt="Isao Echizen's Anti Photography glasses." >}}
+One slight concern for me is wrecking my already terrible sleep patterns by disrupting my circadian rhythms. I'm not even sure if this is evan a thing, but blue light is the enemy of sleep!
 
-- **Masks**. COVID has made wearing cloth face masks acceptable in the West. So, there may be some options here. [Buy one on amazon! AFR - Face Mask](https://www.amazon.com/Anti-Face-Recognition-Surveillance-Pattern/dp/B08JTM6S8C/ref=pd_lpo_193_img_1/134-9237156-6814251?_encoding=UTF8&pd_rd_i=B08JTM6S8C&pd_rd_r=852d8eb6-0f46-4166-ae2c-97fa4ec06eff&pd_rd_w=8V502&pd_rd_wg=FCY99&pf_rd_p=7b36d496-f366-4631-94d3-61b87b52511b&pf_rd_r=JBVSC5FGSH2AYSQ724SQ&psc=1&refRID=JBVSC5FGSH2AYSQ724SQ)
+- **Masks**. COVID has made wearing cloth face masks acceptable in the West. So, there may be some options here. Right now you can [buy one on Amazon.com! AFR - Face Mask](https://www.amazon.com/Anti-Face-Recognition-Surveillance-Pattern/dp/B08JTM6S8C/ref=pd_lpo_193_img_1/134-9237156-6814251?_encoding=UTF8&pd_rd_i=B08JTM6S8C&pd_rd_r=852d8eb6-0f46-4166-ae2c-97fa4ec06eff&pd_rd_w=8V502&pd_rd_wg=FCY99&pf_rd_p=7b36d496-f366-4631-94d3-61b87b52511b&pf_rd_r=JBVSC5FGSH2AYSQ724SQ&psc=1&refRID=JBVSC5FGSH2AYSQ724SQ)
 Extra to this, there are a few more esoteric versions listed in this article. [Business Insider - Out smart facial recognition](https://www.businessinsider.com.au/clothes-accessories-that-outsmart-facial-recognition-tech-2019-10?r=US&IR=T). 
-Or, you can try the ever ever [creepy human looking mask.](http://www.3dprintingnews.co.uk/3dprinting-3/create-your-own-doppelganger-with-3d-printing/) It's worth noting that masks didn't last long. People are working around COVID.  [National Geographic - face mask recognition has arrived](https://www.nationalgeographic.com/science/2020/09/face-mask-recognition-has-arrived-for-coronavirus-better-or-worse-cvd/)
+Or, you can try the ever ever [creepy human looking mask.](http://www.3dprintingnews.co.uk/3dprinting-3/create-your-own-doppelganger-with-3d-printing/). 
 
-**Option 2**. Break your existing signature by trying to,
+It's worth noting that masks didn't last long. People are working around them to fight COVID. So that's sort of good....[National Geographic - face mask recognition has arrived](https://www.nationalgeographic.com/science/2020/09/face-mask-recognition-has-arrived-for-coronavirus-better-or-worse-cvd/)
 
-- *looking like someone else, or look like everyone else*. I don't think this is practical. The dlib blog has a really cool post about [Fast Multiclass Object Detection in Dlib 19.7 ](http://blog.dlib.net/2017/09/fast-multiclass-object-detection-in.html) which snuffs out this approach.
+- **Anti FR patterns**. [HyperFace](https://ahprojects.com/hyperface/)
 
-- *Try out CV-Dazzle like approaches to change points of the face with makeup*. IMHO this is easily countered with cross matching on other data. If you go through a FR checkpoint that has the ability to identify you, then it's probably they can capture things like your cell phone hadware MAC address, which is a much richer source of metadata about you and your vices.
+**Option 2**. Break your existing signature somehow. ie *the burning off your fingerprints technique*
 
-- *Use post processing techniques on your image to be constantly make yourself unique. ie. Polluting the well* This is an attack on the search index, not on the active system that detects your face. It's smart when you consider the cost and complexity of facial recognition systems at scale. For local law enforcement or commercial companies, there's little compettative edge in rolling your own. Hence why startups like ClearView AI, have poped up. [An NY Times article about them](https://www.nytimes.com/2020/01/18/technology/clearview-privacy-facial-recognition.html)
+The premise of this option is to consider it impossible to not be spotted, or highly unlikely you will avoid being detected and that approches under **option 1** like CV dazzle will fail. If you assume that, and knowing your face has a set of landmarks on it that can be detected, then you have an option. You can try to alter whats detected. I feel success here dependeds greatly on on the recognition approach. [About Facial Landmark detection](https://www.learnopencv.com/facial-landmark-detection/).
 
-There's a general problem with all of these face-based approaches. You still have a set of shoulders and a general outline to deal with. And you usually have a phone on you.
+- You could try classic disguise techniques, and looking like someone else, or look like everyone else!. However, this doesn't seem practical. The Dlib blog has a really cool post about [Fast Multiclass Object Detection in Dlib 19.7 ](http://blog.dlib.net/2017/09/fast-multiclass-object-detection-in.html) which suggests that any approach will eventually fail. Dlib and other libraries are going to get better. And If you wear a disguiess it starts to become a signature in itself. So you'd need to start changing out faces often enough to create noise. Added to this, there's the whole swag of other anomaly detection that could be overlayed on top of a Facial Recognition database. If you data matched housing records, even just occupancy levels against a the recognition data, you may get outlier information that looks odd, such as, "Why do 10 different people leave and enter a two bedroom house?".
+
+- If you assume your face will get snapped then why not try out CV-Dazzle like approaches to change points of the face with makeup. IMHO, this is easily countered with cross matching on other data. If you go through a FR checkpoint that has the ability to identify you, then it's probably true they can capture things like your cell phone hadware MAC address, which is a much richer source of metadata about you and your vices.
+
+- You use post processing techniques on your images on social media in an attempts to be constantly making yourself unique. ie. *Polluting the well* 
+
+This is an attack on the search index, not on the active system that detects your face. It's smart when you consider the cost and complexity of facial recognition systems at scale. For local law enforcement or commercial companies, there's little edge in rolling your own. Hence why startups like ClearView AI, have poped up. [An NY Times article about them](https://www.nytimes.com/2020/01/18/technology/clearview-privacy-facial-recognition.html). So an approch like this will probably work, but it's an active step you have to take. You've always got to be doing it. And theres photo's of you, that you can't control. Like your Pass Port and Drivers Licence. 
+
+Anyhow, We're probably a few years away from the Scanner Darkly like stealth suits.
+{{< img src="scannerdarkly.gif" alt="gif of Scanner Darkly" >}}
+
+Lastly, there's a general problem with all of these face-based approaches. You usually have a phone on you.
 
 So hold all of that in your head and I'll swing back to it.
 
 **Where does facial recognition happen now?**
 
-- Right now it's happenign at Clothing stores, Airports, and a ton of other places. But I'm going to talk about airports. But here's a great article about the technology used in retail [Revealed: how facial recognition has invaded shops – and your privacy](https://www.theguardian.com/cities/2016/mar/03/revealed-facial-recognition-software-infiltrating-cities-saks-toronto)
+- Everywhere!. But I'm going to talk about Airports. But here's a great article about the technology used in retail [Revealed: how facial recognition has invaded shops – and your privacy](https://www.theguardian.com/cities/2016/mar/03/revealed-facial-recognition-software-infiltrating-cities-saks-toronto)
 
 What does facial recognition in an airport look like. 
 
 - Controlled environment.
 
-- Predictable lighting makes things simpler for a the system. 
+- Predictable lighting to make things simpler for a the system. 
 
-- people groomed by other systems into conservative behavior and dress.
+- People groomed by other systems into conservative behavior and dress. 
 
 - Less social acceptance of facial coverings
     - try wearing a black motorcycle helmet into bank or airport. It'll be a short trip. You'll probably be confronted by security then arrested or detained.
 
-The airport is a really significant touch point for picking up a whole swag of biometrics. Firstly, it's totally opt in for the person being surveiled. Simmilar to the car parking in the city. If you don't want to pay the price, park elsewhere. Travel is a modern luxury and governments control airports. 
-And thus, airport security get the ability to make a person walk down a hallway where an image/video can be captured that controls for speed of walking, captures gait information, height, estimated weight, if not actual weight, and then a high definition picture of the face. Bang, you're in the system. 
+The Airport is a really significant touch point for picking up a whole swag of biometrics. Firstly, it's totally opt in for the person being surveiled. Similar to the car parking in the city. If you don't want to pay the price, park elsewhere. Travel is a modern luxury and governments control airports. 
+And thus, airport security gets the ability to make a person walk down a hallway where an image/video can be captured that controls for speed of walking, captures gait information, height, estimated weight, if not actual weight, and then a high definition picture of the face. Bang, you're in the system. 
 
-Can't win, don't try.
+And depending on what country your flying to, they'll also grab a copy of your fingerprints along the way.
 
+Can't win, don't try!
 
 **Problems with trying to counter being detected.**
-Humans have been vilifying those who are different for longer than we've had computers. Avoiding facial recognition needs to include a strategy that is either widely adopted, or covert in application. So essentially you need to learn, then use covert personal counter survelience techniques to live out your daily life.
+Humans have been vilifying those who are different for longer than we've had computers. Avoiding facial recognition needs to include a strategy that is either widely adopted, or covert in application. So essentially you need to learn, then use covert personal counter survelience techniques to live out your daily life. Ask your friends who worked as spies in in East Germany during the 80's. Identifying a tail was hard work. Shaking it even harder. 
 
-**Target Pattern Analysis, Why use facial recognition technology at all**
+Remember computers don't sleep.
+
+**Target Pattern Analysis. Or why use facial recognition technology at all?**
 
 Think like you need to track yourself. Pretend you have to tail someone like a detective. Or better yet, a big group of detectives or spies. 
 
-It's very expensive to provide human eyes on a person all the time, sometimes they are asleep, other times they are shopping or working. Not often are they being a criminal or a spy. But that time is important, and it's what's different.
+It's very expensive to provide human eyes on a person all the time, sometimes they are asleep, other times they are shopping or working. Not often are they being a criminal or a spy. But that time when they are being a criminal or spy is important, and it's what's different.
 
-People are creatures of habbit. Knowing that and depending on risk It's usually cheaper if you can establish a pattern and then monitor the conformance to that pattern. 
+People are creatures of habit. Knowing that, and depending on risk, it's usually cheaper if you can establish a pattern and then monitor the conformance to that pattern when surveiling someone.
 
-Think about your habbits. For me, I work, I walk my dog, I go to Bunnings to buy supplies to fix my house. Sometimes I sleep. Everyone once and a while, my endless house chores are done and I take myself for a relaxing drudge through nature. Breaks from the pattern are noticeable. 
+Think about your habbits. For me, I work, I walk my dog, I go to Bunnings to buy supplies to fix my house. Sometimes I sleep. Everyone once and a while, my endless house chores are done and I take myself for a relaxing drudge through nature. Breaks from the pattern are noticeable!  
 
-**If** you wanted to establish my pattern, you'd use my phone. I always have it. I like to entertain the idea that I could leave it behind, but it's always with me. 
+**If** you wanted to establish my pattern, you'd use my phone. I always have it. I like to entertain the idea that I could leave it behind, but it's always with me. If i were off to a dead drop. I'd probably turn off my phone. So would facial recognition actually be of assistance to establishing my pattern? I don't think it would when technology like Dirt Boxes and the [Gorgon stare.](https://en.wikipedia.org/wiki/Gorgon_Stare) exist.
 
-Would facial recognition actually be of assistance to establishing my pattern? I don't think it would when technology like Dirt Boxes and the [Gorgon stare.](https://en.wikipedia.org/wiki/Gorgon_Stare) exist.
-
-Is facial recognition really the issue here?
+Is facial recognition really the issue here? Or is it general surveilience. And am I being tracked actively, or am I just being recorded?
 
 **Targeting is tricky. So is Identification and creating a facial index. Let's have some compassion for the Surveiller's IT team.**
 
 *fun fact, first time I think I've ever used the word Surveiller*
+
+Let's pivot to thinking about building a really large national sized facial recognition system. 
 
 The biggest question is, do you want to ID all faces? Or do you want to be able to select someone and then ID them?
 The next biggest question. Do you want to be able to search for a face live, or is time no object?
@@ -145,6 +163,8 @@ They don't get doxxed because you can't find the individual. It's an effective a
 Stop carrying your mobile phone. It's a greater threat to you. Do you know what a [Dirtbox](https://en.wikipedia.org/wiki/Dirtbox_(cell_phone)) is?
 
 
+**My prediction about facial recognition**
 
+It's more likely that cops will use other technology to sweep crowds, and that facial recognition will be deployed adhoc onto crowd data.
 
-
+It seems likely that if you can create a neural net to detect faces you can also just make it more genearl to detect things. This is a more powerful and generic 

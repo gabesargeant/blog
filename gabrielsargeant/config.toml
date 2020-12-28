@@ -4,10 +4,10 @@ theme = "smol"
 uglyurls = true
 summaryLength = 50
 #Paginate = 50
+
 [Author]
     name = "Gabriel Sargeant"
     
-
 [menu]  
     [[menu.main]]
         identifier = "posts"
