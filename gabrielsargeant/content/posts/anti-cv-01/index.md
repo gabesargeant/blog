@@ -6,7 +6,7 @@ draft: false
 
 Surveillance presents a problem for society and individuals. Thankfully, it's less of a problem for you, me, and this site. I don't collect logs or capture analytics on anything. The only reader of this site that I know anything about is my poor wife, who I lovingly encourage to proofread all of this... 
 
-ow days, there's a lot of technology that detects and tracks people. It's mostly your phone, laptop, smartwatch, tv, and all those helpful home automation devices. Oh and the wireless security cameras everyone's got all over their homes now. But there's other stuff too!. Face stuff! And that's what I'm going to focus on with this. 
+Now days, there's a lot of technology that detects and tracks people. It's mostly your phone, laptop, smartwatch, tv, and all those helpful home automation devices. Oh and the wireless security cameras everyone's got all over their homes now. But there's other stuff too!. Face stuff! And that's what I'm going to focus on with this. 
 
 **Why would I be against facial recognition?**
 
