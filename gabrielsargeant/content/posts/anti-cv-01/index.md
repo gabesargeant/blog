@@ -52,7 +52,7 @@ Or, you can try the ever ever [creepy human looking mask.](http://www.3dprinting
 
 It's worth noting that masks didn't last long. People are working around them to fight COVID. So that's sort of good....[National Geographic - face mask recognition has arrived](https://www.nationalgeographic.com/science/2020/09/face-mask-recognition-has-arrived-for-coronavirus-better-or-worse-cvd/)
 
-- Anti FR patterns such as ["HyperFace prototype by Adam Harvey / ahprojects.com"](https://ahprojects.com/hyperface/). This takes a CV Dazzle style approach but creates confusion for the system. It's like a visual DDoS attack. Again, like CV Dazzle, it falls short because it's not generic and is tuned to work against one detection algorithm.
+- Anti FR patterns such as [HyperFace prototype by Adam Harvey / ahprojects.com](https://ahprojects.com/hyperface/). This takes a CV Dazzle style approach but creates confusion for the system. It's like a visual DDoS attack. Again, like CV Dazzle, it falls short because it's not generic and is tuned to work against one detection algorithm.
 
 **Option 2**. Break your existing signature somehow. ie *the burning off your fingerprints technique*
 
@@ -93,6 +93,7 @@ So what does facial recognition in an airport look like?
     - try wearing a black motorcycle helmet into a bank or airport. It'll be a short trip. You'll probably be confronted by security then arrested or detained.
 
 The Airport is a really significant touchpoint for picking up a whole swag of biometrics. Firstly, it's totally optional for the person being surveilled. Similar to the car parking in the city. If you don't want to pay the price, park elsewhere. Travel is a modern luxury, and governments control airports. 
+
 Airport security gets the ability to make you walk down a hallway where they can capture an image or video of you, that controls your speed whilst also potentially capturing gait information, your height,  estimated weight, and then a high definition picture of the face. Bang, you're in the system. In addition to all of that, you also are required to hand over the passport that contains a ton of information about you. 
 
 And, depending on what country you're flying to, they'll also grab a copy of your fingerprints along the way.
@@ -101,13 +102,15 @@ Two takeaway points here. 1st: Can't win, don't try! And 2nd: if you don't fly, 
 
 **The problems with trying to counter being detected.**  
 
-Humans have been vilifying each other over small differences long before computers existed. Unless you're always at a fashion event or a rave. Anyone dressing in CV dazzle will draw attention. And so will have hyperface patterns on your clothing.
+Humans have been vilifying each other over small differences long before computers existed. Unless you're always at a fashion event or a rave. Anyone dressing in CV dazzle will draw attention. And so will anyone who has hyperface patterns on their clothing.
 
-Avoiding facial recognition needs to include a strategy that is either widely adopted or covert in its application. So either everyone starts dressing oddly, or individually you need to learn, then use covert personal counter-surveillance techniques to live out your daily life. 
+Avoiding facial recognition needs to include a strategy that is either widely adopted or covert in its application for the individual. So either everyone starts dressing oddly, or individually you need to learn, then use, covert personal counter-surveillance techniques to live out your daily life. 
 
-If you ask your friends who worked as spies in East Germany during the '80s. Identifying a tail was hard work, losing it was even harder. So let's not forget, computers don't sleep.
+Now, if you ask your friends who worked as spies in East Germany during the '80s. Identifying a tail was hard work, losing it was even harder. And let's not forget, computers don't sleep.
 
-Unless everyone adopts anti FR techniques, it just becomes a signature of you. You want to be right in the middle of the bell curve, don't be on the edges.
+Unless everyone adopts anti FR techniques, it just becomes a signature of you. 
+
+You want to be right in the middle of the bell curve, don't be on the edges.
 
 **Target Pattern Analysis. Or why use facial recognition technology at all?**
 
@@ -119,7 +122,7 @@ People are creatures of habit. Knowing that, and depending on risk, it's usually
 
 Think about your habits. For me, I work, I walk my dog, I go to Bunnings to buy supplies to fix my house. Sometimes I sleep. Everyone once and a while, my endless house chores are done and I take myself for a relaxing drudge through nature. Breaks from the pattern are noticeable!  
 
-If you wanted to establish my pattern, you'd use my phone. I always have it. I like to entertain the idea that I could leave it behind, but it's always with me. If I were off to a dead drop. I'd probably turn off my phone. So would facial recognition actually be of assistance in establishing my pattern? I don't think it would when technology like Dirt Boxes and the [Gorgon stare.](https://en.wikipedia.org/wiki/Gorgon_Stare) exist. Both of which kind of rely on me being sloppy or there being some lead.
+If you wanted to establish my pattern, you'd use my phone. I always have it. I like to entertain the idea that I could leave it behind, but it's always with me. If I were off to a dead drop. I'd probably turn off my phone. So would facial recognition actually be of assistance in establishing my pattern? I don't think it would when technology like Dirt Boxes and the [Gorgon stare](https://en.wikipedia.org/wiki/Gorgon_Stare) exist. Both of which kind of rely on me being sloppy or there being some lead.
 
 Is facial recognition really the issue here? Or is it general surveillance? And am I being tracked actively, or am I just being recorded?
 
@@ -162,8 +165,9 @@ It feels like the technology is at the same place as automated fingerprint scann
 
 **It's an arms race**
 
-FR, the cabability is simple enough. The Genie is out of the bottle. What will hold it back is the storage requirements, especially if it's used in an evidentiary capacity. 
+The facial recognition cabability is simple enough. The Genie is out of the bottle. What will hold it back is probably something like the GDPR for public privacy. 
 
+But alas, I don't live in Europe. So...I'll just rely on the government's IT projects scope-creep to save me.
 
 **A few solutions I can think of to defeating FR technology**
 
@@ -203,4 +207,4 @@ If I can think up something like that, some defense contractor can charge 100 mi
 
 You know what they say about new ideas. Check the patent office. 
 
-Depressingly, I'm almost 100% sure the things I've just talked about already exist in production. 
+Depressingly, I'm almost 100% sure the oppressive things I've just talked about already exist in production. 
