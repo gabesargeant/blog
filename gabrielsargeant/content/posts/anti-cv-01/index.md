@@ -1,5 +1,5 @@
 ---
-title: "Anti-Facial Recognition Technology"
+title: "Thinking about Anti-Facial Recognition Tech"
 date: 2020-12-22
 draft: false
 ---
