@@ -14,7 +14,9 @@ draft: true
 Sometimes my thinking, and writing is like. 
 {{< img src="silva.png" alt="Picture of Pepe Silva">}}
 
-I usually put my thoughts in Italics. But I like the side bar style comments I see in text books or in technical manuals. 
+When I write here, I usually put my thoughts in Italics. Wait! I know it's all my thoughts. I'm more talking about the thoughts that happen, that aren't on the main path. I think them, I usually write them, and then delete them. I want to stop that. I'd prefer to include them.
+
+But I like the side bar style comments I see in text books or in technical manuals. 
 
 It's pretty easy to do in CSS and this is what I'm aiming for. Regular on the left and responsive on the right.
 {{< note txt="Easy he said. Facepalm!">}}
@@ -30,5 +32,9 @@ This text should be below when collapsed or responsive.
 And lastly, all of this should just sit side by side at full screen.
 
 And now the really important thing to do, is to use them sparingly. 
+
+**The worst thing about all of this**
+
+I will now have to start integrating responsiveness into all my designs... maybe.
 
 
