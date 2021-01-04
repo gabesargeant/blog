@@ -9,9 +9,10 @@ body {
 	margin: 40px auto;
 	padding: 0 5px;
 	font-size: 14px;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-family: "Open Sans","Verdana","Myriad Pro","Myriad",sans-serif;
 	color: #444;
 	line-height:1.6;
+	
 
 }
 
@@ -115,4 +116,30 @@ a {
 
 a:hover {
     border-bottom: 2px solid #ffa0a0;
+}
+
+
+
+.note {	
+	border-radius: 5px;
+	padding: 10px;
+	font-style: italic;
+}
+
+@media (min-width: 1400px) {
+	  
+	.note {
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	max-width: 250px;
+	width: 250px;
+	font-style: normal;
+	
+	float:left;
+	position: relative;
+	margin-left: -270px;
+	left: -10px;
+	z-index: -10;
+	}
 }
