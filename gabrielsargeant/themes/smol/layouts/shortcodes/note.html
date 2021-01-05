@@ -1,5 +1,11 @@
 
-<div class="note">
+{{ if eq ( .Get "pos") "left" }}
+<div class="note left">
     {{ .Get "txt"  }}
 </div>
+{{else}}
+<div class="note right">
+    {{ .Get "txt"  }}
+</div>
+{{end}}
 

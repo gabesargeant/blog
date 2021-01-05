@@ -135,11 +135,27 @@ a:hover {
 	max-width: 250px;
 	width: 250px;
 	font-style: normal;
-	
+	/*
 	float:left;
 	position: relative;
 	margin-left: -270px;
+
 	left: -10px;
+	*/
 	z-index: -10;
+	}
+
+	.right{
+	float:right;
+	position: relative;
+	margin-right: -270px;
+	right: -10px
+	}
+
+	.left {
+		float:left;
+	position: relative;
+	margin-left: -270px;
+	left: -10px;
 	}
 }
