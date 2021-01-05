@@ -1,7 +1,7 @@
 ---
 title: "This site: 6 - Sidebar notes. Building a shortcode."
 date: 2021-01-04
-draft: true
+draft: false
 ---
 
 
