@@ -4,19 +4,17 @@ date: 2021-01-08
 draft: true
 ---
 
-I bought a new Raspberry Pi, the model 3 B+. I have a few ideas of things I want to do with it. The main aim is to use it to run code and projects that will blow out the bank onf AWS. Ie, exceed the 'cup of coffee limit'. 
+I recently bought a new Raspberry Pi, a 3 B+. I have a few ideas of things I want to do with it. The main aim is to use it to run code and projects that may exceed the 'cup of coffee limit' I impose on myself with AWS.
 
-I've had an original Pi for a long time. So doing the setup for the new one wasn't too tricky.  But now I have a network connected rpi, that i want to interact with. 
+I've had an original Pi for a long time. So doing the setup for the new one wasn't too tricky.  Right now I have a network connected RPi, that I want to interact with. 
 
-{{< note txt="My greatest thrills with the RPI always come when I copied **dd** commands from a forum to my local shell" >}}
+{{< note txt="The best thrills with the RPI always come when I copied **dd** commands from a forum to my local shell" >}}
 
-**So..I don't know anything DNS**  
-Well, I know that DNS is all about port 53. And I know that there are registers like AWS's route 53 who match IP's to name look ups, and pass back the results.
-Where DNS is fuzzy for me, is the process from browser, through the kernel on my laptop, then out to the internet.  I want ot learn more about that part. 
+I want my localhost DNS resolution to redirect any request to ```homepi``` in the browser, to my Raspberry Pi connected to the home network. 
 
-**What I'm trying to do**
+It turns out this is uber simple, just adding the entry to ```etc/hosts/``` does the trick, and now my trusty laptop will always return the correct IP. 
 
-I want my localhost DNS resolution to redirect any request to ```housepie``` in the browser, to my Raspberry Pi connected to the home network. 
+My router seems to be holding the address stable. Which I'm happy to defer to, rather than messing with dhcpcd settings on the pi. It's something that I know I'll forget. 
 
-This maybe simpler than it looks. So here goes.
+
 
