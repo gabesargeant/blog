@@ -11,7 +11,7 @@ draft: false
 **plural noun**: digressions  
 *a temporary departure from the main subject in speech or writing.*
 
-Sometimes my thinking, and writing is like picture... 
+Sometimes my thinking, and writing is like this picture... 
 {{< img src="silva.png" alt="Picture of Pepe Silva">}}
 
 When I write here, I usually put my thoughts in Italics. Wait! I know it's all my thoughts. I'm more talking about the thoughts that happen, that aren't on the main path. I think them, I usually write them, and then I delete them. I want to stop that. I think I'd prefer to include them.
