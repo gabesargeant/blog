@@ -44,7 +44,7 @@ AND, maybe I will now start integrating responsiveness into all my designs... ma
 
 {{< note txt="Side by side notes with text between left side" pos="left">}}
 {{< note txt="Side by side notes with text between right side" pos="right">}}
-And this is the text between two thoughts.
+And this is the text between the two thoughts.
 
 
 

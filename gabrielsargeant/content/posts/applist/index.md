@@ -3,7 +3,6 @@ title: "Interactive Stuff"
 date: 2020-01-01
 draft: false
 tags:
-- Built things
 ---
 
 # Quick Links to Interactive things. 
