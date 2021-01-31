@@ -13,11 +13,16 @@ At this point, I finally broke, and I got a twitter account to watch it all unfo
 
 Over the next few days until Joe Biden got sworn in as the US president, I read a lot of Twitter and News. One facinating thing that was visible during the aftermath of the event, was the groups of people trying to identify the individuals involved. It was really interesting watching investigative outfits like [bellingcat](https://www.bellingcat.com/) and others scour through the social media putting the clues together.
 
-It' got me thinking about the future of survelience software, and anti-facial recognition. 
+It' got me thinking about the future of surveillance software, and anti-facial recognition. 
 
+If you look at the following tweet about Zip Tie Guy. What ou wear is as much a part of your signature as your actual biometrics. 
 
+{{< img src="zip-tie-guy.png" alt="Picture of zip tie guy jumping between the seats in the US congress.">}}
 
-Identifying idiot terrorists. 
+The mention of group affiliation is important. A lot of investigative groups exist to catalog extremist views in the US. 
+
+As the investigators 
+
 
 Gear and clothing and sloppy tradecraft. 
 
