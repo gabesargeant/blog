@@ -19,9 +19,9 @@ If you look at the following tweet about Zip Tie Guy. What ou wear is as much a 
 
 {{< img src="zip-tie-guy.png" alt="Picture of zip tie guy jumping between the seats in the US congress.">}}
 
-The mention of group affiliation is important. A lot of investigative groups exist to catalog extremist views in the US. 
+It turns out there's a lot of investigative groups that exist to catalog extremist views in the US.
 
-As the investigators 
+
 
 
 Gear and clothing and sloppy tradecraft. 
