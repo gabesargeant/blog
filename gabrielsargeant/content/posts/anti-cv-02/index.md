@@ -21,10 +21,29 @@ If you look at the following tweet about Zip Tie Guy. What you wear is as much o
 
 It turns out there's a lot of investigative groups that exist to catalog extremist views in the US.
 
-Zip tie guy was identified because someone was sucking up all the streams that were out there that day, and then there was someone wiling to just watch it all. Actually, there were lots of people doing that. Anyway, he didn't give away his identity at that moment. It was when he was back at the hotel (booked under his own name) celebrating, mask off with his family.
+Zip tie guy was identified because someone was recording every stream that was out there that day, and not only that, there was someone willing to just watch it all. Actually, there were lots of people doing that. He didn't give away his identity at that moment of his crimes. It was when he was back at the hotel (booked under his own name) celebrating, mask off with his family, that he gave it away.
 
 **What does all this mean for facial recognition, and recognition tech**
 
-The broader lesson. Feature and Object recognition is more going to be more important than face recognition.
+I have a finite wardrobe. I don't have an infinite supply of unique things to wear and carry. I have a satchel bag, I've had for 10 years. 
 
-Antifacial recognition can only happen legislatively. It's not practically possible to be 'unseen' when you have a mixture of humans and technology scanning for people. 
+All of these things are a signature of me. It's clear that facial recognition is the start. 
+
+
+Donning my futurist hat. We will end up with tech that does the following technology:
+
+It will consume stream of video data where ever it's created and broadly identify people.
+It will catalogue all the things they have on them and then attempt to recognize them against a database of signatures. 
+First it will try to use electronic and telephonic and metadata means to aide in identification of the person. 
+It will work with active scans against facial and biometric landmarks. 
+And then lastly it will look at items of clothing and combinations of those items to build probable matches if the above methods fail.
+
+If a system like this started watching in absence of an event. It could build a catalog of people and their stuff. And then if at some stage, I decided to embark on a life of crime, it could look at everything worn during that crime and build a list of suspects based on the catalog of items seen during the crime. Maybe with Partial glaces of a face etc. 
+
+What to do about this problem?  
+I don't think it can be solved. Someone will build the tech. Preventing this sort of surveillance technology from existing can only happen legislatively. And even then, someone will build it and run it covertly.    
+It's not practically possible to be 'unseen' when you have a mixture of humans and technology scanning for people. So the Dazzle CV is more a fizzle ヽ(。_°)ノ.
+
+Things that will be hard. 
+
+Figureing out if that orange glob of pixels is a coat, or a pair of pants. 
