@@ -44,6 +44,8 @@ What to do about this problem?
 I don't think it can be solved. Someone will build the tech. Preventing this sort of surveillance technology from existing can only happen legislatively. And even then, someone will build it and run it covertly.    
 It's not practically possible to be 'unseen' when you have a mixture of humans and technology scanning for people. So the Dazzle CV is more a fizzle ヽ(。_°)ノ.
 
-Things that will be hard. 
+**Things that will be hard.**
 
-Figureing out if that orange glob of pixels is a coat, or a pair of pants. 
+Figureing out if that orange glob of pixels is a coat, or a pair of pants. All work that buddying AI researchers can work on.
+
+In the mean time, your phone is a bigger threat to you identity than your face, and soon what you wear will also be a risk to you.
