@@ -1,5 +1,5 @@
 ---
-title: "Anti Facial Recognition tech means nothing when you stage an insurrection."
+title: "Anti facial recognition tech means nothing when you stage an insurrection."
 date: 2021-01-12
 draft: true
 ---
@@ -19,20 +19,19 @@ If you look at the following tweet about Zip Tie Guy. What you wear is as much o
 
 {{< img src="zip-tie-guy.png" alt="Picture of zip tie guy jumping between the seats in the US congress.">}}
 
-It turns out there's a lot of investigative groups that exist to catalog extremist views in the US.
+It turns out there's a lot of investigative groups that exist to catalog extremist people, and their views in the US.
 
-Zip tie guy was identified because someone was recording every stream that was out there that day, and not only that, there was someone willing to just watch it all. Actually, there were lots of people doing that. He didn't give away his identity at that moment of his crimes. It was when he was back at the hotel (booked under his own name) celebrating, mask off with his family, that he gave it away.
+*Zip tie guy* was identified because someone was recording every stream that was out there that day, and not only that, there was someone willing to just watch it all. Actually, there were lots of people doing that. He didn't give away his identity at that moment of his crimes. It was when he was back at the hotel (booked under his own name) celebrating, mask off with his family, that he gave it away.
 
 **What does all this mean for facial recognition, and recognition tech**
 
-I have a finite wardrobe. I don't have an infinite supply of unique things to wear and carry. I have a satchel bag, I've had for 10 years. 
+I have a finite wardrobe. I don't have an infinite supply of unique things to wear and carry. Things like my messenger bag, I've had for 10 years. It's one things that is a signature of me. 
 
-All of these things are a signature of me. It's clear that facial recognition is the start. 
+It's clear that facial recognition is the start. But it won't be the end.
 
+Donning my futurist hat. We will end up with the following technology:
 
-Donning my futurist hat. We will end up with tech that does the following technology:
-
-It will consume stream of video data where ever it's created and broadly identify people.
+It will consume streams of video data where ever it's created and broadly identify people.
 It will catalogue all the things they have on them and then attempt to recognize them against a database of signatures. 
 First it will try to use electronic and telephonic and metadata means to aide in identification of the person. 
 It will work with active scans against facial and biometric landmarks. 
@@ -48,4 +47,4 @@ It's not practically possible to be 'unseen' when you have a mixture of humans a
 
 Figureing out if that orange glob of pixels is a coat, or a pair of pants. All work that buddying AI researchers can work on.
 
-In the mean time, before AI catalogues everything you do, your phone still is a bigger threat to you identity than your face.
+In the mean time, before AI catalogues everything you do, your phone still is a bigger threat to you identity than your face.   
