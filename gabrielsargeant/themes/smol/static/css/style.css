@@ -10,10 +10,21 @@ body {
 	padding: 0 5px;
 	font-size: 14px;
 	font-family: "Open Sans","Verdana","Myriad Pro","Myriad",sans-serif;
+	
 	color: #444;
 	line-height:1.6;
 	
 
+}
+
+.gs {
+	letter-spacing: 2px;
+	font-family: helvetica, arial, geneva, sans-serif;
+}
+
+.at{
+	letter-spacing: 2px;
+	font-family: helvetica, arial, geneva, sans-serif;
 }
 
 h1,

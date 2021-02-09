@@ -1,8 +1,9 @@
 {{ define "main" }}
 <main>
 	<article>
-		<h2>{{ .Title }}</h2>
 		<b><time>{{ .Date.Format (default "2006-01-02" .Site.Params.dateFmt) }}</time></b>
+		<h2 class="at">{{ .Title }}</h2>
+		
 		{{ range .Params.tags }}
 		<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}.html">{{ . }}</a>		
 		{{ end }}
