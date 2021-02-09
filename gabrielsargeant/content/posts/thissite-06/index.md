@@ -1,5 +1,5 @@
 ---
-title: "This site: 6 - Sidebar notes. Building a shortcode."
+title: "This site: 6 - Sidebar notes. Building a uber simple shortcode."
 date: 2021-01-04
 draft: false
 ---

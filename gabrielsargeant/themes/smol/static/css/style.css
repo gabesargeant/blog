@@ -1,7 +1,6 @@
 html {
     overflow-y: scroll;
-	overflow-x: scroll;
-	
+	overflow-x: scroll;	
 }
 
 body {
@@ -9,22 +8,37 @@ body {
 	margin: 40px auto;
 	padding: 0 5px;
 	font-size: 14px;
-	font-family: "Open Sans","Verdana","Myriad Pro","Myriad",sans-serif;
-	
+	font-family: "Open Sans","Verdana","Myriad Pro","Myriad",sans-serif;	
 	color: #444;
 	line-height:1.6;
-	
+}
 
+.bar{
+	
+	padding: 20px;
+	border-color: rgb(177, 177, 177);
+	border: 1px;
+	border-style: solid;
+	font-size:1rem;
 }
 
 .gs {
 	letter-spacing: 2px;
 	font-family: helvetica, arial, geneva, sans-serif;
+	font-size:2.5rem;
 }
 
 .at{
+	letter-spacing: 0;
+	font-family: helvetica, arial, geneva, sans-serif;
+	font-size:2.5rem;
+}
+
+.lt{
 	letter-spacing: 2px;
 	font-family: helvetica, arial, geneva, sans-serif;
+	font-size:1.5rem;
+	
 }
 
 h1,
@@ -39,8 +53,7 @@ h3,
 h4,
 h5,
 h6 {
- color:#181818;
- font-family:"Georgia", "Times New Roman", serif;
+ color:#181818; 
  font-weight:normal
 }
 

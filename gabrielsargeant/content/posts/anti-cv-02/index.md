@@ -1,5 +1,5 @@
 ---
-title: "Anti facial recognition tech means nothing when you stage an insurrection."
+title: "Anti-Facial Recognition Tech means nothing when you stage an insurrection."
 date: 2021-01-12
 draft: true
 ---

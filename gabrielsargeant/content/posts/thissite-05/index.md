@@ -1,5 +1,5 @@
 ---
-title: "This site: 5 - The Zen-like sand garden of constantly tweaking this site."
+title: "This site: 5 - The Zen-like sand garden of constantly tweaking things."
 date: 2020-11-30
 draft: false
 tags:

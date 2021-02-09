@@ -1,7 +1,7 @@
 {{ define "main" }}
 <main>
 	<article>
-		<b><time>{{ .Date.Format (default "2006-01-02" .Site.Params.dateFmt) }}</time></b>
+		<b><time>{{ .Date.Format (default "2 January, 2006" .Site.Params.dateFmt) }}</time></b>
 		<h2 class="at">{{ .Title }}</h2>
 		
 		{{ range .Params.tags }}
