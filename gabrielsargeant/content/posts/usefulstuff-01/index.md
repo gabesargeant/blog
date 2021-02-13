@@ -4,17 +4,17 @@ date: 2021-02-12
 draft: false
 ---
 
-**This is all about how to take a zip file in S3, unzip it as a stream, and then write it back to a s3 bucket etc**
+**This is all about how to take a zip file in S3, unzip it as a stream, and then write it back to a s3 bucket, or where ever...**
 
-I followed this medium post by John Paul Hayes. [How to extract a HUGE zip file in an Amazon S3 bucket by using AWS Lambda and Python](https://medium.com/@johnpaulhayes/how-extract-a-huge-zip-file-in-an-amazon-s3-bucket-by-using-aws-lambda-and-python-e32c6cf58f06). Thanks!
+Firstly, I followed this medium post by John Paul Hayes. [How to extract a HUGE zip file in an Amazon S3 bucket by using AWS Lambda and Python](https://medium.com/@johnpaulhayes/how-extract-a-huge-zip-file-in-an-amazon-s3-bucket-by-using-aws-lambda-and-python-e32c6cf58f06). Thanks to him. ☜(ﾟヮﾟ☜)
 
-I am in no doubt about the fact I will have this problem again, and John's solutions was great and I didn't change much. 
+I am in no doubt about the fact I will have this problem again, and John's solutions was great and I didn't really anythiing. 
 
-I'm just putting this here, where I won't need to panic search for it next time I'm in a jam. ☜(ﾟヮﾟ☜)
+I'm mostly just putting this here, where I won't need to panic search for it next time I'm in a jam. 
 
-For my use case, I needed to script an AWS CLI worker to invoke the Lambda Function. It's writtend around that style of use. 
+With my use case, I needed to script an AWS CLI worker to invoke the Lambda Function. It's written around that style of use. 
 
-Obviously, you could make it fire off all sorts of events.  
+Obviously, you could trigger it with all sorts of events.  
 
 **This is the payload.**
 
@@ -87,4 +87,4 @@ I'm throwing an error rather than trying to recover, that's to avoid burying fau
 
 So, same payload, slightly different logic.
 
-
+It's like there' a GAP in the serverless library market. 
