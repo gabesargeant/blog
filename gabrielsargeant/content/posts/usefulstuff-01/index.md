@@ -1,7 +1,7 @@
 ---
 title: "Unzipping a file in S3 with AWS Lambda, and writing it all back to S3"
 date: 2021-02-12
-draft: false
+draft: true
 ---
 
 **This is all about how to take a zip file in S3, unzip it as a stream, and then write it back to a s3 bucket, or where ever...**
@@ -83,8 +83,9 @@ Pass the cli-read-timeout command if you're synchronously waiting for the file t
 
 I'm throwing an error rather than trying to recover, that's to avoid burying fault recovery logic inside something that should just be pass or fail.
 
+It's like there' a GAP in the serverless open source library market for all this glue like functions.
+
 **What about Golang?**
 
 So, same payload, slightly different logic.
 
-It's like there' a GAP in the serverless library market. 
