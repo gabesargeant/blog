@@ -36,7 +36,7 @@ A tried a few different ways of building this complex graph and ended up with a 
 
 **Lastly**
 
-If I get energetic and decide to make a part 4 to this project I think I'll start with a map. 
+If I get energetic and decide to make a part 4 to this project I think I'll start with a map. There's a certain element to this where a front end app will probably deliver a better outcome. maybe....
 
 
 
