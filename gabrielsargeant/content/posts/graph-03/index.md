@@ -55,7 +55,3 @@ If I get energetic and decide to make a part 4 to this project I think I'll star
 ---
 Notes:  
 1. Graphviz for the cool graphs! [Graphvis Visual Editor](http://magjac.com/graphviz-visual-editor/)
-
-
-
-
