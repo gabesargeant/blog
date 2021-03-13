@@ -2,6 +2,8 @@
 title: "Graphs and the ASGS: Part 2"
 date: 2020-11-05
 draft: false
+tags:
+- Graphs
 ---
 
 Before you read this, read what came before this. [Graphs and the ASGS Part 1.]({{< relref "/posts/graph-01/index.md" >}} )

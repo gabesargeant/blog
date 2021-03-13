@@ -3,6 +3,7 @@ title: "Graphs and the ASGS: Part 1"
 date: 2020-10-17
 draft: false
 tags:
+- Graphs
 - Golang
 - AWS
 

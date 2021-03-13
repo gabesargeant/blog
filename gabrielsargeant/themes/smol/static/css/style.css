@@ -59,15 +59,36 @@ h6 {
 
 @media (prefers-color-scheme: dark) {
 	body {
-		color: white;
+		color: #f7f7f7;
 		background: #444
 	}
 	a:link {
-		color: #5bf
+		color: #acacac;
 	}
 	a:visited {
-		color: #ccf
+		color: #7b7b7b;
 	}
+	.at{
+	letter-spacing: 0;
+	font-family: helvetica, arial, geneva, sans-serif;
+	font-size:2.5rem;
+	background-color: #f7f7f7;
+	}
+	.gs {
+	letter-spacing: 2px;
+	font-family: helvetica, arial, geneva, sans-serif;
+	font-size:2.5rem;	
+	color: #f7f7f7;
+	}
+
+	.gs a {
+		color:#f7f7f7;
+	}
+
+	.lt a, a:visited, a:link {
+		color:#f7f7f7;
+	}
+
 }
 
 code {
