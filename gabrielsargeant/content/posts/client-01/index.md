@@ -1,6 +1,6 @@
 ---
-title: "I hate rectangles but...."
-date: 2021-03-18T14:21:38+11:00
+title: "Build your clients software for them!"
+date: 2021-03-18
 draft: true
 ---
 
@@ -13,11 +13,17 @@ This turned into this.
 
 A good example of where the concept stayed really close to the final product was the iphone. Jobs apparently was a hawk on the design and was always shipping back the model prototypes (made of clay or other rapid prototyping materials) to the design team asking them to shave off edges or make it slimmer. And once they had that design, the next fun challenge for Apple was taking their small rectangle and putting a phone and media device in it.
 
-Long story short, they did it and made a stack of money.  Just like the guys who built the Palm Pilot before them, which started as a block of wood with a notpad taped to it! [The Palm Pilot Story](https://albertosavoia.medium.com/the-palm-pilot-story-1a3424d2ffe4)
+Well we know the end of that story, they did it and made a stack of money. Just like the guys who built the Palm Pilot before them, which started as a block of wood with a notpad taped to it! [The Palm Pilot Story](https://albertosavoia.medium.com/the-palm-pilot-story-1a3424d2ffe4)
 
-What can we learn from rectangles? Mostly, the users journey is important to the success of your product.
+What can we learn from these rectangles? Mostly, the users journey is important to the success of your product. The Iphone and Palm Pilot were things that humans interacted with. So they needed to be really comfortable for humans and very easy to work with. 
 
-There's trend to open data streams from government and business, which is good, but it's also a really tricky thing to do for the organization doing it.
+**Why don't people think the same way about APIs?**
+
+When was the last time you used an API and thought "Gosh, that was easy!".
+
+There's a push to data from government like *[data.gov.au](https://data.gov.au/)*. This is a good thing, but it's also a really tricky thing to do for the organizations doing it. 
+
+Everyone wants to participate, but how
 
 If you were building a data service, you'd have all of these tricky design issues to decide about. Where does processing happen? formats, the integration pattern? How do we load data, how do we manage releases etc. There's lots to consider.
 
