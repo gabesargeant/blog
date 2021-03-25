@@ -19,12 +19,16 @@ What can we learn from rectangles? Mostly, the users journey is important to the
 
 There's trend to open data streams from government and business, which is good, but it's also a really tricky thing to do for the organization doing it.
 
-Think, If you were building a data service, you'd have all of these design considerations to think about. Where does processing happen? formats, the integration pattern? How do we load data, how do we manage releases etc. There's lots to consider.
+If you were building a data service, you'd have all of these tricky design issues to decide about. Where does processing happen? formats, the integration pattern? How do we load data, how do we manage releases etc. There's lots to consider.
 
-I think the most important questions are:
-Where does processing happen? and What format is the data?
+I think the most important issues can broadly be captured by two questions:
+1. Where does processing happen? and,
+2. What format is the data?
 
-I'll start with the format issue. Who remembers the [**Stata**](https://en.wikipedia.org/wiki/Stata) format? well not many people use it now so it's hard to find integrations. If you publish in that format your making a choice about the level of engagement you get through your APi.
+**I'll start with the format issue.**
+Who remembers the [**Stata**](https://en.wikipedia.org/wiki/Stata) format? well not many people use it now so it's hard to find integrations. If you publish in that format your making a choice about the level of engagement you get through your API. This is why JSON is winning everywhere. 
+
+But the format problem really is tricky, because some people want to 
 
 Now where do we do the processing?
 
