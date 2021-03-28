@@ -1,5 +1,5 @@
 ---
-title: "Build your clients software for them!"
+title: "Build the world you want to experience."
 date: 2021-03-18
 draft: true
 ---
@@ -21,7 +21,7 @@ What can we learn from these rectangles? Mostly, the users journey is important 
 
 When was the last time you used an API and thought "Gosh, that was easy!".
 
-There's a push to data from government like *[data.gov.au](https://data.gov.au/)*. This is a good thing, but it's also a really tricky thing to do for the organizations doing it. 
+There's a push to data from government like [data.gov.au](https://data.gov.au/). This is a good thing, but it's also a really tricky thing to do for the organizations doing it. 
 
 Everyone wants to participate, but how
 
@@ -32,12 +32,12 @@ I think the most important issues can broadly be captured by two questions:
 2. What format is the data?
 
 **I'll start with the format issue.**
-Who remembers the [**Stata**](https://en.wikipedia.org/wiki/Stata) format? well not many people use it now so it's hard to find integrations. If you publish in that format your making a choice about the level of engagement you get through your API. This is why JSON is winning everywhere. 
+Who remembers the [Stata](https://en.wikipedia.org/wiki/Stata) format? well not many people use it now so it's hard to find integrations. If you publish in that format your making a choice about the level of engagement you get through your API. This is why JSON is winning everywhere. 
 
 But the format problem really is tricky, because some people want to 
 
 Now where do we do the processing?
-
+{{< img src="integration.png" alt="Picture of integration patterns">}}
 
 The benefits of building your clients solution for them.
 
