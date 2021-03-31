@@ -25,11 +25,13 @@ So what am I saying? Mostly that the users journey is important to the success o
 
 **Why don't people think the same way about APIs?**
 
-When was the last time you used an API and thought "Gosh, that was easy!".
+When was the last time you used an API and thought "Gosh, that was easy, it really fit with my way of doing things...".
 
-There's a push to data from government like [data.gov.au](https://data.gov.au/). This is a good thing, but it's also a really tricky thing to do for the organizations doing it. 
+There's a sort of arrogance that exists thinking you'll integrate on bespoke data models or formats.
 
-Everyone wants to participate, but how
+For a while there's been a push for government to get into the API game. Thing like [data.gov.au](https://data.gov.au/) exist. This is a good thing, but it's also a really tricky thing to do for the organizations doing it. Standardization is not rife.
+
+Everyone wants to participate, but how? 
 
 If you were building a data service, you'd have all of these tricky design issues to decide about. Where does processing happen? formats, the integration pattern? How do we load data, how do we manage releases etc. There's lots to consider.
 
