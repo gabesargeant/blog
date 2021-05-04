@@ -27,9 +27,9 @@ So what am I saying? Mostly that the users journey is important to the success o
 
 When was the last time you used an API and thought "Gosh, that was easy, it really fit with my way of doing things...".
 
-There's a sort of arrogance that exists thinking you'll integrate on bespoke data models or formats.
+There's a sort of arrogance that exists in the thinking of build it and they'll come. Or more exactly in thinking others will integrate on bespoke data models or formats.
 
-For a while there's been a push for government to get into the API game. Thing like [data.gov.au](https://data.gov.au/) exist. This is a good thing, but it's also a really tricky thing to do for the organizations doing it. Standardization is not rife.
+For a while there's been a push for government to get into the API game. Thing like [data.gov.au](https://data.gov.au/) exist. This is a good thing, but it's also a really tricky thing to do for the organizations doing it. Standardization is ... lacking ... to use a word.
 
 Everyone wants to participate, but how? 
 
@@ -40,13 +40,13 @@ I think the most important issues can broadly be captured by two questions:
 2. What format is the data?
 
 **I'll start with the format issue.**  
-Who remembers the [Stata](https://en.wikipedia.org/wiki/Stata) format? Well not many people use it as a first choice now. Naturally it's hard to find integrations. If you publish in that format your making a choice about the level of engagement you get through your API. Similar to forign langague newspapers naturally being a small market.
+Who remembers the [Stata](https://en.wikipedia.org/wiki/Stata) format? Well not many people use it as a first choice now. Naturally it's hard to find integrations. If you publish in that format your making a choice about the level of engagement you get through your API. Similar to forign langague newspapers naturally being a small market in markets where they are a foriegn language.
 
-This reason why JSON is everywhere, is because it's simple and everywhere.
+This reason why JSON is everywhere, is because it's simple-ish.
 
-But the format problem really is tricky, because some people want to encode a lot of complexity. 
+But the format problem is still , because some people want to encode a lot of complexity. 
 
-Now where do we do the processing?
+**Now where do we do the processing?**
 {{< img src="integration.png" alt="Picture of integration patterns">}}
 
 The benefits of building your clients solution for them.
