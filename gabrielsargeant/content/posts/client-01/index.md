@@ -1,35 +1,16 @@
 ---
-title: "Build the world you want to live in. "
+title: "Where to put complexity and who pays for it"
 date: 2021-03-18
 draft: true
 ---
 
-## But don't change too much too fast.
-
-When your designing products, before you actually consider functional constraints and have your dreams ruined. You get this brief fun period of time where dreamers get to dream.
-This is the point where you get to think about the future and the users of apps and products interact with their stuff. Almost everything you dream up at this point is wrong.
-
-It's really interesting to look at concept art and then cycle forward and see what actually happened in real life, when budgets, physics and committees start helping.
-
-Remember the Segway. Remember people unironically using them! We'll those lasted about as long as [Starbucks in Australia.](https://www.cnbc.com/2018/07/20/starbucks-australia-coffee-failure.html) 
-
-{{< note txt="It felt too mean to post pictures of people using segways, I guess good on them for not driving, but also not walking.... \_(:|)_/" pos="right" >}} 
-
-*The Segway fell foul of regulation in many countries where it was banned from sidewalks and roads because it did not fit any existing categories. This is a problem for a truly revolutionary product – but it was not properly anticipated.*
-[Why did the Segway fail? Some innovation lessons.](https://www.destination-innovation.com/why-did-the-segway-fail-some-innovation-lessons/)
-
-If you contrast the Segway with something like the Iphone which had it's roots in the Palm Pilot and BlackBerry you get can see how successful design builds on the existing.
-[The Palm Pilot Story](https://albertosavoia.medium.com/the-palm-pilot-story-1a3424d2ffe4)
-
-So what am I saying? Mostly that the users journey is important to the success of your product. The iPhone and Palm Pilot were things that humans interacted with and for the iPhone, there was a lineage from having a Palm Pilot and a Nokia to having a IPhone. The innovation wasn't that big conceptually, so users were able to see it and click wih it. 
-
-**Why don't people think the same way about APIs?**
-
 When was the last time you used an API and thought "Gosh, that was easy, it really fit with my way of doing things...".
 
-There's a sort of arrogance that exists in the thinking of build it and they'll come. Or more exactly in thinking others will integrate on bespoke data models or formats.
+If you're thinking to yourself, "I know, it was last week and it was XZY and it was great". Then I think you're lying.
 
-For a while there's been a push for government to get into the API game. Thing like [data.gov.au](https://data.gov.au/) exist. This is a good thing, but it's also a really tricky thing to do for the organizations doing it. Standardization is ... lacking ... to use a word.
+For a while there's been a push for governments to get into the API game. Thing like [data.gov.au](https://data.gov.au/) exist. This is a good thing, but it's also a really tricky thing to do for the organizations doing it. Standardization is ... lacking ... to use a word. 
+
+Extra to this the model of interaction that public organizations have with the human public doesn't fit that well into a request response model. 
 
 Everyone wants to participate, but how? 
 
@@ -52,3 +33,7 @@ But the format problem is still , because some people want to encode a lot of co
 The benefits of building your clients solution for them.
 
 They integrate correctly. The usability of your server is increased because people interact with it in sensisble ways. They stay inside the guard rails. If you offer support its easier because you don't have to content with wild issues that you'd never create for yourself. 
+
+
+
+
