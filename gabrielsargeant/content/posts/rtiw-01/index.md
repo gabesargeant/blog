@@ -15,7 +15,7 @@ I failed at both :D
 
 It's been going medium ok, so far. At the moment something is wrong, something with materials and colors. 
 
-{{< img name="attempts.png" alt="my significant no segfaulting attempts so far.">}}
+{{< img src="attempts.png" alt="my significant no segfaulting attempts so far.">}}
 
 The last picture, of the darkly shaded red and yellow ball is more closely correct than the two before it. Whilst the two before it look cool. I wasn't trying to do the glass effect, it just happened... 눈_눈
 
