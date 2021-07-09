@@ -25,7 +25,8 @@ There's a few ways to do this so I'm just going to try and see where I get to.
 
 # How I did the above.
 
-The basic process is, 
+The basic process is
+
 0. Read the image into a buffer.
 1. Get the image width.
 2. Fill a slice with that range of numbers. 
@@ -60,6 +61,6 @@ On reflection, I think this approach is actually pretty sensible. When you study
 
 Anyway, I'll move forward with that assumption and build the next iteration of the unshreader that looks at a band of pixels. develops a score for them and then finds their nearest neighbor. 
 
-I expect this to be a pretty successful approach. What I know will be an issue is that the image will start and top in weird chunks. But I have an idea about that too. Something like, looking for the greatest difference between to columns and using that as a signal that there's a break in the image a that locale.
+I expect this to be a pretty successful approach. What I know will be an issue is that the image will start and stop in weird chunks. But I have an idea about that too. Something like, looking for the greatest difference between to columns and using that as a signal that there's a break in the image a that locale.
 
 But that's firmly a future problem to solve.
