@@ -4,10 +4,10 @@ date: 2021-07-07
 draft: false
 ---
 
-On the Orange site of infinite distractions I saw this great post about reconstructing images that had been shredded.  
+On the orange site of infinite distractions I saw this great post about reconstructing images that had been shredded.  
 
-I really like these sorts of challenges. Like mapping and ray tracing, this is a visually engaging challenge. 
-Thought I do enjoy getting backend magic to work, it's just a little nicer to do stuff with graphics that provide a quick feedback loop.
+I really like these sorts of challenges. Like mapping and ray tracing, this is a visually engaging activity. 
+Though I usually do enjoy getting backend stuff to work, it's just a little nicer to do stuff with graphics that provide a bit of visual feedback.
 
  - [Image unshredding using a TSP solver](https://github.com/robinhouston/image-unshredding) and,  
 - [the Hacker News thread about it](https://news.ycombinator.com/item?id=27713441)
