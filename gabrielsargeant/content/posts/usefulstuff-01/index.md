@@ -1,18 +1,20 @@
 ---
-title: "Unzipping a file in S3 with AWS Lambda, and writing it all back to S3"
-date: 2021-02-12
-draft: true
+title: "Infrequent tasks worth remembering"
+date: 2022-02-06
 ---
+
+
+## Unzipping a file in S3 with AWS Lambda, and writing it all back to S3
 
 **This is all about how to take a zip file in S3, unzip it as a stream, and then write it back to a s3 bucket, or where ever...**
 
 Firstly, I followed this medium post by John Paul Hayes. [How to extract a HUGE zip file in an Amazon S3 bucket by using AWS Lambda and Python](https://medium.com/@johnpaulhayes/how-extract-a-huge-zip-file-in-an-amazon-s3-bucket-by-using-aws-lambda-and-python-e32c6cf58f06). Thanks to him. ☜(ﾟヮﾟ☜)
 
-I am in no doubt about the fact I will have this problem again, and John's solutions was great and I didn't really anythiing. 
+I am in no doubt about the fact I will have this problem again, and John's solutions was great and I didn't really alter much of anything. 
 
-I'm mostly just putting this here, where I won't need to panic search for it next time I'm in a jam. 
+I'm mostly just putting this here, where I won't need to panic search for it next time I'm in a jam. It's usually easy to remember my own name....
 
-With my use case, I needed to script an AWS CLI worker to invoke the Lambda Function. It's written around that style of use. 
+With the use case the I had here, I needed to script an AWS CLI worker to invoke the Lambda Function. It's written around that style of use. 
 
 Obviously, you could trigger it with all sorts of events.  
 
@@ -83,9 +85,13 @@ Pass the cli-read-timeout command if you're synchronously waiting for the file t
 
 I'm throwing an error rather than trying to recover, that's to avoid burying fault recovery logic inside something that should just be pass or fail.
 
-It's like there' a GAP in the serverless open source library market for all this glue like functions.
+It's like there' a GAP in the serverless open source library market for all these many glue like functions.
 
-**What about Golang?**
+anyway, there's more to remember.. so I'll be writing a few of these.
+---
 
-So, same payload, slightly different logic.
+
+
+
+
 
