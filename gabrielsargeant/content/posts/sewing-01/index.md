@@ -1,7 +1,7 @@
 ---
 title: "Sewing a $500 skirt"
-date: 2022-03-23T23:25:21+11:00
-draft: true
+date: 2022-03-23
+draft: false
 ---
 
 # My fancy new Sewing Machine
@@ -47,7 +47,7 @@ I won't post the pattern instructions here, as they are not mine to share, but t
 You could see breaking the work up into a few people building the skirt and a few people doing the yoke, and then someone joining those pieces and finally someone hemming and top stitching the thing. 
 
 
-# If you pay attention the level of detail and complexity in ordinary every day objects is amazing, and frankly staggering.
+# The level of detail and complexity in every day objects is frankly staggering.
 
 I have large hands, and even with a 5/8' (1.5cm) seam allowance I sometimes had trouble doing things like under-stiching and wrangling the clothing into place. Looking at the flat felled seams on my store bough dress shirts and know what goes into creating things like pant fly's, pant yokes or dress collars and cuffs really makes you appreciate the skill in making clothes. And I should not fail to mention the effort. Garment construction, even with a mechanical assist is still broadly a labouring job. 
 
@@ -59,7 +59,7 @@ Hopefully this diagram I made in powerpoint conveys the complexity of hemming a 
 
 It's kind of like how the big accidents happen at the end of the day. I was over this skirt by now.
 
-I eventually just went with my intuition on dealing with this and gathered the excess fabric to bring in the excess on the back face of the hem (which is a propper technique). But I did try and just fold it up hoping that physics would just bend to my will. It'd didn't. So, pleats a plenty on the inside edge. :P
+I eventually just went with my intuition on dealing with this and gathered the excess fabric to bring in the excess on the back face of the hem (which is a proper technique). But I did try and just fold it up hoping that physics would just bend to my will. It'd didn't. So, pleats a plenty on the inside edge. :P
 
 {{< img src="hem.png" alt="A picture of why skirt hems are hard">}}
 
