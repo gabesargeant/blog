@@ -23,18 +23,18 @@ She wanted the A style (Buttons down one side) with the C-Style length (shorter)
 
 # My first attempt.
 
-I'm pleased as punch that not only did I achieved what I attempted, but also it's a functional skirt, and everything sort of worked out.
+I'm pleased as punch!. Not only did I achieved what I attempted, but  it's also a functional skirt, and everything sort of worked out.
 
 {{< img src="skirt_1.jpg" alt="My wife wearing the skirt I sewed">}}
 
 # I don't think we pay nearly enough for our clothing. 
-All up it too me about ~1.5 days of efforts to go from a pattern, to a toile, and then to an actual skirt. Tack on another 2 hours for  buttons and button holes as well. And add on a really stressful hour doing the hem. It took at a lot of work. And at my current work rates, this was a pretty costly activity.
+All up it too me about ~1.5 days of effort to go from a pattern, to a toile, and then to an actual skirt. Tack on another 2 hours for buttons and button holes as well. And add on a really stressful hour doing the hem. It took at a lot of work. And at my current work rates, this was a pretty costly activity.
 
 {{< note txt="A toile is fancy word for a reusable, tougher than paper, sized pattern that I can use to make more skirts with." pos="right">}}
 
 Anyway, the broad point I want to convey is that was it was a tone of effort. Yes, over time I would get quicker, but it's still a lot of work. So my price for this skirt is $500 AUD.
 
-More broadly, I can buy cheap a dress shirt for $20 dollars. Someone is being done over on the effort there. I don't think the person getting $20 for even a bad dress shirt is getting adequately paid for their effort sadly.
+More broadly, I can buy cheap a dress shirt for $20 dollars. Someone is being done over on the effort there. I don't think the person getting $20 for even a bad dress shirt is getting adequately paid for their effort.
 
 
 # Pipelines make things quick.
@@ -49,9 +49,11 @@ You could see breaking the work up into a few people building the skirt and a fe
 
 # The level of detail and complexity in every day objects is frankly staggering.
 
-I have large hands, and even with a 5/8' (1.5cm) seam allowance I sometimes had trouble doing things like under-stiching and wrangling the clothing into place. Looking at the flat felled seams on my store bough dress shirts and know what goes into creating things like pant fly's, pant yokes or dress collars and cuffs really makes you appreciate the skill in making clothes. And I should not fail to mention the effort. Garment construction, even with a mechanical assist is still broadly a labouring job. 
+I have large hands, and even with a 5/8' (1.5cm) seam allowance I sometimes had trouble doing things like under-stiching and wrangling the clothing into place. Looking at the flat felled seams on my store bought dress shirts, and knowing what goes into creating things like pant fly's, pant yokes, or dress collars really makes you appreciate the skill in making clothes. And I should not fail to mention the effort. Garment construction, even with a mechanical assist, is still broadly a labouring job. 
 
-Clothing, especially with delicate fabrics is really complex and kinda impressive that it turns out so well. I watched a few of videos on custom suits being made and I totally understand the price tag now.
+Clothing, especially with delicate fabrics is really complex. It is impressive that it turns out so well. 
+
+{{< note txt="I watched a few of videos on how custom suits are made. I totally understand the price tag now." pos="left">}}
 
 # The hardest part of the whole skirt was the hem. 
 
@@ -70,8 +72,9 @@ Red for the outside, blue for the inside face of the fabric. In 2D to emphasize 
 
 I want to make the following items:
 
- - A Dress / Business shirts that fit me well. Because I'm a human and not perfect, my broad shoulders usually mean I have a baggy shirt around my waist if I wear store bought stuff. Surely the cheaper and easier option will be to just learn to sew, buy all the materials and construct my own shirts. Nothing, nothing at all can go wrong. 
+ - A Dress button down shirt that fit me well. 
+    I've got broad shoulders that usually mean I have a baggy shirt around my waist when I wear store bought stuff. Surely the cheaper and easier option will be to just learn to sew my own shirts!!! Nothing, nothing at all can go wrong. 
 
  - A roll top hiking pack. A lot of people make these for themselves, so why not me. 
 
- - A mid-weight sports jacket. Again, I don't think the store price reflects the labour involved and I'd like to know what the work looks like.
+ - A mid-weight sports jacket. Again, I don't think the store price reflects the work involved and I'd like to know what the work looks like.

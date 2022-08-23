@@ -1,12 +1,14 @@
 <header>
 	<h1 class="gs"><span><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></span></h1>	
-	<nav class="bar">
-		<a href="/">Home</a>
+	
 		{{ with .Site.Menus.main }}
-		{{ range . }}
-		~ <a href="{{ .URL | relURL }}">{{ .Name }}</a> 
+		{{ range . }}	
+	
+		<a href="{{ .URL | relURL }}">{{ .Name }}</a> /
+	
 		{{ end }}
-	</nav>
+		<hr>
+	
 	{{ end }}
 	
 </header>

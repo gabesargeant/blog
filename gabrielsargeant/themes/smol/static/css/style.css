@@ -7,7 +7,7 @@ body {
 	max-width: 800px;
 	margin: 40px auto;
 	padding: 0 5px;
-	font-size: 14px;
+	font-size: 16px;
 	font-family: "Open Sans","Verdana","Myriad Pro","Myriad",sans-serif;	
 	color: #444;
 	line-height:1.6;
@@ -59,7 +59,7 @@ h6 {
 
 @media (prefers-color-scheme: dark) {
 	body {
-		color: #f7f7f7;
+		color: #fcfcfc;
 		background: #444
 	}
 	a:link {
@@ -72,21 +72,21 @@ h6 {
 	letter-spacing: 0;
 	font-family: helvetica, arial, geneva, sans-serif;
 	font-size:2.5rem;
-	background-color: #f7f7f7;
+	background-color: #fcfcfc;
 	}
 	.gs {
 	letter-spacing: 2px;
 	font-family: helvetica, arial, geneva, sans-serif;
 	font-size:2.5rem;	
-	color: #f7f7f7;
+	color: #fcfcfc;
 	}
 
 	.gs a {
-		color:#f7f7f7;
+		color:#fcfcfc;hi
 	}
 
 	.lt a, a:visited, a:link {
-		color:#f7f7f7;
+		color:#fcfcfc;
 	}
 
 }
@@ -169,6 +169,7 @@ a:hover {
 	border-radius: 5px;
 	padding: 10px;
 	font-style: italic;
+	font-size: 14px;
 }
 
 @media (min-width: 1400px) {
