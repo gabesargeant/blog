@@ -5,6 +5,9 @@ uglyurls = true
 summaryLength = 50
 #Paginate = 50
 
+[params.meta]
+    favicon = false
+
 [Author]
     name = "Gabriel Sargeant"
     subtitle = "Keeping busy"
