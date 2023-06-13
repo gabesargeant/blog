@@ -72,3 +72,5 @@ gzip = true
 pattern = "^.+\\.(html|xml|json)$"
 gzip = true
 
+timeout = 360000
+
