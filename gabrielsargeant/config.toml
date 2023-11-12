@@ -9,7 +9,7 @@ summaryLength = 50
     favicon = false
 
 [Author]
-    name = "Gabriel Sargeant"
+    params.author.name = "Gabriel Sargeant"
     subtitle = "Keeping busy"
     
 [menu]  
